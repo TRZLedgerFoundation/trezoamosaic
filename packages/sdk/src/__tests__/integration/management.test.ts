@@ -1,7 +1,7 @@
 import setupTestSuite from './setup';
 import type { Client } from './setup';
-import type { KeyPairSigner, TransactionSigner, Rpc, SolanaRpcApi, Address } from '@solana/kit';
-import { generateKeyPairSigner } from '@solana/kit';
+import type { KeyPairSigner, TransactionSigner, Rpc, TrezoaRpcApi, Address } from '@trezoa/kit';
+import { generateKeyPairSigner } from '@trezoa/kit';
 import {
     sendAndConfirmTransaction,
     assertTxSuccess,
@@ -17,7 +17,7 @@ import { Token } from '../../issuance';
 import { createMintToTransaction, createForceTransferTransaction, createForceBurnTransaction } from '../../management';
 import { getFreezeTransaction, getThawTransaction, TOKEN_ACL_PROGRAM_ID } from '../../token-acl';
 import { decimalAmountToRaw } from '../../transaction-util';
-import { findAssociatedTokenPda, TOKEN_2022_PROGRAM_ADDRESS } from '@solana-program/token-2022';
+import { findAssociatedTokenPda, TOKEN_2022_PROGRAM_ADDRESS } from '@trezoa-program/token-2022';
 
 describeSkipIf()('Management Integration Tests', () => {
     let client: Client;
@@ -810,7 +810,7 @@ describeSkipIf()('Management Integration Tests', () => {
     }
 
     async function freezeAndAssert(
-        rpc: Rpc<SolanaRpcApi>,
+        rpc: Rpc<TrezoaRpcApi>,
         client: Client,
         payer: TransactionSigner<string>,
         authority: TransactionSigner<string>,
@@ -833,7 +833,7 @@ describeSkipIf()('Management Integration Tests', () => {
     }
 
     async function thawAndAssert(
-        rpc: Rpc<SolanaRpcApi>,
+        rpc: Rpc<TrezoaRpcApi>,
         client: Client,
         payer: TransactionSigner<string>,
         authority: TransactionSigner<string>,
@@ -927,7 +927,7 @@ describeSkipIf()('Management Integration Tests', () => {
         );
     });
 
-    describe('Standard SPL Token-2022 Freeze/Thaw Operations', () => {
+    describe('Standard TPL Token-2022 Freeze/Thaw Operations', () => {
         it(
             'should freeze wallet with standard freeze authority',
             async () => {

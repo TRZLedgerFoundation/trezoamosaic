@@ -1,15 +1,15 @@
 'use client';
 
-import { useKitTransactionSigner } from '@solana/connector';
-import type { TransactionModifyingSigner } from '@solana/kit';
+import { useKitTransactionSigner } from '@trezoa/connector';
+import type { TransactionModifyingSigner } from '@trezoa/kit';
 
 /**
- * Creates a transaction modifying signer from the Solana connector
+ * Creates a transaction modifying signer from the Trezoa connector
  * Uses the connector's native kit-compatible transaction signer
  */
 export function useConnectorSigner(): TransactionModifyingSigner<string> | null {
     const { signer } = useKitTransactionSigner();
     // Cast through unknown to bridge the generic signature difference between
-    // @solana/connector's signer type and @solana/kit's TransactionModifyingSigner
+    // @trezoa/connector's signer type and @trezoa/kit's TransactionModifyingSigner
     return signer as unknown as TransactionModifyingSigner<string> | null;
 }

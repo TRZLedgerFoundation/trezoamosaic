@@ -1,5 +1,5 @@
-import type { Address, Rpc, TransactionSigner } from '@solana/kit';
-import { TOKEN_2022_PROGRAM_ADDRESS } from '@solana-program/token-2022';
+import type { Address, Rpc, TransactionSigner } from '@trezoa/kit';
+import { TOKEN_2022_PROGRAM_ADDRESS } from '@trezoa-program/token-2022';
 
 /**
  * Creates a mock RPC client for testing
@@ -56,7 +56,7 @@ export function createMockRpc(): Rpc<any> {
  * Creates a mock transaction signer for testing
  */
 export function createMockSigner(address?: string): TransactionSigner<string> {
-    const mockAddress = address || 'HA3KcFsXNjRJsRZq1P1Y8qPAeSZnZsFyauCDEsSSGqTj'; // Valid SOL mint address
+    const mockAddress = address || 'HA3KcFsXNjRJsRZq1P1Y8qPAeSZnZsFyauCDEsSSGqTj'; // Valid TRZ mint address
     return {
         address: mockAddress as Address,
         sign: () => Promise.resolve(new Uint8Array(64)),
@@ -64,7 +64,7 @@ export function createMockSigner(address?: string): TransactionSigner<string> {
 }
 
 /**
- * Generates a mock Solana address for testing
+ * Generates a mock Trezoa address for testing
  */
 export function generateMockAddress(): string {
     return 'sAPDrViGV3C6PaT4xD7uRDDvB4xCURfZzDkGEd8Yv4v'; // Valid base58 address

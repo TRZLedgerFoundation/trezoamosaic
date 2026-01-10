@@ -2,8 +2,8 @@
 
 import { Button } from '@/components/ui/button';
 import { CheckCircle2, ExternalLink } from 'lucide-react';
-import { useConnector } from '@solana/connector/react';
-import { getClusterName, buildExplorerUrl, getExplorerClusterParam } from '@/lib/solana/explorer';
+import { useConnector } from '@trezoa/connector/react';
+import { getClusterName, buildExplorerUrl, getExplorerClusterParam } from '@/lib/trezoa/explorer';
 import { CopyButton } from '@/components/ui/copy-button';
 import { IconCircleDashed, IconSignature } from 'symbols-react';
 

@@ -51,8 +51,8 @@ program.addCommand(ablCommand);
 
 // Global options
 program
-    .option('--rpc-url <url>', 'Solana RPC URL', 'https://api.devnet.solana.com')
-    .option('--keypair <path>', 'Path to keypair file (defaults to Solana CLI default)')
+    .option('--rpc-url <url>', 'Trezoa RPC URL', 'https://api.devnet.trezoa.com')
+    .option('--keypair <path>', 'Path to keypair file (defaults to Trezoa CLI default)')
     .option('--authority <address>', 'Authority address (for --raw-tx)')
     .option('--fee-payer <address>', 'Fee payer address (for --raw-tx)')
     .option('--raw-tx <encoding>', 'Output unsigned transaction instead of sending (b64|b58)', 'b64');

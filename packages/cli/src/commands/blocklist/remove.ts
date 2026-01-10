@@ -2,8 +2,8 @@ import { Command } from 'commander';
 import chalk from 'chalk';
 import { createRemoveFromBlocklistTransaction } from '@mosaic/sdk';
 import { createRpcClient, createRpcSubscriptions } from '../../utils/rpc.js';
-import { resolveSigner } from '../../utils/solana.js';
-import { type Address, sendAndConfirmTransactionFactory } from '@solana/kit';
+import { resolveSigner } from '../../utils/trezoa.js';
+import { type Address, sendAndConfirmTransactionFactory } from '@trezoa/kit';
 import { getGlobalOpts, createSpinner, sendOrOutputTransaction } from '../../utils/cli.js';
 
 interface RemoveOptions {

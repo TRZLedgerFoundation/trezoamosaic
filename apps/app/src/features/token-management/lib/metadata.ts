@@ -1,5 +1,5 @@
 import {
-    createSolanaRpc,
+    createTrezoaRpc,
     createTransactionMessage,
     setTransactionMessageFeePayer,
     setTransactionMessageLifetimeUsingBlockhash,
@@ -7,18 +7,18 @@ import {
     pipe,
     type Address,
     type Rpc,
-    type SolanaRpcApi,
+    type TrezoaRpcApi,
     signTransactionMessageWithSigners,
     sendAndConfirmTransactionFactory,
     getSignatureFromTransaction,
-    createSolanaRpcSubscriptions,
+    createTrezoaRpcSubscriptions,
     TransactionModifyingSigner,
     isAddress,
     assertIsTransactionWithBlockhashLifetime,
-} from '@solana/kit';
+} from '@trezoa/kit';
 import { createUpdateFieldInstruction, createReallocateInstruction, getMintDetails } from '@mosaic/sdk';
-import { SYSTEM_PROGRAM_ADDRESS } from '@solana-program/system';
-import { getRpcUrl, getWsUrl, getCommitment } from '@/lib/solana/rpc';
+import { SYSTEM_PROGRAM_ADDRESS } from '@trezoa-program/system';
+import { getRpcUrl, getWsUrl, getCommitment } from '@/lib/trezoa/rpc';
 
 export type MetadataFieldType = 'name' | 'symbol' | 'uri';
 
@@ -115,8 +115,8 @@ export const updateTokenMetadata = async (
         }
 
         const rpcUrl = getRpcUrl(options.rpcUrl);
-        const rpc: Rpc<SolanaRpcApi> = createSolanaRpc(rpcUrl);
-        const rpcSubscriptions = createSolanaRpcSubscriptions(getWsUrl(rpcUrl));
+        const rpc: Rpc<TrezoaRpcApi> = createTrezoaRpc(rpcUrl);
+        const rpcSubscriptions = createTrezoaRpcSubscriptions(getWsUrl(rpcUrl));
 
         // Get mint details for program address
         const { programAddress } = await getMintDetails(rpc, options.mintAddress as Address);
@@ -242,8 +242,8 @@ export const updateTokenMetadataBatch = async (
         }
 
         const rpcUrl = getRpcUrl(options.rpcUrl);
-        const rpc: Rpc<SolanaRpcApi> = createSolanaRpc(rpcUrl);
-        const rpcSubscriptions = createSolanaRpcSubscriptions(getWsUrl(rpcUrl));
+        const rpc: Rpc<TrezoaRpcApi> = createTrezoaRpc(rpcUrl);
+        const rpcSubscriptions = createTrezoaRpcSubscriptions(getWsUrl(rpcUrl));
 
         // Get mint details for program address
         const { programAddress } = await getMintDetails(rpc, options.mintAddress as Address);

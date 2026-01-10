@@ -20,7 +20,7 @@ import Link from 'next/link';
 import { useParams, useRouter } from 'next/navigation';
 import { TokenDisplay } from '@/types/token';
 import { Spinner } from '@/components/ui/spinner';
-import { useConnector } from '@solana/connector/react';
+import { useConnector } from '@trezoa/connector/react';
 import { useTokenStore } from '@/stores/token-store';
 import { useTokenExtensionStore, usePauseState } from '@/stores/token-extension-store';
 import { TokenOverview } from '@/features/token-management/components/token-overview';
@@ -46,11 +46,11 @@ import {
     removeAddressFromBlocklist,
     removeAddressFromAllowlist,
 } from '@/features/token-management/lib/access-list';
-import { Address, createSolanaRpc, Rpc, SolanaRpcApi } from '@solana/kit';
+import { Address, createTrezoaRpc, Rpc, TrezoaRpcApi } from '@trezoa/kit';
 import { getList, getListConfigPda, getTokenExtensions } from '@mosaic/sdk';
 import { Mode } from '@token-acl/abl-sdk';
-import { buildAddressExplorerUrl } from '@/lib/solana/explorer';
-import { getTokenAuthorities } from '@/lib/solana/rpc';
+import { buildAddressExplorerUrl } from '@/lib/trezoa/explorer';
+import { getTokenAuthorities } from '@/lib/trezoa/rpc';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import {
     DropdownMenu,
@@ -73,7 +73,7 @@ export default function ManageTokenPage() {
             <div className="flex-1 flex flex-col items-center justify-center p-8">
                 <div className="text-center">
                     <h2 className="text-3xl font-bold mb-4">Wallet Required</h2>
-                    <p className="mb-6">Please connect your Solana wallet to manage tokens.</p>
+                    <p className="mb-6">Please connect your Trezoa wallet to manage tokens.</p>
                 </div>
             </div>
         );
@@ -83,7 +83,7 @@ export default function ManageTokenPage() {
 }
 
 const getAccessList = async (
-    rpc: Rpc<SolanaRpcApi>,
+    rpc: Rpc<TrezoaRpcApi>,
     authority: Address,
     mint: Address,
 ): Promise<{ type: 'allowlist' | 'blocklist'; wallets: string[] } | null> => {
@@ -133,7 +133,7 @@ function ManageTokenConnected({ address }: { address: string }) {
 
     const rpc = useMemo(() => {
         if (!cluster?.url) return null;
-        return createSolanaRpc(cluster.url) as Rpc<SolanaRpcApi>;
+        return createTrezoaRpc(cluster.url) as Rpc<TrezoaRpcApi>;
     }, [cluster?.url]);
 
     const loadedAccessListRef = useRef<string | null>(null);
@@ -145,7 +145,7 @@ function ManageTokenConnected({ address }: { address: string }) {
         }, 600);
     };
 
-    // Use the connector signer hook which provides a gill-compatible transaction signer
+    // Use the connector signer hook which provides a trezoagill-compatible transaction signer
     const transactionSendingSigner = useConnectorSigner();
 
     useEffect(() => {
@@ -159,7 +159,7 @@ function ManageTokenConnected({ address }: { address: string }) {
                 // Fetch authority information from the blockchain
                 try {
                     const rpcUrl =
-                        cluster?.url ?? process.env.NEXT_PUBLIC_SOLANA_RPC_URL ?? 'https://api.devnet.solana.com';
+                        cluster?.url ?? process.env.NEXT_PUBLIC_SOLANA_RPC_URL ?? 'https://api.devnet.trezoa.com';
                     const authorities = await getTokenAuthorities(foundToken.address as Address, rpcUrl);
                     // Merge fetched authorities into the token, preserving existing values if they exist
                     foundToken.mintAuthority = authorities.mintAuthority || foundToken.mintAuthority;
@@ -800,7 +800,7 @@ function ManageTokenConnected({ address }: { address: string }) {
                 newAddress={newAddress}
                 onAddressChange={setNewAddress}
                 title={`Add to ${listType === 'allowlist' ? 'Allowlist' : 'Blocklist'}`}
-                placeholder="Enter Solana address..."
+                placeholder="Enter Trezoa address..."
                 buttonText={`Add to ${listType === 'allowlist' ? 'Allowlist' : 'Blocklist'}`}
             />
         </div>

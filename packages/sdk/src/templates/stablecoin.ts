@@ -1,5 +1,5 @@
 import { Token } from '../issuance';
-import type { Rpc, Address, SolanaRpcApi, TransactionSigner } from '@solana/kit';
+import type { Rpc, Address, TrezoaRpcApi, TransactionSigner } from '@trezoa/kit';
 import type { FullTransaction } from '../transaction-util';
 import {
     createNoopSigner,
@@ -8,7 +8,7 @@ import {
     setTransactionMessageFeePayer,
     setTransactionMessageLifetimeUsingBlockhash,
     appendTransactionMessageInstructions,
-} from '@solana/kit';
+} from '@trezoa/kit';
 import { Mode } from '@token-acl/abl-sdk';
 import { ABL_PROGRAM_ID } from '../abl/utils';
 import { TOKEN_ACL_PROGRAM_ID } from '../token-acl/utils';
@@ -19,12 +19,12 @@ import { getCreateListInstructions } from '../abl/list';
 import { getSetExtraMetasInstructions } from '../abl/set-extra-metas';
 
 /**
- * Creates a transaction to initialize a new stablecoin mint on Solana with common stablecoin features.
+ * Creates a transaction to initialize a new stablecoin mint on Trezoa with common stablecoin features.
  *
  * This function configures the mint with metadata, pausable functionality, default account state,
  * confidential balances, and a permanent delegate. It returns a transaction ready to be signed and sent to the network.
  *
- * @param rpc - The Solana RPC client instance.
+ * @param rpc - The Trezoa RPC client instance.
  * @param name - The name of the stablecoin.
  * @param symbol - The symbol of the stablecoin.
  * @param decimals - The number of decimals for the stablecoin.
@@ -39,7 +39,7 @@ import { getSetExtraMetasInstructions } from '../abl/set-extra-metas';
  * @returns A promise that resolves to a FullTransaction object for initializing the stablecoin mint.
  */
 export const createStablecoinInitTransaction = async (
-    rpc: Rpc<SolanaRpcApi>,
+    rpc: Rpc<TrezoaRpcApi>,
     name: string,
     symbol: string,
     decimals: number,

@@ -4,9 +4,9 @@ import type {
     TransactionMessageWithBlockhashLifetime,
     Rpc,
     Address,
-    SolanaRpcApi,
+    TrezoaRpcApi,
     Commitment,
-} from '@solana/kit';
+} from '@trezoa/kit';
 
 // Type alias for convenience - represents a complete transaction message ready to be compiled
 export type FullTransaction<
@@ -19,13 +19,13 @@ import {
     address,
     getTransactionCodec,
     getBase64EncodedWireTransaction,
-} from '@solana/kit';
-import { findAssociatedTokenPda, TOKEN_2022_PROGRAM_ADDRESS } from '@solana-program/token-2022';
-import { SYSTEM_PROGRAM_ADDRESS } from '@solana-program/system';
+} from '@trezoa/kit';
+import { findAssociatedTokenPda, TOKEN_2022_PROGRAM_ADDRESS } from '@trezoa-program/token-2022';
+import { SYSTEM_PROGRAM_ADDRESS } from '@trezoa-program/system';
 import { TOKEN_ACL_PROGRAM_ID } from './token-acl/utils';
 
 /**
- * Converts a compiled Solana transaction to a base58-encoded string.
+ * Converts a compiled Trezoa transaction to a base58-encoded string.
  *
  * Note: Squads still requires base58 encoded transactions.
  *
@@ -39,7 +39,7 @@ export const transactionToB58 = (transaction: FullTransaction): string => {
 };
 
 /**
- * Converts a compiled Solana transaction to a base64-encoded string.
+ * Converts a compiled Trezoa transaction to a base64-encoded string.
  *
  * Base64 encoded transactions are recommended for most use cases.
  *
@@ -128,13 +128,13 @@ export interface ResolvedTokenAccount {
  * Returns the token account address to use for any operation
  * Note this function will not ensure that the account exists onchain
  *
- * @param rpc - The Solana RPC client instance
+ * @param rpc - The Trezoa RPC client instance
  * @param account - The account address (could be wallet or ATA)
  * @param mint - The mint address
  * @returns Promise with the token account address, status, and balance
  */
 export async function resolveTokenAccount(
-    rpc: Rpc<SolanaRpcApi>,
+    rpc: Rpc<TrezoaRpcApi>,
     account: Address,
     mint: Address,
 ): Promise<ResolvedTokenAccount> {
@@ -186,12 +186,12 @@ export async function resolveTokenAccount(
 /**
  * Gets mint information including decimals
  *
- * @param rpc - The Solana RPC client instance
+ * @param rpc - The Trezoa RPC client instance
  * @param mint - The mint address
  * @param commitment - Commitment level for the RPC call (defaults to 'confirmed')
  * @returns Promise with mint information including decimals
  */
-export async function getMintDetails(rpc: Rpc<SolanaRpcApi>, mint: Address, commitment: Commitment = 'confirmed') {
+export async function getMintDetails(rpc: Rpc<TrezoaRpcApi>, mint: Address, commitment: Commitment = 'confirmed') {
     const accountInfo = await rpc.getAccountInfo(mint, { encoding: 'jsonParsed', commitment }).send();
 
     if (!accountInfo.value) {
@@ -228,7 +228,7 @@ export async function getMintDetails(rpc: Rpc<SolanaRpcApi>, mint: Address, comm
         mintAuthority: mintInfo.mintAuthority,
         extensions: mintInfo.extensions || [],
         usesTokenAcl,
-        /** The token program that owns this mint (Token-2022 or SPL Token) */
+        /** The token program that owns this mint (Token-2022 or TPL Token) */
         programAddress: accountInfo.value.owner,
     };
 }
@@ -248,11 +248,11 @@ export function isDefaultAccountStateSetFrozen(
 /**
  * Gets the decimals of a mint
  *
- * @param rpc - The Solana RPC client instance
+ * @param rpc - The Trezoa RPC client instance
  * @param mint - The mint address
  * @returns Promise with the decimals of the mint
  */
-export async function getMintDecimals(rpc: Rpc<SolanaRpcApi>, mint: Address): Promise<number> {
+export async function getMintDecimals(rpc: Rpc<TrezoaRpcApi>, mint: Address): Promise<number> {
     const accountInfo = await rpc.getAccountInfo(mint, { encoding: 'jsonParsed' }).send();
 
     if (!accountInfo.value) {

@@ -1,4 +1,4 @@
-import type { Address, Rpc, SolanaRpcApi, TransactionSigner } from '@solana/kit';
+import type { Address, Rpc, TrezoaRpcApi, TransactionSigner } from '@trezoa/kit';
 import type { FullTransaction } from '../transaction-util';
 import {
     createNoopSigner,
@@ -7,23 +7,23 @@ import {
     setTransactionMessageFeePayer,
     setTransactionMessageLifetimeUsingBlockhash,
     appendTransactionMessageInstructions,
-} from '@solana/kit';
-import { getCloseAccountInstruction, TOKEN_2022_PROGRAM_ADDRESS } from '@solana-program/token-2022';
+} from '@trezoa/kit';
+import { getCloseAccountInstruction, TOKEN_2022_PROGRAM_ADDRESS } from '@trezoa-program/token-2022';
 import { resolveTokenAccount } from '../transaction-util';
 
 /**
  * Creates a transaction to close an empty token account and reclaim the rent.
  * The token account must have a zero balance.
  *
- * @param rpc - The Solana RPC client instance
+ * @param rpc - The Trezoa RPC client instance
  * @param mint - The mint address
  * @param owner - The token account owner's wallet address
- * @param destination - The address to receive the reclaimed SOL rent
+ * @param destination - The address to receive the reclaimed TRZ rent
  * @param feePayer - The fee payer signer
  * @returns A promise that resolves to a FullTransaction object for closing the account
  */
 export const createCloseAccountTransaction = async (
-    rpc: Rpc<SolanaRpcApi>,
+    rpc: Rpc<TrezoaRpcApi>,
     mint: Address,
     owner: Address | TransactionSigner<string>,
     destination: Address,

@@ -1,7 +1,7 @@
 import setupTestSuite from './setup';
 import type { Client } from './setup';
-import type { KeyPairSigner, TransactionSigner } from '@solana/kit';
-import { generateKeyPairSigner } from '@solana/kit';
+import type { KeyPairSigner, TransactionSigner } from '@trezoa/kit';
+import { generateKeyPairSigner } from '@trezoa/kit';
 import {
     sendAndConfirmTransaction,
     assertBalance,

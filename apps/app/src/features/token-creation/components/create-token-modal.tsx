@@ -5,7 +5,7 @@ import { ChevronRight, X } from 'lucide-react';
 import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle } from '@/components/ui/dialog';
 import { templates, type Template } from '@/config/templates';
 import { useConnectorSigner } from '@/features/wallet/hooks/use-connector-signer';
-import { useConnector } from '@solana/connector/react';
+import { useConnector } from '@trezoa/connector/react';
 import { StablecoinCreateForm } from './stablecoin/stablecoin-create-form';
 import { ArcadeTokenCreateForm } from './arcade-token/arcade-token-create-form';
 import { TokenizedSecurityCreateForm } from './tokenized-security/tokenized-security-create-form';
@@ -25,7 +25,7 @@ export function CreateTokenModal({ isOpen, onOpenChange, onTokenCreated }: Creat
     const { cluster } = useConnector();
 
     // Get RPC URL from the current cluster
-    const rpcUrl = cluster?.url || process.env.NEXT_PUBLIC_SOLANA_RPC_URL || 'https://api.devnet.solana.com';
+    const rpcUrl = cluster?.url || process.env.NEXT_PUBLIC_SOLANA_RPC_URL || 'https://api.devnet.trezoa.com';
 
     const handleTemplateSelect = (template: Template) => {
         setSelectedTemplate(template);

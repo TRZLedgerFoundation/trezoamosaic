@@ -2,7 +2,7 @@ import { Command } from 'commander';
 import chalk from 'chalk';
 import { getThawPermissionlessTransaction } from '@mosaic/sdk';
 import { createRpcClient, createRpcSubscriptions } from '../../utils/rpc.js';
-import { getAddressFromKeypair, loadKeypair } from '../../utils/solana.js';
+import { getAddressFromKeypair, loadKeypair } from '../../utils/trezoa.js';
 import { maybeOutputRawTx } from '../../utils/raw-tx.js';
 import {
     createNoopSigner,
@@ -12,8 +12,8 @@ import {
     sendAndConfirmTransactionFactory,
     assertIsTransactionWithBlockhashLifetime,
     getSignatureFromTransaction,
-} from '@solana/kit';
-import { findAssociatedTokenPda, TOKEN_2022_PROGRAM_ADDRESS } from '@solana-program/token-2022';
+} from '@trezoa/kit';
+import { findAssociatedTokenPda, TOKEN_2022_PROGRAM_ADDRESS } from '@trezoa-program/token-2022';
 import { createSpinner, getGlobalOpts } from '../../utils/cli.js';
 
 interface ThawPermissionlessOptions {

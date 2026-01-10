@@ -4,10 +4,10 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Architecture Overview
 
-Mosaic is a TypeScript monorepo for managing Token-2022 extensions on Solana, specifically designed for Stablecoin and Arcade Token use cases. The project uses pnpm workspaces and Turbo for build orchestration with the following structure:
+Mosaic is a TypeScript monorepo for managing Token-2022 extensions on Trezoa, specifically designed for Stablecoin and Arcade Token use cases. The trezoa uses pnpm workspaces and Turbo for build orchestration with the following structure:
 
 - **@mosaic/sdk** (`packages/sdk/`) - Core SDK with token templates and management utilities
-    - Uses `gill` library for Solana interactions
+    - Uses `trezoagill` library for Trezoa interactions
     - Provides `Token` class for building token transactions with extensions
     - Contains predefined templates for stablecoin and arcade tokens
     - Token extensions include: Metadata, Pausable, Default Account State, Confidential Balances, Permanent Delegate
@@ -103,8 +103,8 @@ pnpm start  # Start production server
 
 ## Development Notes
 
-- Project is currently scaffolded - implementation depends on Token-2022 program stabilization and SRFC 37 spec
-- Uses `gill` library for Solana RPC interactions
+- Trezoa is currently scaffolded - implementation depends on Token-2022 program stabilization and SRFC 37 spec
+- Uses `trezoagill` library for Trezoa RPC interactions
 - All token creation functions return `FullTransaction` objects ready for signing
 - Uses Turbo for monorepo build orchestration (faster builds with caching)
 - Node.js 20+ and pnpm 10+ required

@@ -8,7 +8,7 @@ import {
 import { CustomTokenExtensionConfig } from './custom-token-extension-config';
 import { CustomTokenCreationResultDisplay } from './custom-token-creation-result';
 import { createCustomToken } from '@/features/token-creation/lib/custom-token';
-import type { TransactionModifyingSigner } from '@solana/kit';
+import type { TransactionModifyingSigner } from '@trezoa/kit';
 import { useTokenCreationForm } from '@/features/token-creation/hooks/use-token-creation-form';
 import { TokenCreateFormBase } from '../token-create-form-base';
 import { Step } from '../form-stepper';

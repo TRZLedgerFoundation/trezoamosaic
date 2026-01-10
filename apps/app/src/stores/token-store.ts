@@ -3,7 +3,7 @@ import { persist } from 'zustand/middleware';
 import { useShallow } from 'zustand/shallow';
 import { TokenDisplay } from '@/types/token';
 import { getTokenDashboardData, type TokenType } from '@mosaic/sdk';
-import { address as toAddress, type Address, type Rpc, type SolanaRpcApi } from '@solana/kit';
+import { address as toAddress, type Address, type Rpc, type TrezoaRpcApi } from '@trezoa/kit';
 
 interface MetadataFetchState {
     isLoading: boolean;
@@ -25,7 +25,7 @@ interface TokenStore {
     // New: fetch metadata from blockchain
     fetchTokenMetadata: (
         mintAddress: string,
-        rpc: Rpc<SolanaRpcApi>,
+        rpc: Rpc<TrezoaRpcApi>,
         creatorWallet?: string,
     ) => Promise<TokenDisplay | null>;
     getMetadataFetchState: (mintAddress: string) => MetadataFetchState;
@@ -40,7 +40,7 @@ const DEFAULT_METADATA_FETCH_STATE: MetadataFetchState = {
 
 /**
  * Fetch image URL from off-chain metadata JSON
- * Supports standard metadata format (Metaplex-compatible)
+ * Supports standard metadata format (Trezoaplex-compatible)
  */
 async function fetchImageFromUri(uri: string): Promise<string | undefined> {
     try {

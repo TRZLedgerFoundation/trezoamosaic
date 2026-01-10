@@ -3,7 +3,7 @@ import { ArcadeTokenBasicParams } from './arcade-token-basic-params';
 import { ArcadeTokenFeaturesStep } from './arcade-token-features-step';
 import { ArcadeTokenCreationResultDisplay } from './arcade-token-creation-result';
 import { createArcadeToken } from '@/features/token-creation/lib/arcade-token';
-import type { TransactionModifyingSigner } from '@solana/kit';
+import type { TransactionModifyingSigner } from '@trezoa/kit';
 import { useTokenCreationForm } from '@/features/token-creation/hooks/use-token-creation-form';
 import { TokenCreateFormBase } from '../token-create-form-base';
 import { Step } from '../form-stepper';

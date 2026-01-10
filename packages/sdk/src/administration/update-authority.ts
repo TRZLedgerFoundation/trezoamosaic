@@ -3,8 +3,8 @@ import {
     getSetAuthorityInstruction,
     getUpdateTokenMetadataUpdateAuthorityInstruction,
     TOKEN_2022_PROGRAM_ADDRESS,
-} from '@solana-program/token-2022';
-import type { Address, Instruction, TransactionSigner, Rpc, SolanaRpcApi } from '@solana/kit';
+} from '@trezoa-program/token-2022';
+import type { Address, Instruction, TransactionSigner, Rpc, TrezoaRpcApi } from '@trezoa/kit';
 import type { FullTransaction } from '../transaction-util';
 import {
     pipe,
@@ -13,7 +13,7 @@ import {
     setTransactionMessageLifetimeUsingBlockhash,
     appendTransactionMessageInstructions,
     none,
-} from '@solana/kit';
+} from '@trezoa/kit';
 
 type AuthorityRole = AuthorityType | 'Metadata';
 
@@ -108,7 +108,7 @@ export const getRemoveAuthorityInstructions = (input: {
  * using `getUpdateAuthorityInstructions`, and returns a full transaction ready to be signed and sent.
  *
  * @param input - The parameters for the authority update transaction.
- * @param input.rpc - The Solana RPC client.
+ * @param input.rpc - The Trezoa RPC client.
  * @param input.payer - The transaction fee payer.
  * @param input.mint - The address of the mint whose authority is being updated.
  * @param input.role - The authority role to update ('Metadata' or an AuthorityType).
@@ -117,7 +117,7 @@ export const getRemoveAuthorityInstructions = (input: {
  * @returns A promise that resolves to the constructed full transaction.
  */
 export const getUpdateAuthorityTransaction = async (input: {
-    rpc: Rpc<SolanaRpcApi>;
+    rpc: Rpc<TrezoaRpcApi>;
     payer: TransactionSigner<string>;
     mint: Address;
     role: AuthorityRole;
@@ -147,7 +147,7 @@ export const getUpdateAuthorityTransaction = async (input: {
  * using `getRemoveAuthorityInstructions`, and returns a full transaction ready to be signed and sent.
  *
  * @param input - The parameters for the authority removal transaction.
- * @param input.rpc - The Solana RPC client.
+ * @param input.rpc - The Trezoa RPC client.
  * @param input.payer - The transaction fee payer.
  * @param input.mint - The address of the mint whose authority is being updated.
  * @param input.role - The authority role to update ('Metadata' or an AuthorityType).
@@ -155,7 +155,7 @@ export const getUpdateAuthorityTransaction = async (input: {
  * @returns A promise that resolves to the constructed full transaction.
  */
 export const getRemoveAuthorityTransaction = async (input: {
-    rpc: Rpc<SolanaRpcApi>;
+    rpc: Rpc<TrezoaRpcApi>;
     payer: TransactionSigner<string>;
     mint: Address;
     role: AuthorityRole;

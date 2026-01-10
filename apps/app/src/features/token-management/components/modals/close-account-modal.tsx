@@ -1,8 +1,8 @@
 import { useState, useEffect } from 'react';
 import { closeTokenAccount, type CloseAccountOptions } from '@/features/token-management/lib/close-account';
-import type { TransactionModifyingSigner } from '@solana/kit';
+import type { TransactionModifyingSigner } from '@trezoa/kit';
 import { XCircle } from 'lucide-react';
-import { useConnector } from '@solana/connector/react';
+import { useConnector } from '@trezoa/connector/react';
 import { Switch } from '@/components/ui/switch';
 import { Label } from '@/components/ui/label';
 
@@ -11,7 +11,7 @@ import { ModalWarning } from '@/components/shared/modals/modal-warning';
 import { ModalError } from '@/components/shared/modals/modal-error';
 import { ModalFooter } from '@/components/shared/modals/modal-footer';
 import { TransactionSuccessView } from '@/components/shared/modals/transaction-success-view';
-import { SolanaAddressInput } from '@/components/shared/form/solana-address-input';
+import { TrezoaAddressInput } from '@/components/shared/form/trezoa-address-input';
 import { useTransactionModal, useWalletConnection } from '@/features/token-management/hooks/use-transaction-modal';
 import { useInputValidation } from '@/hooks/use-input-validation';
 import {
@@ -41,7 +41,7 @@ export function CloseAccountModalContent({
 }: CloseAccountModalContentProps) {
     const { walletAddress } = useWalletConnection();
     const { cluster } = useConnector();
-    const { validateSolanaAddress } = useInputValidation();
+    const { validateTrezoaAddress } = useInputValidation();
     const {
         isLoading,
         error,
@@ -63,7 +63,7 @@ export function CloseAccountModalContent({
             return;
         }
 
-        if (useCustomDestination && !validateSolanaAddress(destination)) {
+        if (useCustomDestination && !validateTrezoaAddress(destination)) {
             setError(MODAL_ERRORS.INVALID_DESTINATION_ADDRESS);
             return;
         }
@@ -72,7 +72,7 @@ export function CloseAccountModalContent({
         setError('');
 
         try {
-            const rpcUrl = cluster?.url || process.env.NEXT_PUBLIC_SOLANA_RPC_URL || 'https://api.devnet.solana.com';
+            const rpcUrl = cluster?.url || process.env.NEXT_PUBLIC_SOLANA_RPC_URL || 'https://api.devnet.trezoa.com';
 
             const options: CloseAccountOptions = {
                 mintAddress,
@@ -157,7 +157,7 @@ export function CloseAccountModalContent({
             </div>
 
             {useCustomDestination && (
-                <SolanaAddressInput
+                <TrezoaAddressInput
                     label={MODAL_LABELS.DESTINATION_ADDRESS}
                     value={destination}
                     onChange={setDestination}
@@ -186,7 +186,7 @@ export function CloseAccountModalContent({
                 actionLabel={MODAL_BUTTONS.CLOSE_ACCOUNT}
                 loadingLabel={MODAL_BUTTONS.CLOSING}
                 actionIcon={XCircle}
-                actionDisabled={useCustomDestination && !validateSolanaAddress(destination)}
+                actionDisabled={useCustomDestination && !validateTrezoaAddress(destination)}
                 actionClassName="bg-red-500 hover:bg-red-600 text-white"
             />
         </ExtensionModal>

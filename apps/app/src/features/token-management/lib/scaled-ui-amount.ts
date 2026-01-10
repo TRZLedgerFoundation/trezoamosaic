@@ -1,5 +1,5 @@
 import {
-    createSolanaRpc,
+    createTrezoaRpc,
     createTransactionMessage,
     setTransactionMessageFeePayer,
     setTransactionMessageLifetimeUsingBlockhash,
@@ -7,16 +7,16 @@ import {
     pipe,
     type Address,
     type Rpc,
-    type SolanaRpcApi,
+    type TrezoaRpcApi,
     signTransactionMessageWithSigners,
     sendAndConfirmTransactionFactory,
     getSignatureFromTransaction,
-    createSolanaRpcSubscriptions,
+    createTrezoaRpcSubscriptions,
     TransactionModifyingSigner,
     assertIsTransactionWithBlockhashLifetime,
-} from '@solana/kit';
-import { getUpdateMultiplierScaledUiMintInstruction } from '@solana-program/token-2022';
-import { getRpcUrl, getWsUrl, getCommitment } from '@/lib/solana/rpc';
+} from '@trezoa/kit';
+import { getUpdateMultiplierScaledUiMintInstruction } from '@trezoa-program/token-2022';
+import { getRpcUrl, getWsUrl, getCommitment } from '@/lib/trezoa/rpc';
 import { getMintDetails } from '@mosaic/sdk';
 
 export interface UpdateScaledUiMultiplierOptions {
@@ -43,8 +43,8 @@ export const updateScaledUiMultiplier = async (
         }
 
         const rpcUrl = getRpcUrl(options.rpcUrl);
-        const rpc: Rpc<SolanaRpcApi> = createSolanaRpc(rpcUrl);
-        const rpcSubscriptions = createSolanaRpcSubscriptions(getWsUrl(rpcUrl));
+        const rpc: Rpc<TrezoaRpcApi> = createTrezoaRpc(rpcUrl);
+        const rpcSubscriptions = createTrezoaRpcSubscriptions(getWsUrl(rpcUrl));
 
         // Get mint details for program address
         const { programAddress } = await getMintDetails(rpc, options.mint as Address);

@@ -1,8 +1,8 @@
 import { useState, useEffect } from 'react';
 import { burnTokens, type BurnOptions } from '@/features/token-management/lib/burn';
-import type { TransactionModifyingSigner } from '@solana/kit';
+import type { TransactionModifyingSigner } from '@trezoa/kit';
 import { Flame } from 'lucide-react';
-import { useConnector } from '@solana/connector/react';
+import { useConnector } from '@trezoa/connector/react';
 
 import { ExtensionModal } from '@/components/shared/modals/extension-modal';
 import { ModalWarning } from '@/components/shared/modals/modal-warning';
@@ -77,7 +77,7 @@ export function BurnModalContent({
         setError('');
 
         try {
-            const rpcUrl = cluster?.url || process.env.NEXT_PUBLIC_SOLANA_RPC_URL || 'https://api.devnet.solana.com';
+            const rpcUrl = cluster?.url || process.env.NEXT_PUBLIC_SOLANA_RPC_URL || 'https://api.devnet.trezoa.com';
 
             const options: BurnOptions = {
                 mintAddress,

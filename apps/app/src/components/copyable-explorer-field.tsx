@@ -3,7 +3,7 @@
 import { Button } from '@/components/ui/button';
 import { ExternalLink } from 'lucide-react';
 import { CopyButton } from '@/components/ui/copy-button';
-import { buildAddressExplorerUrl, buildExplorerUrl } from '@/lib/solana/explorer';
+import { buildAddressExplorerUrl, buildExplorerUrl } from '@/lib/trezoa/explorer';
 
 interface CopyableExplorerFieldProps {
     label: string;
@@ -48,7 +48,7 @@ export function CopyableExplorerField({ label, value, kind, cluster }: CopyableE
                         href={explorerUrl}
                         target="_blank"
                         rel="noopener noreferrer"
-                        aria-label={`Open ${label.toLowerCase()} in Solana Explorer`}
+                        aria-label={`Open ${label.toLowerCase()} in Trezoa Explorer`}
                     >
                         <ExternalLink className="h-4 w-4" />
                     </a>

@@ -10,9 +10,9 @@ const config = {
 
 let validatorProcess = null;
 
-async function checkSolanaCLI() {
+async function checkTrezoaCLI() {
     try {
-        const checkProcess = spawn('solana', ['--version'], { stdio: 'pipe' });
+        const checkProcess = spawn('trezoa', ['--version'], { stdio: 'pipe' });
         const exitCode = await new Promise(resolve => {
             checkProcess.on('close', resolve);
         });
@@ -21,7 +21,7 @@ async function checkSolanaCLI() {
             throw new Error();
         }
     } catch (error) {
-        console.error('Solana CLI not found. Please install: https://docs.solana.com/cli/install-solana-cli-tools');
+        console.error('Trezoa CLI not found. Please install: https://docs.trezoa.com/cli/install-trezoa-cli-tools');
         process.exit(1);
     }
 }
@@ -31,7 +31,7 @@ async function waitForValidator() {
 
     for (let i = 0; i < config.maxHealthCheckRetries; i++) {
         try {
-            const checkProcess = spawn('solana', ['cluster-version'], {
+            const checkProcess = spawn('trezoa', ['cluster-version'], {
                 stdio: 'pipe',
             });
             const exitCode = await new Promise(resolve => {
@@ -55,10 +55,10 @@ async function waitForValidator() {
 
 async function runTestsWithValidator() {
     try {
-        await checkSolanaCLI();
+        await checkTrezoaCLI();
 
-        console.log('Starting Solana test validator...');
-        validatorProcess = spawn('solana-test-validator', config.validatorArgs, {
+        console.log('Starting Trezoa test validator...');
+        validatorProcess = spawn('trezoa-test-validator', config.validatorArgs, {
             stdio: ['ignore', 'pipe', 'pipe'],
             detached: false,
         });
@@ -91,7 +91,7 @@ async function runTestsWithValidator() {
 
 function cleanup() {
     if (validatorProcess && !validatorProcess.killed) {
-        console.log('Shutting down Solana test validator...');
+        console.log('Shutting down Trezoa test validator...');
 
         // Graceful shutdown
         validatorProcess.kill('SIGTERM');

@@ -1,22 +1,22 @@
 import {
-    createSolanaRpc,
-    createSolanaRpcSubscriptions,
+    createTrezoaRpc,
+    createTrezoaRpcSubscriptions,
     type Rpc,
-    type SolanaRpcApi,
+    type TrezoaRpcApi,
     type RpcSubscriptions,
-    type SolanaRpcSubscriptionsApi,
-} from '@solana/kit';
-import { getSolanaConfig } from './solana.js';
+    type TrezoaRpcSubscriptionsApi,
+} from '@trezoa/kit';
+import { getTrezoaConfig } from './trezoa.js';
 
 function getRpcUrl(rpcUrl?: string) {
-    const url = rpcUrl || getSolanaConfig()?.json_rpc_url || 'https://api.devnet.solana.com';
+    const url = rpcUrl || getTrezoaConfig()?.json_rpc_url || 'https://api.devnet.trezoa.com';
     return url;
 }
 
 function getWsUrl(rpcUrl?: string): string {
     const url = getRpcUrl(rpcUrl);
 
-    // Handle localhost special case (Solana validator uses different ports for HTTP and WS)
+    // Handle localhost special case (Trezoa validator uses different ports for HTTP and WS)
     const LOCALHOST_RPC_URL = 'http://127.0.0.1:8899';
     const LOCALHOST_WS_URL = 'ws://127.0.0.1:8900';
 
@@ -34,14 +34,14 @@ function getWsUrl(rpcUrl?: string): string {
     }
 }
 
-export function createRpcClient(rpcUrl?: string): Rpc<SolanaRpcApi> {
+export function createRpcClient(rpcUrl?: string): Rpc<TrezoaRpcApi> {
     const url = getRpcUrl(rpcUrl);
-    return createSolanaRpc(url);
+    return createTrezoaRpc(url);
 }
 
-export function createRpcSubscriptions(rpcUrl?: string): RpcSubscriptions<SolanaRpcSubscriptionsApi> {
+export function createRpcSubscriptions(rpcUrl?: string): RpcSubscriptions<TrezoaRpcSubscriptionsApi> {
     const wsUrl = getWsUrl(rpcUrl);
-    return createSolanaRpcSubscriptions(wsUrl);
+    return createTrezoaRpcSubscriptions(wsUrl);
 }
 
-// Note: createSolanaClient removed - use createSolanaRpc instead
+// Note: createTrezoaClient removed - use createTrezoaRpc instead

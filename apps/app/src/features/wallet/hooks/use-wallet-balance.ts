@@ -1,6 +1,6 @@
 import { useState, useEffect, useMemo } from 'react';
-import { useConnector, useCluster } from '@solana/connector/react';
-import { type Address, createSolanaRpc } from '@solana/kit';
+import { useConnector, useCluster } from '@trezoa/connector/react';
+import { type Address, createTrezoaRpc } from '@trezoa/kit';
 
 export function useWalletBalance() {
     const { selectedAccount } = useConnector();
@@ -12,7 +12,7 @@ export function useWalletBalance() {
     // Create RPC client from current cluster URL
     const rpc = useMemo(() => {
         if (!cluster?.url) return null;
-        return createSolanaRpc(cluster.url);
+        return createTrezoaRpc(cluster.url);
     }, [cluster?.url]);
 
     useEffect(() => {
@@ -37,7 +37,7 @@ export function useWalletBalance() {
 
             try {
                 const result = await rpc.getBalance(selectedAccount as Address).send();
-                // Convert lamports to SOL (1 SOL = 1,000,000,000 lamports)
+                // Convert lamports to TRZ (1 TRZ = 1,000,000,000 lamports)
                 if (!canceled && currentRequestId === requestId) {
                     setBalance(Number(result.value) / 1_000_000_000);
                     setError(null);

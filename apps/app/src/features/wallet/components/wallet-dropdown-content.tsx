@@ -7,7 +7,7 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@
 import { Wallet, Globe, ChevronLeft, Plus, Check, X } from 'lucide-react';
 import { useWalletBalance } from '@/features/wallet/hooks/use-wallet-balance';
 import { useState, useMemo } from 'react';
-import { useCluster } from '@solana/connector/react';
+import { useCluster } from '@trezoa/connector/react';
 import { motion } from 'motion/react';
 import { CopyButton } from '@/components/ui/copy-button';
 import { useRpcStore, type NetworkName } from '@/stores/rpc-store';
@@ -29,9 +29,9 @@ interface NetworkOption {
 }
 
 const DEFAULT_NETWORKS: NetworkOption[] = [
-    { id: 'solana:mainnet', label: 'Mainnet', name: 'mainnet-beta' },
-    { id: 'solana:devnet', label: 'Devnet', name: 'devnet' },
-    { id: 'solana:testnet', label: 'Testnet', name: 'testnet' },
+    { id: 'trezoa:mainnet', label: 'Mainnet', name: 'mainnet-beta' },
+    { id: 'trezoa:devnet', label: 'Devnet', name: 'devnet' },
+    { id: 'trezoa:testnet', label: 'Testnet', name: 'testnet' },
 ];
 
 export function WalletDropdownContent({
@@ -54,7 +54,7 @@ export function WalletDropdownContent({
     const shortAddress = `${selectedAccount.slice(0, 4)}...${selectedAccount.slice(-4)}`;
 
     // Get current cluster id for selection
-    const currentClusterId = (cluster as { id?: string })?.id || 'solana:mainnet';
+    const currentClusterId = (cluster as { id?: string })?.id || 'trezoa:mainnet';
 
     // Build all networks list (default + custom)
     const allNetworks = useMemo<NetworkOption[]>(() => {
@@ -68,7 +68,7 @@ export function WalletDropdownContent({
     }, [customRpcs]);
 
     async function handleNetworkSwitch(networkId: string) {
-        await setCluster(networkId as `solana:${string}`);
+        await setCluster(networkId as `trezoa:${string}`);
     }
 
     function handleRemoveCustomRpc(e: React.MouseEvent, rpcId: string) {
@@ -148,9 +148,9 @@ export function WalletDropdownContent({
                         {isLoading ? (
                             <div className="h-8 w-32 bg-muted animate-pulse rounded" />
                         ) : balance !== null ? (
-                            `${balance.toFixed(1)} SOL`
+                            `${balance.toFixed(1)} TRZ`
                         ) : (
-                            '-- SOL'
+                            '-- TRZ'
                         )}
                     </div>
                 </div>

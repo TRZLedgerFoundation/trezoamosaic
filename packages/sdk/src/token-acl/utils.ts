@@ -1,4 +1,4 @@
-import type { Address } from '@solana/kit';
+import type { Address } from '@trezoa/kit';
 
 /**
  * The program ID for the Token ACL program.

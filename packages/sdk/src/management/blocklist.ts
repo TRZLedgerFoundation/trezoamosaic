@@ -8,22 +8,22 @@ import {
     appendTransactionMessageInstructions,
     type Instruction,
     type Rpc,
-    type SolanaRpcApi,
+    type TrezoaRpcApi,
     type TransactionSigner,
-} from '@solana/kit';
+} from '@trezoa/kit';
 import type { FullTransaction } from '../transaction-util';
 import {
     getFreezeAccountInstruction,
     getThawAccountInstruction,
     TOKEN_2022_PROGRAM_ADDRESS,
-} from '@solana-program/token-2022';
+} from '@trezoa-program/token-2022';
 import { findListConfigPda, Mode } from '@token-acl/abl-sdk';
 import { getMintDetails, isDefaultAccountStateSetFrozen, resolveTokenAccount } from '../transaction-util';
 import { ABL_PROGRAM_ID, getAddWalletInstructions, getList, getRemoveWalletInstructions } from '../abl';
 import { getFreezeInstructions } from '../token-acl/freeze';
 import { getThawPermissionlessInstructions } from '../token-acl/thaw-permissionless';
 
-export const isAblBlocklist = async (rpc: Rpc<SolanaRpcApi>, listConfig: Address) => {
+export const isAblBlocklist = async (rpc: Rpc<TrezoaRpcApi>, listConfig: Address) => {
     const list = await getList({ rpc, listConfig });
     return list.mode === Mode.Block;
 };
@@ -33,13 +33,13 @@ export const isAblBlocklist = async (rpc: Rpc<SolanaRpcApi>, listConfig: Address
  * If the mint has SRFC37 enabled, the account will be added to the blocklist and frozen
  * If the mint does not have SRFC37 enabled, the account will only be frozen
  *
- * @param rpc - The Solana RPC client instance
+ * @param rpc - The Trezoa RPC client instance
  * @param mint - The mint address
  * @param account - The account address to add to the blocklist
  * @param authority - The authority signer
  */
 export const getAddToBlocklistInstructions = async (
-    rpc: Rpc<SolanaRpcApi>,
+    rpc: Rpc<TrezoaRpcApi>,
     mint: Address,
     account: Address,
     authority: Address | TransactionSigner<string>,
@@ -92,7 +92,7 @@ export const getAddToBlocklistInstructions = async (
 };
 
 export const createAddToBlocklistTransaction = async (
-    rpc: Rpc<SolanaRpcApi>,
+    rpc: Rpc<TrezoaRpcApi>,
     mint: Address,
     account: Address,
     authority: Address | TransactionSigner<string>,
@@ -109,7 +109,7 @@ export const createAddToBlocklistTransaction = async (
 };
 
 export const getRemoveFromBlocklistInstructions = async (
-    rpc: Rpc<SolanaRpcApi>,
+    rpc: Rpc<TrezoaRpcApi>,
     mint: Address,
     account: Address,
     authority: Address | TransactionSigner<string>,
@@ -169,7 +169,7 @@ export const getRemoveFromBlocklistInstructions = async (
 };
 
 export const createRemoveFromBlocklistTransaction = async (
-    rpc: Rpc<SolanaRpcApi>,
+    rpc: Rpc<TrezoaRpcApi>,
     mint: Address,
     account: Address,
     authority: Address | TransactionSigner<string>,

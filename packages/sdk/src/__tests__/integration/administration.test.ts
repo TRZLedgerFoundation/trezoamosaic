@@ -1,8 +1,8 @@
 import setupTestSuite from './setup';
 import type { Client } from './setup';
-import type { KeyPairSigner, TransactionSigner } from '@solana/kit';
-import { generateKeyPairSigner } from '@solana/kit';
-import { AuthorityType } from '@solana-program/token-2022';
+import type { KeyPairSigner, TransactionSigner } from '@trezoa/kit';
+import { generateKeyPairSigner } from '@trezoa/kit';
+import { AuthorityType } from '@trezoa-program/token-2022';
 import {
     sendAndConfirmTransaction,
     assertTxSuccess,

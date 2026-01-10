@@ -1,7 +1,7 @@
 // Test imports - Jest globals are available automatically
-import type { Address, Rpc, SolanaRpcApiMainnet, TransactionSigner } from '@solana/kit';
-import { generateKeyPairSigner } from '@solana/kit';
-import { AccountState, TOKEN_2022_PROGRAM_ADDRESS } from '@solana-program/token-2022';
+import type { Address, Rpc, TrezoaRpcApiMainnet, TransactionSigner } from '@trezoa/kit';
+import { generateKeyPairSigner } from '@trezoa/kit';
+import { AccountState, TOKEN_2022_PROGRAM_ADDRESS } from '@trezoa-program/token-2022';
 import { Token, getCreateMintInstructions } from '../index';
 import {
     createMockRpc,
@@ -14,7 +14,7 @@ import {
 
 describe('Token', () => {
     let token: Token;
-    let mockRpc: Rpc<SolanaRpcApiMainnet>;
+    let mockRpc: Rpc<TrezoaRpcApiMainnet>;
     let mockMint: TransactionSigner<string>;
     let mockFeePayer: TransactionSigner<string>;
 

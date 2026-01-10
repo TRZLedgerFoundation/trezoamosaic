@@ -1,7 +1,7 @@
 import setupTestSuite from './setup';
 import type { Client } from './setup';
-import type { KeyPairSigner, TransactionSigner } from '@solana/kit';
-import { generateKeyPairSigner } from '@solana/kit';
+import type { KeyPairSigner, TransactionSigner } from '@trezoa/kit';
+import { generateKeyPairSigner } from '@trezoa/kit';
 import {
     sendAndConfirmTransaction,
     assertTxSuccess,
@@ -19,7 +19,7 @@ import { createMintToTransaction } from '../../management';
 import { createTransferTransaction } from '../../transfer';
 import { decimalAmountToRaw } from '../../transaction-util';
 import { getFreezeTransaction, TOKEN_ACL_PROGRAM_ID } from '../../token-acl';
-import { findAssociatedTokenPda, TOKEN_2022_PROGRAM_ADDRESS } from '@solana-program/token-2022';
+import { findAssociatedTokenPda, TOKEN_2022_PROGRAM_ADDRESS } from '@trezoa-program/token-2022';
 
 describeSkipIf()('Transfer Integration Tests', () => {
     let client: Client;

@@ -31,7 +31,7 @@ export const capabilityNodes: Record<CapabilityKey, ReactNode> = {
                 target="_blank"
                 rel="noopener noreferrer"
             >
-                Metaplex Metadata Standard
+                Trezoaplex Metadata Standard
             </a>{' '}
             spec.
         </>
@@ -40,7 +40,7 @@ export const capabilityNodes: Record<CapabilityKey, ReactNode> = {
         <>
             <strong>Configurable access controls</strong>: Allowlist (closed-loop) or blocklist (open-loop). Uses the{' '}
             <a
-                href="https://forum.solana.com/t/srfc-37-efficient-block-allow-list-token-standard/4036"
+                href="https://forum.trezoa.com/t/srfc-37-efficient-block-allow-list-token-standard/4036"
                 target="_blank"
                 rel="noopener noreferrer"
             >
@@ -54,7 +54,7 @@ export const capabilityNodes: Record<CapabilityKey, ReactNode> = {
             <strong>Closed-loop (allowlist only)</strong>: Account creation and transfers restricted to an explicit
             allowlist using{' '}
             <a
-                href="https://forum.solana.com/t/srfc-37-efficient-block-allow-list-token-standard/4036"
+                href="https://forum.trezoa.com/t/srfc-37-efficient-block-allow-list-token-standard/4036"
                 target="_blank"
                 rel="noopener noreferrer"
             >
@@ -96,7 +96,7 @@ export const capabilityNodes: Record<CapabilityKey, ReactNode> = {
         <>
             <strong>sRFC-37</strong>:{' '}
             <a
-                href="https://forum.solana.com/t/srfc-37-efficient-block-allow-list-token-standard/4036"
+                href="https://forum.trezoa.com/t/srfc-37-efficient-block-allow-list-token-standard/4036"
                 target="_blank"
                 rel="noopener noreferrer"
             >
@@ -117,7 +117,7 @@ export const capabilityNodes: Record<CapabilityKey, ReactNode> = {
 export const extensionNodes: Record<ExtensionKey, ReactNode> = {
     extMetadata: (
         <a
-            href="https://www.solana-program.com/docs/token-2022/extensions#metadata"
+            href="https://www.trezoa-program.com/docs/token-2022/extensions#metadata"
             target="_blank"
             rel="noopener noreferrer"
         >
@@ -126,7 +126,7 @@ export const extensionNodes: Record<ExtensionKey, ReactNode> = {
     ),
     extPausable: (
         <a
-            href="https://www.solana-program.com/docs/token-2022/extensions#pausable"
+            href="https://www.trezoa-program.com/docs/token-2022/extensions#pausable"
             target="_blank"
             rel="noopener noreferrer"
         >
@@ -135,7 +135,7 @@ export const extensionNodes: Record<ExtensionKey, ReactNode> = {
     ),
     extDefaultAccountStateAllowOrBlock: (
         <a
-            href="https://www.solana-program.com/docs/token-2022/extensions#default-account-state"
+            href="https://www.trezoa-program.com/docs/token-2022/extensions#default-account-state"
             target="_blank"
             rel="noopener noreferrer"
         >
@@ -144,7 +144,7 @@ export const extensionNodes: Record<ExtensionKey, ReactNode> = {
     ),
     extDefaultAccountStateAllow: (
         <a
-            href="https://www.solana-program.com/docs/token-2022/extensions#default-account-state"
+            href="https://www.trezoa-program.com/docs/token-2022/extensions#default-account-state"
             target="_blank"
             rel="noopener noreferrer"
         >
@@ -153,7 +153,7 @@ export const extensionNodes: Record<ExtensionKey, ReactNode> = {
     ),
     extPermanentDelegate: (
         <a
-            href="https://www.solana-program.com/docs/token-2022/extensions#permanent-delegate"
+            href="https://www.trezoa-program.com/docs/token-2022/extensions#permanent-delegate"
             target="_blank"
             rel="noopener noreferrer"
         >
@@ -162,7 +162,7 @@ export const extensionNodes: Record<ExtensionKey, ReactNode> = {
     ),
     extConfidentialBalances: (
         <a
-            href="https://solana.com/docs/tokens/extensions/confidential-transfer"
+            href="https://trezoa.com/docs/tokens/extensions/confidential-transfer"
             target="_blank"
             rel="noopener noreferrer"
         >
@@ -170,7 +170,7 @@ export const extensionNodes: Record<ExtensionKey, ReactNode> = {
         </a>
     ),
     extScaledUIAmount: (
-        <a href="https://solana.com/docs/tokens/extensions/scaled-ui-amount" target="_blank" rel="noopener noreferrer">
+        <a href="https://trezoa.com/docs/tokens/extensions/scaled-ui-amount" target="_blank" rel="noopener noreferrer">
             Scaled UI Amount
         </a>
     ),

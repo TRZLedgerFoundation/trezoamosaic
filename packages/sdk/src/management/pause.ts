@@ -1,16 +1,16 @@
 import {
     type Address,
     type Rpc,
-    type SolanaRpcApi,
+    type TrezoaRpcApi,
     type TransactionSigner,
     pipe,
     createTransactionMessage,
     setTransactionMessageFeePayerSigner,
     setTransactionMessageLifetimeUsingBlockhash,
     appendTransactionMessageInstructions,
-} from '@solana/kit';
+} from '@trezoa/kit';
 import type { FullTransaction } from '../transaction-util';
-import { getPauseInstruction, getResumeInstruction } from '@solana-program/token-2022';
+import { getPauseInstruction, getResumeInstruction } from '@trezoa-program/token-2022';
 import { inspectToken } from '../inspection';
 
 export interface PauseTokenOptions {
@@ -31,11 +31,11 @@ export const MINT_NOT_PAUSED_ERROR = 'mint not currently paused';
 
 /**
  * Gets the current pause state of a token
- * @param rpc - Solana RPC client
+ * @param rpc - Trezoa RPC client
  * @param mint - Token mint address
  * @returns Promise that resolves to the pause state
  */
-export const getTokenPauseState = async (rpc: Rpc<SolanaRpcApi>, mint: Address): Promise<boolean> => {
+export const getTokenPauseState = async (rpc: Rpc<TrezoaRpcApi>, mint: Address): Promise<boolean> => {
     try {
         const pausableConfigPda = await inspectToken(rpc, mint);
         const pausableConfig = pausableConfigPda.extensions.find(ext => ext.name === 'PausableConfig')?.details;
@@ -50,7 +50,7 @@ export const getTokenPauseState = async (rpc: Rpc<SolanaRpcApi>, mint: Address):
 };
 
 export const createPauseTransaction = async (
-    rpc: Rpc<SolanaRpcApi>,
+    rpc: Rpc<TrezoaRpcApi>,
     options: PauseTokenOptions,
 ): Promise<{
     currentlyPaused: boolean;
@@ -79,7 +79,7 @@ export const createPauseTransaction = async (
 };
 
 export const createResumeTransaction = async (
-    rpc: Rpc<SolanaRpcApi>,
+    rpc: Rpc<TrezoaRpcApi>,
     options: PauseTokenOptions,
 ): Promise<{
     currentlyPaused: boolean;

@@ -135,7 +135,7 @@ const ERROR_MAPPINGS: Array<{ pattern: RegExp; message: string }> = [
     { pattern: /not an ABL allowlist/i, message: 'This token does not support allowlist operations.' },
 
     // Generic validation
-    { pattern: /Invalid.*address format/i, message: 'Please enter a valid Solana address.' },
+    { pattern: /Invalid.*address format/i, message: 'Please enter a valid Trezoa address.' },
     { pattern: /Amount must be.*positive/i, message: 'Please enter an amount greater than zero.' },
 ];
 

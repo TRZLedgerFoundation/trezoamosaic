@@ -1,10 +1,10 @@
 /**
- * Solana Explorer utilities for building URLs and extracting cluster information.
+ * Trezoa Explorer utilities for building URLs and extracting cluster information.
  */
 
 /**
  * Safely extracts cluster name from cluster object.
- * Handles different cluster object structures from @solana/connector.
+ * Handles different cluster object structures from @trezoa/connector.
  */
 export function getClusterName(cluster: unknown): string | undefined {
     if (!cluster || typeof cluster !== 'object') return undefined;
@@ -15,7 +15,7 @@ export function getClusterName(cluster: unknown): string | undefined {
         return clusterObj.name;
     }
 
-    // Fallback: try to infer from id (e.g., 'solana:mainnet' -> 'mainnet')
+    // Fallback: try to infer from id (e.g., 'trezoa:mainnet' -> 'mainnet')
     if (typeof clusterObj.id === 'string') {
         const idParts = clusterObj.id.split(':');
         if (idParts.length > 1) {
@@ -43,7 +43,7 @@ export function getClusterName(cluster: unknown): string | undefined {
 }
 
 /**
- * Maps internal cluster names to Solana Explorer cluster query parameter values.
+ * Maps internal cluster names to Trezoa Explorer cluster query parameter values.
  * Returns undefined for mainnet to omit the cluster param.
  */
 export function getExplorerClusterParam(clusterName?: string): string | undefined {
@@ -89,12 +89,12 @@ export function getEffectiveClusterName(clusterName?: string, connectorCluster?:
 }
 
 /**
- * Builds a Solana Explorer URL for a transaction signature.
+ * Builds a Trezoa Explorer URL for a transaction signature.
  * Omits the cluster query param for mainnet.
  * Validates and encodes the cluster parameter.
  */
 export function buildExplorerUrl(signature: string, clusterName?: string, connectorCluster?: unknown): string {
-    const baseUrl = `https://explorer.solana.com/tx/${encodeURIComponent(signature)}`;
+    const baseUrl = `https://explorer.trezoa.com/tx/${encodeURIComponent(signature)}`;
     const effectiveClusterName = getEffectiveClusterName(clusterName, connectorCluster);
     const clusterParam = getExplorerClusterParam(effectiveClusterName);
 
@@ -108,11 +108,11 @@ export function buildExplorerUrl(signature: string, clusterName?: string, connec
 }
 
 /**
- * Builds a Solana Explorer URL for an address (token mint, wallet, etc.).
+ * Builds a Trezoa Explorer URL for an address (token mint, wallet, etc.).
  * Omits the cluster query param for mainnet.
  */
 export function buildAddressExplorerUrl(address: string, connectorCluster?: unknown): string {
-    const baseUrl = `https://explorer.solana.com/address/${encodeURIComponent(address)}`;
+    const baseUrl = `https://explorer.trezoa.com/address/${encodeURIComponent(address)}`;
     const effectiveClusterName = getEffectiveClusterName(undefined, connectorCluster);
     const clusterParam = getExplorerClusterParam(effectiveClusterName);
 

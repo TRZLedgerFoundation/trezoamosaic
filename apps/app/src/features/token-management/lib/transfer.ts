@@ -1,4 +1,4 @@
-import { type Address, type TransactionModifyingSigner, isAddress } from '@solana/kit';
+import { type Address, type TransactionModifyingSigner, isAddress } from '@trezoa/kit';
 import { createTransferTransaction } from '@mosaic/sdk';
 import { executeTokenAction } from './token-action';
 

@@ -27,16 +27,16 @@
         "clean": "rm -rf dist"
     },
     "dependencies": {
-        "@solana/kit": "^5.0.0",
-        "@solana-program/memo": "^0.10.0",
-        "@solana-program/system": "^0.10.0",
-        "@solana-program/token-2022": "^0.6.1",
-        "@solana/sysvars": "^5.0.0",
+        "@trezoa/kit": "^5.0.0",
+        "@trezoa-program/memo": "^0.10.0",
+        "@trezoa-program/system": "^0.10.0",
+        "@trezoa-program/token-2022": "^0.6.1",
+        "@trezoa/sysvars": "^5.0.0",
         "@token-acl/abl-sdk": "^0.2.0",
         "@token-acl/sdk": "^0.2.7"
     },
     "_dependencyNotes": {
-        "solanaKitV5": "This SDK uses Solana Kit v5.0 ecosystem packages (@solana/kit@5.0, @solana/sysvars@5.0, @solana-program/token-2022@0.6.1). These are published to npm under the 'experimental' or 'next' tag. The root pnpm-lock.yaml contains overrides to ensure consistent resolution across all @solana/* packages. See: https://github.com/anza-xyz/kit"
+        "trezoaKitV5": "This SDK uses Trezoa Kit v5.0 ecosystem packages (@trezoa/kit@5.0, @trezoa/sysvars@5.0, @trezoa-program/token-2022@0.6.1). These are published to npm under the 'experimental' or 'next' tag. The root pnpm-lock.yaml contains overrides to ensure consistent resolution across all @trezoa/* packages. See: https://github.com/anza-xyz/kit"
     },
     "devDependencies": {
         "@jest/test-sequencer": "^29.7.0",
@@ -52,7 +52,7 @@
         "typescript": "^5.0.0"
     },
     "keywords": [
-        "solana",
+        "trezoa",
         "token-2022",
         "extensions",
         "core",

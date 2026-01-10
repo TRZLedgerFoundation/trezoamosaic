@@ -1,5 +1,5 @@
 import type { SetGatingProgramInstruction, TogglePermissionlessInstructionsInstruction } from '@token-acl/sdk';
-import { AccountRole, type Address, type TransactionSigner } from '@solana/kit';
+import { AccountRole, type Address, type TransactionSigner } from '@trezoa/kit';
 
 export async function findMintConfigPda(): Promise<[string, string]> {
     return ['MintCfgMock1111111111111111111111111111111', 'bump'];

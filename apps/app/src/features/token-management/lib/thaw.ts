@@ -1,5 +1,5 @@
-import { type Address, type TransactionModifyingSigner, isAddress } from '@solana/kit';
-import { findAssociatedTokenPda, TOKEN_2022_PROGRAM_ADDRESS } from '@solana-program/token-2022';
+import { type Address, type TransactionModifyingSigner, isAddress } from '@trezoa/kit';
+import { findAssociatedTokenPda, TOKEN_2022_PROGRAM_ADDRESS } from '@trezoa-program/token-2022';
 import { getThawTransaction } from '@mosaic/sdk';
 import { executeTokenAction } from './token-action';
 

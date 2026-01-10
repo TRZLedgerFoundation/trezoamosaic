@@ -1,7 +1,7 @@
 'use client';
 
 import Link from 'next/link';
-import { useConnector } from '@solana/connector/react';
+import { useConnector } from '@trezoa/connector/react';
 import { CheckCircle, AlertCircle, X } from 'lucide-react';
 import { Spinner } from '@/components/ui/spinner';
 import {
@@ -13,7 +13,7 @@ import {
     AlertDialogCancel,
 } from '@/components/ui/alert-dialog';
 import { cn } from '@/lib/utils';
-import { getClusterName, buildExplorerUrl } from '@/lib/solana/explorer';
+import { getClusterName, buildExplorerUrl } from '@/lib/trezoa/explorer';
 
 interface ActionResultModalProps {
     isOpen: boolean;
@@ -115,7 +115,7 @@ export function ActionResultModal({
                                     <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
                                         <path d="M14,3V5H17.59L7.76,14.83L9.17,16.24L19,6.41V10H21V3M19,19H5V5H12V3H5C3.89,3 3,3.9 3,5V19A2,2 0 0,0 5,21H19A2,2 0 0,0 21,19V12H19V19Z" />
                                     </svg>
-                                    View transaction on Solana Explorer
+                                    View transaction on Trezoa Explorer
                                 </Link>
                             </div>
                         )}

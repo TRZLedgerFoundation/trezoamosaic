@@ -2,7 +2,7 @@ import { TokenDisplay } from '@/types/token';
 
 /**
  * Fetch image URL from off-chain metadata JSON
- * Supports standard metadata format (Metaplex-compatible)
+ * Supports standard metadata format (Trezoaplex-compatible)
  */
 export async function fetchImageFromUri(uri: string): Promise<string | undefined> {
     try {

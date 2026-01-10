@@ -7,9 +7,9 @@ import {
     type Address,
     type Instruction,
     type Rpc,
-    type SolanaRpcApi,
+    type TrezoaRpcApi,
     type TransactionSigner,
-} from '@solana/kit';
+} from '@trezoa/kit';
 import type { FullTransaction } from '../transaction-util';
 import { findMintConfigPda, getSetGatingProgramInstruction } from '@token-acl/sdk';
 import { TOKEN_ACL_PROGRAM_ID } from './utils';
@@ -55,7 +55,7 @@ export const getSetGatingProgramInstructions = async (input: {
  * instructions and uses the latest blockhash for proper construction.
  *
  * @param input - Configuration parameters for the transaction
- * @param input.rpc - The Solana RPC client instance
+ * @param input.rpc - The Trezoa RPC client instance
  * @param input.payer - The transaction fee payer signer
  * @param input.authority - The authority signer who can modify the gating configuration
  * @param input.mint - The mint address for which to set the gating program
@@ -63,7 +63,7 @@ export const getSetGatingProgramInstructions = async (input: {
  * @returns Promise containing the full transaction for setting the gating program
  */
 export const getSetGatingProgramTransaction = async (input: {
-    rpc: Rpc<SolanaRpcApi>;
+    rpc: Rpc<TrezoaRpcApi>;
     payer: TransactionSigner<string>;
     authority: TransactionSigner<string>;
     mint: Address;

@@ -1,5 +1,5 @@
 import { Token } from '../issuance';
-import type { Rpc, Address, SolanaRpcApi, TransactionSigner } from '@solana/kit';
+import type { Rpc, Address, TrezoaRpcApi, TransactionSigner } from '@trezoa/kit';
 import type { FullTransaction } from '../transaction-util';
 import {
     createNoopSigner,
@@ -8,7 +8,7 @@ import {
     setTransactionMessageFeePayer,
     setTransactionMessageLifetimeUsingBlockhash,
     appendTransactionMessageInstructions,
-} from '@solana/kit';
+} from '@trezoa/kit';
 import { getCreateConfigInstructions } from '../token-acl/create-config';
 import { getSetGatingProgramInstructions } from '../token-acl/set-gating-program';
 import { ABL_PROGRAM_ID } from '../abl/utils';
@@ -19,13 +19,13 @@ import { getSetExtraMetasInstructions } from '../abl/set-extra-metas';
 import { Mode } from '@token-acl/abl-sdk';
 
 /**
- * Creates a transaction to initialize a new arcade token mint on Solana with common arcade token features.
+ * Creates a transaction to initialize a new arcade token mint on Trezoa with common arcade token features.
  *
  * This function configures the mint with metadata, pausable functionality, default account state,
  * confidential balances, and a permanent delegate. It returns a transaction ready to be signed and sent to the network.
  * Arcade tokens are close loop tokens that have an explicit allowlist.
  *
- * @param rpc - The Solana RPC client instance.
+ * @param rpc - The Trezoa RPC client instance.
  * @param name - The name of the arcade token.
  * @param symbol - The symbol of the arcade token.
  * @param decimals - The number of decimals for the arcade token.
@@ -40,7 +40,7 @@ import { Mode } from '@token-acl/abl-sdk';
  * @returns A promise that resolves to a FullTransaction object for initializing the arcade token mint.
  */
 export const createArcadeTokenInitTransaction = async (
-    rpc: Rpc<SolanaRpcApi>,
+    rpc: Rpc<TrezoaRpcApi>,
     name: string,
     symbol: string,
     decimals: number,

@@ -1,10 +1,10 @@
-import { isAddress } from '@solana/kit';
+import { isAddress } from '@trezoa/kit';
 
 /**
  * Common validation functions for form inputs
  */
 export function useInputValidation() {
-    const validateSolanaAddress = (address: string): boolean => {
+    const validateTrezoaAddress = (address: string): boolean => {
         return isAddress(address);
     };
 
@@ -33,7 +33,7 @@ export function useInputValidation() {
     };
 
     return {
-        validateSolanaAddress,
+        validateTrezoaAddress,
         validateAmount,
         validatePositiveInteger,
         validateDecimal,

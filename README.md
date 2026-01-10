@@ -1,6 +1,6 @@
 # Mosaic
 
-A comprehensive TypeScript monorepo for managing Token-2022 tokens with extensions on Solana, specifically designed for different token templates for Stablecoins, RWAs, and Arcade Token. It includes built in advanced access control features such as integration with sRFC-37.
+A comprehensive TypeScript monorepo for managing Token-2022 tokens with extensions on Trezoa, specifically designed for different token templates for Stablecoins, RWAs, and Arcade Token. It includes built in advanced access control features such as integration with sRFC-37.
 
 Note: sRFC-37 is still under development and not ready for mainnet use. If you use this repo please be sure to not use sRFC-37 yet.
 
@@ -14,7 +14,7 @@ Most implementations of standard token types follow similar patterns and usages 
 
 - Node.js 20+
 - pnpm 10+
-- Solana CLI
+- Trezoa CLI
 
 ### Installation
 
@@ -68,9 +68,9 @@ See the [sdk readme](packages/sdk/README.md) for detailed docs
 
 ```typescript
 import { createStablecoinInitTransaction, createArcadeTokenInitTransaction } from '@mosaic/sdk';
-import { createSolanaRpc, generateKeyPairSigner } from 'gill';
+import { createTrezoaRpc, generateKeyPairSigner } from 'trezoagill';
 
-const rpc = createSolanaRpc('https://api.devnet.solana.com');
+const rpc = createTrezoaRpc('https://api.devnet.trezoa.com');
 const authority = await generateKeyPairSigner();
 const mint = await generateKeyPairSigner();
 
@@ -95,7 +95,7 @@ This monorepo contains the following packages:
 - **[@mosaic/cli](packages/cli/)** - Command-line interface for token creation and management
 - **[@mosaic/app](apps/app/)** - Dashboard application for a full featured tokenization engine for token management with wallet integration and sRFC-37 administration
 - **[@mosaic/abl](packages/abl/)** - Allowlist/Blocklist implementation for sRFC-37 compliance
-- **[@mosaic/token-acl](packages/token-acl/)** - Token ACL (sRFC-37). This standard provides management of access control lists for Solana Tokens.
+- **[@mosaic/token-acl](packages/token-acl/)** - Token ACL (sRFC-37). This standard provides management of access control lists for Trezoa Tokens.
 - **[@mosaic/tlv-account-resolution](packages/tlv-account-resolution/)** - TLV account resolution utilities
 
 ## Token Templates
@@ -188,7 +188,7 @@ pnpm lint       # Lint code
 
 ## 🏗️ Architecture Overview
 
-The project implements a layered architecture:
+The trezoa implements a layered architecture:
 
 1. **Low-level Packages**: `@mosaic/abl`, `@mosaic/token-acl`, `@mosaic/tlv-account-resolution`
 2. **Core SDK**: `@mosaic/sdk` integrates all low-level packages
@@ -242,7 +242,7 @@ MIT License - see LICENSE file for details
 
 ## 🔗 Links
 
-- [Solana Token Extensions Documentation](https://solana-program.com)
-- [More Token Extensions Documentation](https://solana.com/developers/guides/token-extensions/getting-started)
-- [Token-2022 Program](https://github.com/solana-program/token-2022)
-- [sRFC-37 Standards](https://github.com/solana-foundation/SRFCs/discussions/2)
+- [Trezoa Token Extensions Documentation](https://trezoa-program.com)
+- [More Token Extensions Documentation](https://trezoa.com/developers/guides/token-extensions/getting-started)
+- [Token-2022 Program](https://github.com/trezoa-program/token-2022)
+- [sRFC-37 Standards](https://github.com/trzledgerfoundation/SRFCs/discussions/2)

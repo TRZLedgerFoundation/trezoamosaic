@@ -1,4 +1,4 @@
-import type { Address, Rpc, SolanaRpcApi, TransactionSigner, Instruction } from '@solana/kit';
+import type { Address, Rpc, TrezoaRpcApi, TransactionSigner, Instruction } from '@trezoa/kit';
 import type { FullTransaction } from '../transaction-util';
 import {
     createNoopSigner,
@@ -7,12 +7,12 @@ import {
     setTransactionMessageFeePayerSigner,
     setTransactionMessageLifetimeUsingBlockhash,
     appendTransactionMessageInstructions,
-} from '@solana/kit';
+} from '@trezoa/kit';
 import {
     getCreateAssociatedTokenIdempotentInstruction,
     getTransferCheckedInstruction,
     TOKEN_2022_PROGRAM_ADDRESS,
-} from '@solana-program/token-2022';
+} from '@trezoa-program/token-2022';
 import {
     resolveTokenAccount,
     decimalAmountToRaw,
@@ -25,7 +25,7 @@ import { TOKEN_ACL_PROGRAM_ID, getThawPermissionlessInstructions } from '../toke
  * Creates a transaction to force transfer tokens using the permanent delegate extension.
  * This allows the permanent delegate to transfer tokens from any account regardless of approval.
  *
- * @param rpc - The Solana RPC client instance
+ * @param rpc - The Trezoa RPC client instance
  * @param mint - The mint address
  * @param fromAccount - The source account address (wallet or ATA)
  * @param toAccount - The destination account address (wallet or ATA)
@@ -35,7 +35,7 @@ import { TOKEN_ACL_PROGRAM_ID, getThawPermissionlessInstructions } from '../toke
  * @returns A promise that resolves to a FullTransaction object for force transferring tokens
  */
 export const createForceTransferTransaction = async (
-    rpc: Rpc<SolanaRpcApi>,
+    rpc: Rpc<TrezoaRpcApi>,
     mint: Address,
     fromAccount: Address,
     toAccount: Address,
@@ -120,13 +120,13 @@ export const createForceTransferTransaction = async (
 /**
  * Validates that a mint has the permanent delegate extension enabled
  *
- * @param rpc - The Solana RPC client instance
+ * @param rpc - The Trezoa RPC client instance
  * @param mint - The mint address
  * @param permanentDelegateAddress - Expected permanent delegate address
  * @returns Promise that resolves if validation passes, throws if not
  */
 export async function validatePermanentDelegate(
-    rpc: Rpc<SolanaRpcApi>,
+    rpc: Rpc<TrezoaRpcApi>,
     mint: Address,
     permanentDelegateAddress: Address,
 ): Promise<void> {

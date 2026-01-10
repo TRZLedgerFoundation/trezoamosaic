@@ -1,7 +1,7 @@
 import {
     type Address,
     type Rpc,
-    type SolanaRpcApi,
+    type TrezoaRpcApi,
     type TransactionSigner,
     pipe,
     createTransactionMessage,
@@ -9,7 +9,7 @@ import {
     setTransactionMessageLifetimeUsingBlockhash,
     appendTransactionMessageInstructions,
     createNoopSigner,
-} from '@solana/kit';
+} from '@trezoa/kit';
 import type { FullTransaction } from '../transaction-util';
 import {
     decimalAmountToRaw,
@@ -21,12 +21,12 @@ import {
     getCreateAssociatedTokenIdempotentInstruction,
     getTransferCheckedInstruction,
     TOKEN_2022_PROGRAM_ADDRESS,
-} from '@solana-program/token-2022';
-import { getAddMemoInstruction } from '@solana-program/memo';
+} from '@trezoa-program/token-2022';
+import { getAddMemoInstruction } from '@trezoa-program/memo';
 import { getThawPermissionlessInstructions, TOKEN_ACL_PROGRAM_ID } from '../token-acl';
 
 /**
- * Creates a list of instructions to transfer SPL tokens (Token-2022) from one account to another.
+ * Creates a list of instructions to transfer TPL tokens (Token-2022) from one account to another.
  * This function:
  *   - Validates and parses the transfer amount.
  *   - Fetches mint details to determine decimals and extension state.
@@ -37,7 +37,7 @@ import { getThawPermissionlessInstructions, TOKEN_ACL_PROGRAM_ID } from '../toke
  *   - Appends the transferChecked instruction for the actual token transfer.
  *
  * @param input - Object containing:
- *   - rpc: Solana RPC client instance
+ *   - rpc: Trezoa RPC client instance
  *   - mint: Token mint address
  *   - from: Source wallet address
  *   - to: Destination wallet address
@@ -48,7 +48,7 @@ import { getThawPermissionlessInstructions, TOKEN_ACL_PROGRAM_ID } from '../toke
  * @returns Promise resolving to an array of transaction instructions for the transfer
  */
 export const createTransferInstructions = async (input: {
-    rpc: Rpc<SolanaRpcApi>;
+    rpc: Rpc<TrezoaRpcApi>;
     mint: Address;
     from: Address;
     to: Address;
@@ -127,11 +127,11 @@ export const createTransferInstructions = async (input: {
 };
 
 /**
- * Creates a transaction to transfer SPL tokens (Token-2022) from one account to another.
+ * Creates a transaction to transfer TPL tokens (Token-2022) from one account to another.
  * This is a convenience wrapper around createTransferInstructions that returns a ready-to-sign transaction.
  *
  * @param input - Object containing:
- *   - rpc: Solana RPC client instance
+ *   - rpc: Trezoa RPC client instance
  *   - mint: Token mint address
  *   - from: Source wallet address
  *   - to: Destination wallet address
@@ -142,7 +142,7 @@ export const createTransferInstructions = async (input: {
  * @returns Promise resolving to a FullTransaction object ready for signing
  */
 export const createTransferTransaction = async (input: {
-    rpc: Rpc<SolanaRpcApi>;
+    rpc: Rpc<TrezoaRpcApi>;
     mint: Address;
     from: Address;
     to: Address;

@@ -1,7 +1,7 @@
 {
     "name": "mosaic-token-extensions-admin",
     "version": "0.1.0",
-    "description": "TypeScript SDK, CLI, and UI for managing standard token types on Solana (ex: Stablecoin & Arcade Tokens)",
+    "description": "TypeScript SDK, CLI, and UI for managing standard token types on Trezoa (ex: Stablecoin & Arcade Tokens)",
     "private": true,
     "type": "module",
     "scripts": {
@@ -21,7 +21,7 @@
         "check": "pnpm run build && pnpm run format:check && pnpm run lint && pnpm run type-check"
     },
     "keywords": [
-        "solana",
+        "trezoa",
         "token-2022",
         "extensions",
         "stablecoin",
@@ -30,10 +30,10 @@
         "sdk",
         "cli"
     ],
-    "author": "Solana Foundation",
+    "author": "Trezoa Foundation",
     "license": "MIT",
     "devDependencies": {
-        "@solana/prettier-config-solana": "0.0.5",
+        "@trezoa/prettier-config-trezoa": "0.0.5",
         "@types/node": "^20.0.0",
         "@typescript-eslint/eslint-plugin": "^8.34.0",
         "@typescript-eslint/parser": "^8.34.0",
@@ -49,16 +49,16 @@
     "packageManager": "pnpm@10.24.0",
     "pnpm": {
         "overrides": {
-            "@solana/accounts": "^5.0.0",
-            "@solana/addresses": "^5.0.0",
-            "@solana/signers": "^5.0.0",
-            "@solana/rpc": "^5.0.0",
-            "@solana/rpc-types": "^5.0.0",
-            "@solana/transactions": "^5.0.0",
-            "@solana/transaction-messages": "^5.0.0",
-            "@solana/keys": "^5.0.0",
-            "@solana/codecs": "^5.0.0",
-            "@solana-program/compute-budget": "^0.11.0"
+            "@trezoa/accounts": "^5.0.0",
+            "@trezoa/addresses": "^5.0.0",
+            "@trezoa/signers": "^5.0.0",
+            "@trezoa/rpc": "^5.0.0",
+            "@trezoa/rpc-types": "^5.0.0",
+            "@trezoa/transactions": "^5.0.0",
+            "@trezoa/transaction-messages": "^5.0.0",
+            "@trezoa/keys": "^5.0.0",
+            "@trezoa/codecs": "^5.0.0",
+            "@trezoa-program/compute-budget": "^0.11.0"
         }
     }
 }

@@ -1,6 +1,6 @@
 'use client';
 
-import { useConnector } from '@solana/connector/react';
+import { useConnector } from '@trezoa/connector/react';
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from '@/components/ui/dialog';
 import * as DialogPrimitive from '@radix-ui/react-dialog';
 import { Button } from '@/components/ui/button';
@@ -78,7 +78,7 @@ export function WalletModal({ open, onOpenChange }: WalletModalProps) {
     const getInstallUrl = (walletName: string) => {
         const name = walletName.toLowerCase();
         if (name.includes('phantom')) return 'https://phantom.app';
-        if (name.includes('solflare')) return 'https://solflare.com';
+        if (name.includes('trzflare')) return 'https://trzflare.com';
         if (name.includes('backpack')) return 'https://backpack.app';
         if (name.includes('glow')) return 'https://glow.app';
         return 'https://phantom.app'; // Default
@@ -91,7 +91,7 @@ export function WalletModal({ open, onOpenChange }: WalletModalProps) {
                     <Button
                         type="button"
                         className="rounded-full size-8 shrink-0 p-2 cursor-pointer"
-                        onClick={() => window.open('https://docs.solana.com/wallet-guide', '_blank')}
+                        onClick={() => window.open('https://docs.trezoa.com/wallet-guide', '_blank')}
                     >
                         <IconQuestionmark className="size-3 fill-primary" />
                     </Button>
@@ -302,7 +302,7 @@ export function WalletModal({ open, onOpenChange }: WalletModalProps) {
                                     <Wallet className="mx-auto h-12 w-12 text-muted-foreground mb-3" />
                                     <h3 className="font-semibold mb-2">No Wallets Detected</h3>
                                     <p className="text-sm text-muted-foreground mb-6">
-                                        Install a Solana wallet extension to get started
+                                        Install a Trezoa wallet extension to get started
                                     </p>
                                     <div className="flex gap-2 justify-center">
                                         <Button

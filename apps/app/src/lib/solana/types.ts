@@ -3,7 +3,7 @@ import type {
     TransactionVersion,
     TransactionMessageWithFeePayer,
     TransactionMessageWithBlockhashLifetime,
-} from '@solana/kit';
+} from '@trezoa/kit';
 
 // Type alias for convenience - represents a complete transaction message ready to be compiled
 export type FullTransaction<

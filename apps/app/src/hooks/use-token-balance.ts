@@ -1,7 +1,7 @@
 'use client';
 
 import { useEffect } from 'react';
-import { useConnector } from '@solana/connector/react';
+import { useConnector } from '@trezoa/connector/react';
 import { useTokenAccountStore, useTokenAccountState } from '@/stores/token-account-store';
 
 interface TokenBalanceResult {

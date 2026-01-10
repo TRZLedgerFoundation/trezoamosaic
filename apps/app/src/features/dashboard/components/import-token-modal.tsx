@@ -7,11 +7,11 @@ import { Label } from '@/components/ui/label';
 import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle } from '@/components/ui/dialog';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { Upload, CheckCircle2 } from 'lucide-react';
-import { useConnector } from '@solana/connector/react';
+import { useConnector } from '@trezoa/connector/react';
 import { TokenType } from '@mosaic/sdk';
 import { useTokenStore } from '@/stores/token-store';
 import { Spinner } from '@/components/ui/spinner';
-import { address, createSolanaRpc, type Rpc, type SolanaRpcApi } from '@solana/kit';
+import { address, createTrezoaRpc, type Rpc, type TrezoaRpcApi } from '@trezoa/kit';
 import { getTokenPatternsLabel } from '@/lib/token/token-type-utils';
 import { cn } from '@/lib/utils';
 
@@ -30,7 +30,7 @@ export function ImportTokenModal({ isOpen, onOpenChange, onTokenImported }: Impo
     // Create RPC client from current cluster
     const rpc = useMemo(() => {
         if (!cluster?.url) return null;
-        return createSolanaRpc(cluster.url);
+        return createTrezoaRpc(cluster.url);
     }, [cluster?.url]);
 
     const [tokenAddress, setTokenAddress] = useState('');
@@ -67,14 +67,14 @@ export function ImportTokenModal({ isOpen, onOpenChange, onTokenImported }: Impo
 
             // Validate address presence
             if (!tokenAddress) {
-                throw new Error('Please enter a valid Solana token address');
+                throw new Error('Please enter a valid Trezoa token address');
             }
 
             // Validate address format
             try {
                 address(tokenAddress);
             } catch {
-                throw new Error('Invalid Solana address format');
+                throw new Error('Invalid Trezoa address format');
             }
 
             // Check if token already exists
@@ -92,7 +92,7 @@ export function ImportTokenModal({ isOpen, onOpenChange, onTokenImported }: Impo
             // Fetch token metadata using the store
             const tokenDisplay = await fetchTokenMetadata(
                 tokenAddress,
-                rpc as Rpc<SolanaRpcApi>,
+                rpc as Rpc<TrezoaRpcApi>,
                 selectedAccount || undefined,
             );
 
@@ -143,7 +143,7 @@ export function ImportTokenModal({ isOpen, onOpenChange, onTokenImported }: Impo
                     errorMessage += 'The address does not belong to a valid token mint.';
                 } else if (err.message.includes('Token-2022')) {
                     errorMessage +=
-                        'This appears to be a legacy SPL token. Import functionality only works for Token-2022 tokens.';
+                        'This appears to be a legacy TPL token. Import functionality only works for Token-2022 tokens.';
                 } else {
                     errorMessage += err.message;
                 }
@@ -193,7 +193,7 @@ export function ImportTokenModal({ isOpen, onOpenChange, onTokenImported }: Impo
                                 disabled={isLoading || success}
                             />
                             <p className="text-sm text-muted-foreground leading-relaxed">
-                                The Solana address of the token mint you want to import
+                                The Trezoa address of the token mint you want to import
                             </p>
                         </div>
 

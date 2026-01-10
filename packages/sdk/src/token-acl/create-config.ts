@@ -7,9 +7,9 @@ import {
     type Address,
     type Instruction,
     type Rpc,
-    type SolanaRpcApi,
+    type TrezoaRpcApi,
     type TransactionSigner,
-} from '@solana/kit';
+} from '@trezoa/kit';
 import type { FullTransaction } from '../transaction-util';
 import { findMintConfigPda, getCreateConfigInstruction } from '@token-acl/sdk';
 import { TOKEN_ACL_PROGRAM_ID } from './utils';
@@ -63,7 +63,7 @@ export const getCreateConfigInstructions = async (input: {
  * and uses the latest blockhash for proper transaction construction.
  *
  * @param input - Configuration parameters for the transaction
- * @param input.rpc - The Solana RPC client instance
+ * @param input.rpc - The Trezoa RPC client instance
  * @param input.payer - The transaction fee payer signer
  * @param input.authority - The authority signer who will control the mint configuration
  * @param input.mint - The mint address for which to create the configuration
@@ -71,7 +71,7 @@ export const getCreateConfigInstructions = async (input: {
  * @returns Promise containing the full transaction and the mint configuration address
  */
 export const getCreateConfigTransaction = async (input: {
-    rpc: Rpc<SolanaRpcApi>;
+    rpc: Rpc<TrezoaRpcApi>;
     payer: TransactionSigner<string>;
     authority: TransactionSigner<string>;
     mint: Address;

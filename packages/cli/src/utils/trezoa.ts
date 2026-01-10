@@ -1,10 +1,10 @@
 import { readFileSync } from 'fs';
 import { homedir } from 'os';
 import { join } from 'path';
-import type { Address, TransactionSigner } from '@solana/kit';
-import { createKeyPairSignerFromBytes, createNoopSigner } from '@solana/kit';
+import type { Address, TransactionSigner } from '@trezoa/kit';
+import { createKeyPairSignerFromBytes, createNoopSigner } from '@trezoa/kit';
 
-export interface SolanaConfig {
+export interface TrezoaConfig {
     json_rpc_url: string;
     websocket_url: string;
     keypair_path: string;
@@ -13,15 +13,15 @@ export interface SolanaConfig {
 }
 
 export function getDefaultKeypairPath(): string {
-    return join(homedir(), '.config', 'solana', 'id.json');
+    return join(homedir(), '.config', 'trezoa', 'id.json');
 }
 
-export function getSolanaConfig(): SolanaConfig | null {
+export function getTrezoaConfig(): TrezoaConfig | null {
     try {
-        const configPath = join(homedir(), '.config', 'solana', 'cli', 'config.yml');
+        const configPath = join(homedir(), '.config', 'trezoa', 'cli', 'config.yml');
         const configContent = readFileSync(configPath, 'utf-8');
 
-        const config: Partial<SolanaConfig> = {};
+        const config: Partial<TrezoaConfig> = {};
 
         configContent.split('\n').forEach(line => {
             const [key, ...valueParts] = line.split(':');
@@ -44,14 +44,14 @@ export function getSolanaConfig(): SolanaConfig | null {
             }
         });
 
-        return config as SolanaConfig;
+        return config as TrezoaConfig;
     } catch {
         return null;
     }
 }
 
 export async function loadKeypair(keypairPath?: string) {
-    const path = keypairPath || getSolanaConfig()?.keypair_path || getDefaultKeypairPath();
+    const path = keypairPath || getTrezoaConfig()?.keypair_path || getDefaultKeypairPath();
 
     try {
         const keypairData = JSON.parse(readFileSync(path, 'utf-8'));

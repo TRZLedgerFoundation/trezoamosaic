@@ -1,23 +1,23 @@
-import type { Address, Rpc, SolanaRpcApi, TransactionSigner } from '@solana/kit';
-import { fetchEncodedAccount } from '@solana/kit';
-import { decodeMint } from '@solana-program/token-2022';
+import type { Address, Rpc, TrezoaRpcApi, TransactionSigner } from '@trezoa/kit';
+import { fetchEncodedAccount } from '@trezoa/kit';
+import { decodeMint } from '@trezoa-program/token-2022';
 import { getTokenPauseState } from '../pause';
 import { createMockRpc, createMockSigner } from '../../__tests__/test-utils';
 
-// Mock @solana/kit modules
-jest.mock('@solana/kit', () => ({
-    ...jest.requireActual('@solana/kit'),
+// Mock @trezoa/kit modules
+jest.mock('@trezoa/kit', () => ({
+    ...jest.requireActual('@trezoa/kit'),
     fetchEncodedAccount: jest.fn(),
     createTransaction: jest.fn(),
 }));
 
-jest.mock('@solana-program/token-2022', () => ({
-    ...jest.requireActual('@solana-program/token-2022'),
+jest.mock('@trezoa-program/token-2022', () => ({
+    ...jest.requireActual('@trezoa-program/token-2022'),
     decodeMint: jest.fn(),
 }));
 
 describe('Pause Management', () => {
-    let rpc: Rpc<SolanaRpcApi>;
+    let rpc: Rpc<TrezoaRpcApi>;
     let pauseAuthority: TransactionSigner<string>;
     const mintAddress = 'Mint777777777777777777777777777777777777777' as Address;
 

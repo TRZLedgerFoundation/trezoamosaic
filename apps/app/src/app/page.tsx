@@ -1,7 +1,7 @@
 'use client';
 
 import { useEffect, useState } from 'react';
-import { useConnector } from '@solana/connector/react';
+import { useConnector } from '@trezoa/connector/react';
 import { Spinner } from '@/components/ui/spinner';
 import { DashboardConnected } from '@/features/dashboard/components/dashboard-connected';
 import { DashboardDisconnected } from '@/features/dashboard/components/dashboard-disconnected';

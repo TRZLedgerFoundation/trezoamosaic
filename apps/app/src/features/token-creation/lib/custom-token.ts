@@ -1,20 +1,20 @@
 import {
     generateKeyPairSigner,
-    createSolanaRpc,
-    createSolanaRpcSubscriptions,
+    createTrezoaRpc,
+    createTrezoaRpcSubscriptions,
     type Address,
     type Rpc,
-    type SolanaRpcApi,
+    type TrezoaRpcApi,
     signTransactionMessageWithSigners,
     sendAndConfirmTransactionFactory,
     getSignatureFromTransaction,
     TransactionModifyingSigner,
     isAddress,
     assertIsTransactionWithBlockhashLifetime,
-} from '@solana/kit';
+} from '@trezoa/kit';
 import { CustomTokenCreationResult, CustomTokenOptions } from '@/types/token';
 import { createCustomTokenInitTransaction } from '@mosaic/sdk';
-import { getRpcUrl, getWsUrl, getCommitment } from '@/lib/solana/rpc';
+import { getRpcUrl, getWsUrl, getCommitment } from '@/lib/trezoa/rpc';
 
 /**
  * Validates custom token options and returns parsed decimals
@@ -102,7 +102,7 @@ function validateCustomTokenOptions(options: CustomTokenOptions): number {
             throw new Error('Transfer hook program ID is required');
         }
         if (!isAddress(options.transferHookProgramId)) {
-            throw new Error('Transfer hook program ID must be a valid Solana address');
+            throw new Error('Transfer hook program ID must be a valid Trezoa address');
         }
     }
 
@@ -176,8 +176,8 @@ export const createCustomToken = async (
             : undefined;
 
         const rpcUrl = getRpcUrl(options.rpcUrl);
-        const rpc: Rpc<SolanaRpcApi> = createSolanaRpc(rpcUrl);
-        const rpcSubscriptions = createSolanaRpcSubscriptions(getWsUrl(rpcUrl));
+        const rpc: Rpc<TrezoaRpcApi> = createTrezoaRpc(rpcUrl);
+        const rpcSubscriptions = createTrezoaRpcSubscriptions(getWsUrl(rpcUrl));
 
         // Create custom token transaction using SDK
         const transaction = await createCustomTokenInitTransaction(

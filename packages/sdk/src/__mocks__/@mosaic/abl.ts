@@ -1,4 +1,4 @@
-import type { Address, Rpc, SolanaRpcApi } from '@solana/kit';
+import type { Address, Rpc, TrezoaRpcApi } from '@trezoa/kit';
 
 export const Mode = { Allow: 1, Block: 2 } as const;
 
@@ -8,7 +8,7 @@ export async function findListConfigPda(): Promise<[string, string]> {
 
 // Minimal mock: return the shape that sdk/src/abl/list.ts expects
 export async function fetchListConfig(
-    _rpc: Rpc<SolanaRpcApi>,
+    _rpc: Rpc<TrezoaRpcApi>,
     listConfig: Address,
 ): Promise<{
     address: Address;

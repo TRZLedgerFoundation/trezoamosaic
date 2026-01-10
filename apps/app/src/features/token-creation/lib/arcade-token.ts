@@ -1,19 +1,19 @@
 import {
     generateKeyPairSigner,
-    createSolanaRpc,
-    createSolanaRpcSubscriptions,
+    createTrezoaRpc,
+    createTrezoaRpcSubscriptions,
     type Address,
     type Rpc,
-    type SolanaRpcApi,
+    type TrezoaRpcApi,
     signTransactionMessageWithSigners,
     sendAndConfirmTransactionFactory,
     getSignatureFromTransaction,
     TransactionModifyingSigner,
     assertIsTransactionWithBlockhashLifetime,
-} from '@solana/kit';
+} from '@trezoa/kit';
 import { ArcadeTokenCreationResult, ArcadeTokenOptions } from '@/types/token';
 import { createArcadeTokenInitTransaction } from '@mosaic/sdk';
-import { getRpcUrl, getWsUrl, getCommitment } from '@/lib/solana/rpc';
+import { getRpcUrl, getWsUrl, getCommitment } from '@/lib/trezoa/rpc';
 
 /**
  * Validates arcade token options and returns parsed decimals
@@ -106,8 +106,8 @@ export const createArcadeToken = async (
 
         // Create RPC client using standardized URL handling
         const rpcUrl = getRpcUrl(options.rpcUrl);
-        const rpc: Rpc<SolanaRpcApi> = createSolanaRpc(rpcUrl);
-        const rpcSubscriptions = createSolanaRpcSubscriptions(getWsUrl(rpcUrl));
+        const rpc: Rpc<TrezoaRpcApi> = createTrezoaRpc(rpcUrl);
+        const rpcSubscriptions = createTrezoaRpcSubscriptions(getWsUrl(rpcUrl));
 
         // Create arcade token transaction using SDK
         const transaction = await createArcadeTokenInitTransaction(

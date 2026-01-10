@@ -1,7 +1,7 @@
 import { type ClassValue, clsx } from 'clsx';
 import { twMerge } from 'tailwind-merge';
 
-import { type Rpc, type SolanaRpcApiMainnet, type Address } from '@solana/kit';
+import { type Rpc, type TrezoaRpcApiMainnet, type Address } from '@trezoa/kit';
 
 export function cn(...inputs: ClassValue[]) {
     return twMerge(clsx(inputs));
@@ -9,11 +9,11 @@ export function cn(...inputs: ClassValue[]) {
 
 /**
  * Gets the current supply of a token mint from the blockchain
- * @param rpc - The Solana RPC client instance
+ * @param rpc - The Trezoa RPC client instance
  * @param mintAddress - The mint address of the token
  * @returns Promise with the formatted supply string
  */
-export async function getTokenSupply(rpc: Rpc<SolanaRpcApiMainnet>, mintAddress: Address): Promise<string> {
+export async function getTokenSupply(rpc: Rpc<TrezoaRpcApiMainnet>, mintAddress: Address): Promise<string> {
     try {
         // Get mint account info with jsonParsed encoding for reliable parsing
         const accountInfo = await rpc.getAccountInfo(mintAddress, { encoding: 'jsonParsed' }).send();

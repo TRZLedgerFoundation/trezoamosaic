@@ -7,9 +7,9 @@ import {
     type Address,
     type Instruction,
     type Rpc,
-    type SolanaRpcApi,
+    type TrezoaRpcApi,
     type TransactionSigner,
-} from '@solana/kit';
+} from '@trezoa/kit';
 import type { FullTransaction } from '../transaction-util';
 import { findMintConfigPda, getTogglePermissionlessInstructionsInstruction } from '@token-acl/sdk';
 import { TOKEN_ACL_PROGRAM_ID } from './utils';
@@ -54,14 +54,14 @@ export const getEnablePermissionlessThawInstructions = async (input: {
  * the necessary instructions and uses the latest blockhash for proper construction.
  *
  * @param input - Configuration parameters for the transaction
- * @param input.rpc - The Solana RPC client instance
+ * @param input.rpc - The Trezoa RPC client instance
  * @param input.payer - The transaction fee payer signer
  * @param input.authority - The authority signer who can modify the thaw configuration
  * @param input.mint - The mint address for which to enable permissionless thaw
  * @returns Promise containing the full transaction for enabling permissionless thaw
  */
 export const getEnablePermissionlessThawTransaction = async (input: {
-    rpc: Rpc<SolanaRpcApi>;
+    rpc: Rpc<TrezoaRpcApi>;
     payer: TransactionSigner<string>;
     authority: TransactionSigner<string>;
     mint: Address;

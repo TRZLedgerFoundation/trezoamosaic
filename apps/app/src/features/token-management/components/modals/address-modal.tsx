@@ -11,7 +11,7 @@ import {
     AlertDialogTitle,
     AlertDialogCancel,
 } from '@/components/ui/alert-dialog';
-import { isAddress } from '@solana/kit';
+import { isAddress } from '@trezoa/kit';
 import { cn } from '@/lib/utils';
 import { MODAL_BUTTONS } from '@/features/token-management/constants/modal-text';
 
@@ -59,13 +59,13 @@ export function AddressModal({
                                 <X className="h-4 w-4" />
                             </AlertDialogCancel>
                         </div>
-                        <AlertDialogDescription>Enter a valid Solana wallet address</AlertDialogDescription>
+                        <AlertDialogDescription>Enter a valid Trezoa wallet address</AlertDialogDescription>
                     </AlertDialogHeader>
 
                     <div className="p-6 space-y-4">
                         <div>
                             <label htmlFor={inputId} className="block text-sm font-medium mb-2">
-                                Solana Address
+                                Trezoa Address
                             </label>
                             <input
                                 id={inputId}
@@ -84,7 +84,7 @@ export function AddressModal({
                             />
                             {newAddress.trim() && !isValidAddress && (
                                 <p id={errorId} className="text-red-500 text-sm mt-1" role="alert">
-                                    Invalid Solana address
+                                    Invalid Trezoa address
                                 </p>
                             )}
                         </div>

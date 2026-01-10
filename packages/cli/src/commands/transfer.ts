@@ -13,12 +13,12 @@ import {
     sendAndConfirmTransactionFactory,
     getSignatureFromTransaction,
     assertIsTransactionWithBlockhashLifetime,
-} from '@solana/kit';
+} from '@trezoa/kit';
 import { createTransferInstructions } from '@mosaic/sdk';
 import { createSpinner, getGlobalOpts } from '../utils/cli.js';
 import { maybeOutputRawTx } from '../utils/raw-tx.js';
 import { createRpcClient, createRpcSubscriptions } from '../utils/rpc.js';
-import { getAddressFromKeypair, loadKeypair } from '../utils/solana.js';
+import { getAddressFromKeypair, loadKeypair } from '../utils/trezoa.js';
 
 interface TransferOptions {
     mintAddress: string;
@@ -129,7 +129,7 @@ export const transferCommand = new Command('transfer')
                 if (error.message.includes('insufficient funds')) {
                     console.error(
                         chalk.yellow('💡 Tip:'),
-                        'You may not have enough tokens to transfer, or insufficient SOL for transaction fees.',
+                        'You may not have enough tokens to transfer, or insufficient TRZ for transaction fees.',
                     );
                 } else if (error.message.includes('Account does not exist')) {
                     console.error(

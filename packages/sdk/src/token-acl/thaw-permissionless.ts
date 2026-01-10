@@ -9,13 +9,13 @@ import {
     type Address,
     type Instruction,
     type Rpc,
-    type SolanaRpcApi,
+    type TrezoaRpcApi,
     type TransactionSigner,
-} from '@solana/kit';
+} from '@trezoa/kit';
 import type { FullTransaction } from '../transaction-util';
 import { createThawPermissionlessInstructionWithExtraMetas } from '@token-acl/sdk';
 import { TOKEN_ACL_PROGRAM_ID } from './utils';
-import { getTokenEncoder, AccountState, TOKEN_2022_PROGRAM_ADDRESS } from '@solana-program/token-2022';
+import { getTokenEncoder, AccountState, TOKEN_2022_PROGRAM_ADDRESS } from '@trezoa-program/token-2022';
 
 /**
  * Generates instructions for performing a permissionless thaw operation on a token account.
@@ -26,7 +26,7 @@ import { getTokenEncoder, AccountState, TOKEN_2022_PROGRAM_ADDRESS } from '@sola
  * that may be required to perform the thaw.
  *
  * @param input - Configuration parameters for the permissionless thaw operation
- * @param input.rpc - The Solana RPC client instance for fetching account data
+ * @param input.rpc - The Trezoa RPC client instance for fetching account data
  * @param input.authority - The authority signer performing the thaw operation
  * @param input.mint - The mint address of the token being thawed
  * @param input.tokenAccount - The token account address to thaw
@@ -34,7 +34,7 @@ import { getTokenEncoder, AccountState, TOKEN_2022_PROGRAM_ADDRESS } from '@sola
  * @returns Promise containing the instructions for the permissionless thaw operation
  */
 export const getThawPermissionlessInstructions = async (input: {
-    rpc: Rpc<SolanaRpcApi>;
+    rpc: Rpc<TrezoaRpcApi>;
     authority: TransactionSigner<string>;
     mint: Address;
     tokenAccount: Address;
@@ -85,7 +85,7 @@ export const getThawPermissionlessInstructions = async (input: {
  * blockhash for proper construction.
  *
  * @param input - Configuration parameters for the transaction
- * @param input.rpc - The Solana RPC client instance
+ * @param input.rpc - The Trezoa RPC client instance
  * @param input.payer - The transaction fee payer signer
  * @param input.authority - The authority signer performing the thaw operation
  * @param input.mint - The mint address of the token being thawed
@@ -94,7 +94,7 @@ export const getThawPermissionlessInstructions = async (input: {
  * @returns Promise containing the full transaction for the permissionless thaw operation
  */
 export const getThawPermissionlessTransaction = async (input: {
-    rpc: Rpc<SolanaRpcApi>;
+    rpc: Rpc<TrezoaRpcApi>;
     payer: TransactionSigner<string>;
     authority: TransactionSigner<string>;
     mint: Address;

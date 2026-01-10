@@ -1,10 +1,10 @@
-import { type Address, type TransactionModifyingSigner, isAddress } from '@solana/kit';
+import { type Address, type TransactionModifyingSigner, isAddress } from '@trezoa/kit';
 import { createCloseAccountTransaction } from '@mosaic/sdk';
 import { executeTokenAction } from './token-action';
 
 export interface CloseAccountOptions {
     mintAddress: string;
-    destination?: string; // Address to send reclaimed SOL, defaults to wallet
+    destination?: string; // Address to send reclaimed TRZ, defaults to wallet
     rpcUrl?: string;
 }
 

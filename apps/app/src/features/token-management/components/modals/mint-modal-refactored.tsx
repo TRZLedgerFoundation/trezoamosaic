@@ -1,8 +1,8 @@
 import { useState, useEffect } from 'react';
 import { mintTokens, type MintOptions } from '@/features/token-management/lib/mint';
-import type { TransactionModifyingSigner } from '@solana/kit';
+import type { TransactionModifyingSigner } from '@trezoa/kit';
 import { Coins, User } from 'lucide-react';
-import { useConnector } from '@solana/connector/react';
+import { useConnector } from '@trezoa/connector/react';
 import { Button } from '@/components/ui/button';
 
 import { ExtensionModal } from '@/components/shared/modals/extension-modal';
@@ -40,7 +40,7 @@ export function MintModalContent({
     onSuccess,
 }: MintModalContentProps) {
     const { cluster } = useConnector();
-    const { validateSolanaAddress, validateAmount } = useInputValidation();
+    const { validateTrezoaAddress, validateAmount } = useInputValidation();
     const { hasMintAuthority, walletAddress } = useAuthority({ mintAuthority });
     const {
         isLoading,
@@ -63,7 +63,7 @@ export function MintModalContent({
             return;
         }
 
-        if (!validateSolanaAddress(recipient)) {
+        if (!validateTrezoaAddress(recipient)) {
             setError(MODAL_ERRORS.INVALID_ADDRESS);
             return;
         }
@@ -121,7 +121,7 @@ export function MintModalContent({
     const getDisabledLabel = (): string | undefined => {
         if (!walletAddress) return MODAL_BUTTONS.CONNECT_WALLET;
         if (!recipient.trim()) return MODAL_BUTTONS.ENTER_RECIPIENT;
-        if (recipient.trim() && !validateSolanaAddress(recipient)) return MODAL_BUTTONS.INVALID_ADDRESS;
+        if (recipient.trim() && !validateTrezoaAddress(recipient)) return MODAL_BUTTONS.INVALID_ADDRESS;
         if (!amount.trim()) return MODAL_BUTTONS.ENTER_AMOUNT;
         if (amount.trim() && !validateAmount(amount)) return MODAL_BUTTONS.INVALID_AMOUNT;
         return undefined;
@@ -176,12 +176,12 @@ export function MintModalContent({
                     type="text"
                     value={recipient}
                     onChange={e => setRecipient(e.target.value)}
-                    placeholder="Enter recipient Solana address..."
+                    placeholder="Enter recipient Trezoa address..."
                     className=""
                     disabled={isLoading}
                 />
-                {recipient && !validateSolanaAddress(recipient) && (
-                    <p className="text-sm text-red-600 mt-1">Please enter a valid Solana address</p>
+                {recipient && !validateTrezoaAddress(recipient) && (
+                    <p className="text-sm text-red-600 mt-1">Please enter a valid Trezoa address</p>
                 )}
             </div>
 
@@ -216,7 +216,7 @@ export function MintModalContent({
                     !walletAddress ||
                     !recipient.trim() ||
                     !amount.trim() ||
-                    !validateSolanaAddress(recipient) ||
+                    !validateTrezoaAddress(recipient) ||
                     !validateAmount(amount)
                 }
                 disabledLabel={getDisabledLabel()}

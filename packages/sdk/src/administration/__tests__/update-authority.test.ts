@@ -1,5 +1,5 @@
-import type { Address, TransactionSigner } from '@solana/kit';
-import { AuthorityType, TOKEN_2022_PROGRAM_ADDRESS } from '@solana-program/token-2022';
+import type { Address, TransactionSigner } from '@trezoa/kit';
+import { AuthorityType, TOKEN_2022_PROGRAM_ADDRESS } from '@trezoa-program/token-2022';
 import { getUpdateAuthorityInstructions } from '../update-authority';
 import { createMockSigner, generateMockAddress, TEST_AUTHORITY } from '../../__tests__/test-utils';
 

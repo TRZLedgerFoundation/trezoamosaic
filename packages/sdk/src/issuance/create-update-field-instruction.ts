@@ -1,4 +1,4 @@
-// adapted from https://github.com/solana-program/token-metadata/blob/30c5c5559667d0ef73c7ff49aa517e3578f539f7/clients/js-legacy/src/instruction.ts
+// adapted from https://github.com/trezoa-program/token-metadata/blob/30c5c5559667d0ef73c7ff49aa517e3578f539f7/clients/js-legacy/src/instruction.ts
 
 import {
     AccountRole,
@@ -21,7 +21,7 @@ import {
     getTupleCodec,
     getStructEncoder,
     getDiscriminatedUnionEncoder,
-} from '@solana/kit';
+} from '@trezoa/kit';
 
 function getInstructionEncoder<T extends object>(discriminator: Uint8Array, dataEncoder: Encoder<T>): Encoder<T> {
     return transformEncoder(getTupleEncoder([getBytesEncoder(), dataEncoder]), (data: T): [Uint8Array, T] => [
@@ -79,7 +79,7 @@ export function createUpdateFieldInstruction(args: UpdateFieldInstruction): Inst
     const data = Buffer.from(
         getInstructionEncoder(
             new Uint8Array([
-                /* await splDiscriminate('spl_token_metadata_interface:updating_field') */
+                /* await splDiscriminate('tpl_token_metadata_interface:updating_field') */
                 221, 233, 49, 45, 181, 202, 220, 200,
             ]),
             getStructEncoder([

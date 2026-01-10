@@ -1,6 +1,6 @@
 # @mosaic/cli
 
-CLI for building and operating Token-2022 mints with modern extensions on Solana. Pairs with `@mosaic/sdk` and uses your filesystem keypair or the Solana CLI config by default.
+CLI for building and operating Token-2022 mints with modern extensions on Trezoa. Pairs with `@mosaic/sdk` and uses your filesystem keypair or the Trezoa CLI config by default.
 
 ## Features
 
@@ -21,8 +21,8 @@ pnpm i && pnpm -w build
 Note that all commands expect the fee payer to be the authority for the action executed. All commands accept:
 
 ```bash
---rpc-url <url>    # RPC endpoint (default: https://api.devnet.solana.com or Solana CLI config)
---keypair <path>   # Path to keypair JSON (default: Solana CLI keypair path)
+--rpc-url <url>    # RPC endpoint (default: https://api.devnet.trezoa.com or Trezoa CLI config)
+--keypair <path>   # Path to keypair JSON (default: Trezoa CLI keypair path)
 ```
 
 ## Quick start
@@ -149,7 +149,7 @@ mosaic blocklist add --mint-address <mint> --account <wallet>
 mosaic blocklist remove --mint-address <mint> --account <wallet>
 ```
 
-### Token ACL (Access Control Lists for Solana Tokens)
+### Token ACL (Access Control Lists for Trezoa Tokens)
 
 ```bash
 # Create Token ACL config for a mint (supply gating program; use ABL program for ABL gating)
@@ -171,8 +171,8 @@ mosaic token-acl thaw-permissionless --mint <mint>
 ## Configuration and keys
 
 - Uses `--rpc-url` and `--keypair` when provided.
-- Otherwise reads `~/.config/solana/cli/config.yml` for `json_rpc_url` and `keypair_path`.
-- Defaults to Devnet and the Solana CLI default keypair if nothing is set.
+- Otherwise reads `~/.config/trezoa/cli/config.yml` for `json_rpc_url` and `keypair_path`.
+- Defaults to Devnet and the Trezoa CLI default keypair if nothing is set.
 
 ## Examples
 
@@ -207,7 +207,7 @@ pnpm lint && pnpm lint:fix
 
 ## Notes
 
-- This CLI uses `gill` under the hood for RPC and SPL helpers.
+- This CLI uses `trezoagill` under the hood for RPC and TPL helpers.
 - Command output includes addresses and signatures suitable for copy/paste.
 
 ## License

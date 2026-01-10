@@ -1,10 +1,10 @@
 import { create } from 'zustand';
 import { immer } from 'zustand/middleware/immer';
 import { useShallow } from 'zustand/shallow';
-import { type Address, createSolanaRpc, type Rpc, type SolanaRpcApi } from '@solana/kit';
-import { findAssociatedTokenPda, TOKEN_2022_PROGRAM_ADDRESS } from '@solana-program/token-2022';
+import { type Address, createTrezoaRpc, type Rpc, type TrezoaRpcApi } from '@trezoa/kit';
+import { findAssociatedTokenPda, TOKEN_2022_PROGRAM_ADDRESS } from '@trezoa-program/token-2022';
 
-// Original SPL Token program address
+// Original TPL Token program address
 const TOKEN_PROGRAM_ADDRESS = 'TokenkegQfeZyiNwAJbNbGKPFXCWuBvf9Ss623VQ5DA' as Address;
 
 // Token balance result
@@ -70,7 +70,7 @@ function ensureAccount(state: TokenAccountStore, key: string): TokenAccountState
  * Try to get token balance from a specific ATA
  */
 async function tryGetBalance(
-    rpc: Rpc<SolanaRpcApi>,
+    rpc: Rpc<TrezoaRpcApi>,
     mintAddress: Address,
     walletAddress: Address,
     tokenProgram: typeof TOKEN_2022_PROGRAM_ADDRESS | typeof TOKEN_PROGRAM_ADDRESS,
@@ -117,7 +117,7 @@ export const useTokenAccountStore = create<TokenAccountStore>()(
             });
 
             try {
-                const rpc = createSolanaRpc(rpcUrl) as Rpc<SolanaRpcApi>;
+                const rpc = createTrezoaRpc(rpcUrl) as Rpc<TrezoaRpcApi>;
 
                 // Try Token-2022 first (most common for this app)
                 let result = await tryGetBalance(
@@ -127,7 +127,7 @@ export const useTokenAccountStore = create<TokenAccountStore>()(
                     TOKEN_2022_PROGRAM_ADDRESS,
                 );
 
-                // If not found, try regular SPL Token program
+                // If not found, try regular TPL Token program
                 if (!result) {
                     result = await tryGetBalance(
                         rpc,

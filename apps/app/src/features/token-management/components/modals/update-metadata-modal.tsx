@@ -4,9 +4,9 @@ import {
     type UpdateMetadataBatchOptions,
     type MetadataUpdate,
 } from '@/features/token-management/lib/metadata';
-import type { TransactionModifyingSigner } from '@solana/kit';
+import type { TransactionModifyingSigner } from '@trezoa/kit';
 import { FileText } from 'lucide-react';
-import { useConnector } from '@solana/connector/react';
+import { useConnector } from '@trezoa/connector/react';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 
@@ -100,7 +100,7 @@ export function UpdateMetadataModalContent({
         setError('');
 
         try {
-            const rpcUrl = cluster?.url || process.env.NEXT_PUBLIC_SOLANA_RPC_URL || 'https://api.devnet.solana.com';
+            const rpcUrl = cluster?.url || process.env.NEXT_PUBLIC_SOLANA_RPC_URL || 'https://api.devnet.trezoa.com';
 
             // Only include fields that have changed
             const updates: MetadataUpdate[] = [];

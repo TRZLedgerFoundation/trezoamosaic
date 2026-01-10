@@ -1,12 +1,12 @@
-import type { Address, Rpc, SolanaRpcApi } from '@solana/kit';
+import type { Address, Rpc, TrezoaRpcApi } from '@trezoa/kit';
 import { createMockSigner, createMockRpc } from '../../__tests__/test-utils';
-import { TOKEN_2022_PROGRAM_ADDRESS } from '@solana-program/token-2022';
+import { TOKEN_2022_PROGRAM_ADDRESS } from '@trezoa-program/token-2022';
 import { TOKEN_ACL_PROGRAM_ID } from '../../token-acl';
 import { ABL_PROGRAM_ID } from '../../abl/utils';
 import { seedTokenAccount } from '../../__tests__/test-utils';
 
 describe('non-SRFC-37 list actions produce direct freeze/thaw', () => {
-    let rpc: Rpc<SolanaRpcApi>;
+    let rpc: Rpc<TrezoaRpcApi>;
     const mint = 'Mint555555555555555555555555555555555555555' as Address;
     const wallet = 'Wall555555555555555555555555555555555555555' as Address;
     const authority = createMockSigner('Auth55555555555555555555555555555555555');

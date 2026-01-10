@@ -1,13 +1,13 @@
 # @mosaic/app
 
-UI for creating and managing Token-2022 mints with Mosaic. It’s a Next.js app that connects to Solana wallets, guides you through mint creation (Stablecoin, Arcade Token, Tokenized Security), and provides a dashboard to manage authorities, access lists, and account state.
+UI for creating and managing Token-2022 mints with Mosaic. It’s a Next.js app that connects to Trezoa wallets, guides you through mint creation (Stablecoin, Arcade Token, Tokenized Security), and provides a dashboard to manage authorities, access lists, and account state.
 
 ## What you can do
 
 - **Create tokens**: Step-by-step flows for Stablecoin, Arcade Token, and Tokenized Security
 - **Manage tokens**: Mint, transfer, freeze/thaw, force-transfer, update authorities
 - **Control access**: Manage allowlists/blocklists and link them to mints
-- **Wallet-ready**: Connect a Solana wallet and sign transactions
+- **Wallet-ready**: Connect a Trezoa wallet and sign transactions
 
 ## Getting started
 
@@ -57,32 +57,32 @@ src/
 │  │  └─ manage/[address]/*       # Token management views
 │  └─ layout.tsx                  # Providers and layout
 ├─ components/
-│  ├─ solana-provider.tsx         # Wallet adapter providers
+│  ├─ trezoa-provider.tsx         # Wallet adapter providers
 │  ├─ layout/*                    # Header/Footer
 │  ├─ ui/*                        # Reusable UI
 │  └─ sections/hero.tsx           # Landing hero
 ├─ context/
 │  ├─ ChainContextProvider.tsx    # Cluster selection (devnet/testnet/mainnet)
-│  ├─ RpcContextProvider.tsx      # @solana/kit RPC + subscriptions
+│  ├─ RpcContextProvider.tsx      # @trezoa/kit RPC + subscriptions
 │  └─ SelectedWalletAccount*      # Selected wallet state
 ├─ lib/
 │  ├─ issuance/*                  # High-level create flows using @mosaic/sdk
 │  ├─ management/*                # Mint/transfer/freeze/thaw helpers
 │  ├─ management/accessList.ts    # Allowlist/blocklist helpers
 │  ├─ token/*                     # Local storage + token data
-│  └─ solana/rpc.ts               # RPC utils
+│  └─ trezoa/rpc.ts               # RPC utils
 └─ types/*                        # App types
 ```
 
 ## Configuration
 
-- Wallets: configured in `components/solana-provider.tsx` (uses Devnet endpoint by default)
+- Wallets: configured in `components/trezoa-provider.tsx` (uses Devnet endpoint by default)
 - RPC/cluster: provided by `ChainContextProvider` and `RpcContextProvider` (Devnet/Testnet/Mainnet)
 - SDK: all blockchain operations use `@mosaic/sdk`
 
 ### Environment Variables
 
-- `NEXT_PUBLIC_SOLANA_RPC_URL`: Custom Solana RPC endpoint URL. If not set, defaults to `https://api.devnet.solana.com`. This variable is exposed to the client-side and available in production builds. See `.env.example` for more details.
+- `NEXT_PUBLIC_SOLANA_RPC_URL`: Custom Trezoa RPC endpoint URL. If not set, defaults to `https://api.devnet.trezoa.com`. This variable is exposed to the client-side and available in production builds. See `.env.example` for more details.
 
 ## Development
 
@@ -95,12 +95,12 @@ pnpm start
 
 ## Troubleshooting
 
-- Ensure the connected wallet has SOL for fees on the selected cluster
+- Ensure the connected wallet has TRZ for fees on the selected cluster
 - If a transfer destination ATA doesn’t exist, the app will create it idempotently
 - Permissionless thaw requires Token ACL config and ABL list correctly set on the mint
 
 ## Tech stack
 
 - Next.js 15, React 18, TailwindCSS
-- Wallet adapters (`@solana/wallet-adapter-*`)
-- Mosaic SDK (`@mosaic/sdk`) and `@solana/kit`
+- Wallet adapters (`@trezoa/wallet-adapter-*`)
+- Mosaic SDK (`@mosaic/sdk`) and `@trezoa/kit`

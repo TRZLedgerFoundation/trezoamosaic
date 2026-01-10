@@ -1,5 +1,5 @@
 import { Token } from '../issuance';
-import type { Rpc, Address, SolanaRpcApi, TransactionSigner } from '@solana/kit';
+import type { Rpc, Address, TrezoaRpcApi, TransactionSigner } from '@trezoa/kit';
 import type { FullTransaction } from '../transaction-util';
 import {
     createNoopSigner,
@@ -8,7 +8,7 @@ import {
     setTransactionMessageFeePayer,
     setTransactionMessageLifetimeUsingBlockhash,
     appendTransactionMessageInstructions,
-} from '@solana/kit';
+} from '@trezoa/kit';
 import { Mode } from '@token-acl/abl-sdk';
 import { ABL_PROGRAM_ID } from '../abl/utils';
 import { TOKEN_ACL_PROGRAM_ID } from '../token-acl/utils';
@@ -19,12 +19,12 @@ import { getCreateListInstructions } from '../abl/list';
 import { getSetExtraMetasInstructions } from '../abl/set-extra-metas';
 
 /**
- * Creates a transaction to initialize a new custom token mint on Solana with user-selected extensions.
+ * Creates a transaction to initialize a new custom token mint on Trezoa with user-selected extensions.
  *
  * This function allows full control over which Token-2022 extensions to enable, making it flexible
  * for any token configuration needs.
  *
- * @param rpc - The Solana RPC client instance.
+ * @param rpc - The Trezoa RPC client instance.
  * @param name - The name of the token.
  * @param symbol - The symbol of the token.
  * @param decimals - The number of decimals for the token.
@@ -36,7 +36,7 @@ import { getSetExtraMetasInstructions } from '../abl/set-extra-metas';
  * @returns A promise that resolves to a FullTransaction object for initializing the custom token mint.
  */
 export const createCustomTokenInitTransaction = async (
-    rpc: Rpc<SolanaRpcApi>,
+    rpc: Rpc<TrezoaRpcApi>,
     name: string,
     symbol: string,
     decimals: number,

@@ -1,5 +1,5 @@
 import { Token } from '../issuance';
-import type { Rpc, Address, SolanaRpcApi, TransactionSigner } from '@solana/kit';
+import type { Rpc, Address, TrezoaRpcApi, TransactionSigner } from '@trezoa/kit';
 import type { FullTransaction } from '../transaction-util';
 import {
     createNoopSigner,
@@ -8,7 +8,7 @@ import {
     setTransactionMessageFeePayer,
     setTransactionMessageLifetimeUsingBlockhash,
     appendTransactionMessageInstructions,
-} from '@solana/kit';
+} from '@trezoa/kit';
 import { Mode } from '@token-acl/abl-sdk';
 import { ABL_PROGRAM_ID } from '../abl/utils';
 import { TOKEN_ACL_PROGRAM_ID } from '../token-acl/utils';
@@ -19,11 +19,11 @@ import { getCreateListInstructions } from '../abl/list';
 import { getSetExtraMetasInstructions } from '../abl/set-extra-metas';
 
 /**
- * Creates a transaction to initialize a new tokenized security mint on Solana.
+ * Creates a transaction to initialize a new tokenized security mint on Trezoa.
  * Matches the stablecoin template extensions, plus Scaled UI Amount.
  */
 export const createTokenizedSecurityInitTransaction = async (
-    rpc: Rpc<SolanaRpcApi>,
+    rpc: Rpc<TrezoaRpcApi>,
     name: string,
     symbol: string,
     decimals: number,

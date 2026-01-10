@@ -4,8 +4,8 @@ import { CheckCircle, Settings, CandlestickChart } from 'lucide-react';
 import { CopyableExplorerField } from '@/components/copyable-explorer-field';
 import { TokenizedSecurityCreationResult } from '@/types/token';
 import Link from 'next/link';
-import { useConnector } from '@solana/connector/react';
-import { getEffectiveClusterName } from '@/lib/solana/explorer';
+import { useConnector } from '@trezoa/connector/react';
+import { getEffectiveClusterName } from '@/lib/trezoa/explorer';
 
 export function TokenizedSecurityCreationResultDisplay({ result }: { result: TokenizedSecurityCreationResult }) {
     const { cluster: connectorCluster } = useConnector();

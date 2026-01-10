@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { useConnector } from '@solana/connector/react';
+import { useConnector } from '@trezoa/connector/react';
 
 export interface TransactionModalState {
     isLoading: boolean;

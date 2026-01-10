@@ -74,7 +74,7 @@ pnpm run test
 
 When working with Token-2022 extensions:
 
-- Follow Solana best practices
+- Follow Trezoa best practices
 - Ensure compatibility with SRFC standards
 - Add comprehensive error handling
 - Document extension interactions

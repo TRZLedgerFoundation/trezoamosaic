@@ -1,20 +1,20 @@
 import {
-    createSolanaRpc,
+    createTrezoaRpc,
     type Address,
     type Rpc,
-    type SolanaRpcApi,
+    type TrezoaRpcApi,
     signTransactionMessageWithSigners,
     sendAndConfirmTransactionFactory,
     getSignatureFromTransaction,
-    createSolanaRpcSubscriptions,
+    createTrezoaRpcSubscriptions,
     type TransactionModifyingSigner,
     type TransactionVersion,
     type TransactionMessageWithFeePayer,
     type TransactionMessageWithBlockhashLifetime,
     assertIsTransactionWithBlockhashLifetime,
-} from '@solana/kit';
-import { getRpcUrl, getWsUrl, getCommitment } from '@/lib/solana/rpc';
-import type { FullTransaction } from '@/lib/solana/types';
+} from '@trezoa/kit';
+import { getRpcUrl, getWsUrl, getCommitment } from '@/lib/trezoa/rpc';
+import type { FullTransaction } from '@/lib/trezoa/types';
 
 /**
  * Base options interface that all token action options must extend
@@ -36,7 +36,7 @@ export interface BaseResult {
  * Parameters passed to the buildTransaction function
  */
 export interface BuildTransactionParams<TOptions extends BaseOptions> {
-    rpc: Rpc<SolanaRpcApi>;
+    rpc: Rpc<TrezoaRpcApi>;
     signer: TransactionModifyingSigner;
     signerAddress: Address;
     options: TOptions;
@@ -89,8 +89,8 @@ export async function executeTokenAction<TOptions extends BaseOptions, TResult e
 
         // Create RPC clients
         const rpcUrl = getRpcUrl(options.rpcUrl);
-        const rpc: Rpc<SolanaRpcApi> = createSolanaRpc(rpcUrl);
-        const rpcSubscriptions = createSolanaRpcSubscriptions(getWsUrl(rpcUrl));
+        const rpc: Rpc<TrezoaRpcApi> = createTrezoaRpc(rpcUrl);
+        const rpcSubscriptions = createTrezoaRpcSubscriptions(getWsUrl(rpcUrl));
 
         // Build transaction
         const transaction = await buildTransaction({

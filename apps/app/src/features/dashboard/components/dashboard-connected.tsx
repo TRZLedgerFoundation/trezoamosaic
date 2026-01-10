@@ -5,7 +5,7 @@ import { TokenCardEmptyState } from './token-card-empty-state';
 import { CreateTokenButton } from './create-token-button';
 import { DashboardEmptyState } from './dashboard-empty-state';
 import { IconCircleDottedAndCircle } from 'symbols-react';
-import { useConnector } from '@solana/connector/react';
+import { useConnector } from '@trezoa/connector/react';
 import { useWalletTokens, useTokenStore } from '@/stores/token-store';
 
 export function DashboardConnected() {

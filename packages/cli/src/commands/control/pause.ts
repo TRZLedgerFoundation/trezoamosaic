@@ -1,9 +1,9 @@
 import { Command } from 'commander';
 import chalk from 'chalk';
-import { type Address, sendAndConfirmTransactionFactory } from '@solana/kit';
+import { type Address, sendAndConfirmTransactionFactory } from '@trezoa/kit';
 import { createPauseTransaction, MINT_ALREADY_PAUSED_ERROR } from '@mosaic/sdk';
 import { createRpcClient, createRpcSubscriptions } from '../../utils/rpc';
-import { resolveSigner } from '../../utils/solana';
+import { resolveSigner } from '../../utils/trezoa';
 import { getGlobalOpts, createSpinner, sendOrOutputTransaction } from '../../utils/cli';
 
 interface PauseOptions {

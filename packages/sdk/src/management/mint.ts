@@ -1,4 +1,4 @@
-import type { Address, Rpc, SolanaRpcApi, TransactionSigner } from '@solana/kit';
+import type { Address, Rpc, TrezoaRpcApi, TransactionSigner } from '@trezoa/kit';
 import type { FullTransaction } from '../transaction-util';
 import {
     createNoopSigner,
@@ -7,12 +7,12 @@ import {
     setTransactionMessageFeePayer,
     setTransactionMessageLifetimeUsingBlockhash,
     appendTransactionMessageInstructions,
-} from '@solana/kit';
+} from '@trezoa/kit';
 import {
     TOKEN_2022_PROGRAM_ADDRESS,
     getMintToInstruction,
     getCreateAssociatedTokenIdempotentInstruction,
-} from '@solana-program/token-2022';
+} from '@trezoa-program/token-2022';
 import { getThawPermissionlessInstructions } from '../token-acl';
 import {
     decimalAmountToRaw,
@@ -25,7 +25,7 @@ import {
  * Creates a transaction to mint tokens to a recipient's associated token account.
  * Will create the ATA if it doesn't exist.
  *
- * @param rpc - The Solana RPC client instance
+ * @param rpc - The Trezoa RPC client instance
  * @param mint - The mint address
  * @param recipient - The recipient's wallet address (owner of the ATA)
  * @param amount - The raw token amount (already adjusted for decimals)
@@ -34,7 +34,7 @@ import {
  * @returns A promise that resolves to a FullTransaction object for minting tokens
  */
 export const createMintToTransaction = async (
-    rpc: Rpc<SolanaRpcApi>,
+    rpc: Rpc<TrezoaRpcApi>,
     mint: Address,
     recipient: Address,
     amount: number,
@@ -96,11 +96,11 @@ export const createMintToTransaction = async (
 /**
  * Gets mint information including decimals
  *
- * @param rpc - The Solana RPC client instance
+ * @param rpc - The Trezoa RPC client instance
  * @param mint - The mint address
  * @returns Promise with mint information including decimals
  */
-export async function getMintInfo(rpc: Rpc<SolanaRpcApi>, mint: Address) {
+export async function getMintInfo(rpc: Rpc<TrezoaRpcApi>, mint: Address) {
     const accountInfo = await rpc.getAccountInfo(mint, { encoding: 'base64' }).send();
 
     if (!accountInfo.value) {

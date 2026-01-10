@@ -5,7 +5,7 @@
 
 export const MODAL_ERRORS = {
     WALLET_NOT_CONNECTED: 'Wallet not connected',
-    INVALID_ADDRESS: 'Please enter a valid Solana address',
+    INVALID_ADDRESS: 'Please enter a valid Trezoa address',
     INVALID_SOURCE_ADDRESS: 'Please enter a valid source address',
     INVALID_DESTINATION_ADDRESS: 'Please enter a valid destination address',
     INVALID_RECIPIENT_ADDRESS: 'Please enter a valid recipient address',
@@ -81,7 +81,7 @@ export const MODAL_WARNINGS = {
         'Your connected wallet is not the permanent delegate. Only the permanent delegate can force burn tokens.',
     // Close account requirements
     CLOSE_ACCOUNT_ZERO_BALANCE: 'Your token account must have a zero balance',
-    CLOSE_ACCOUNT_RENT: 'Closing the account will reclaim ~0.002 SOL in rent',
+    CLOSE_ACCOUNT_RENT: 'Closing the account will reclaim ~0.002 TRZ in rent',
     CLOSE_ACCOUNT_IRREVERSIBLE: 'This action cannot be undone',
 } as const;
 
@@ -115,11 +115,11 @@ export const MODAL_HELP_TEXT = {
     DESTINATION_HELP: 'The account to which tokens will be transferred',
     BURN_FROM_HELP: 'The account from which tokens will be burned',
     TOKEN_ACCOUNT_HELP: 'The associated token account to freeze or thaw',
-    RENT_DESTINATION_HELP: 'The address that will receive the reclaimed SOL',
+    RENT_DESTINATION_HELP: 'The address that will receive the reclaimed TRZ',
     MEMO_HELP: 'Optional message attached to the transaction',
     BURN_FROM_WALLET: 'Tokens will be burned from your connected wallet',
     SEND_FROM_WALLET: 'Tokens will be sent from your connected wallet',
-    RENT_TO_WALLET: 'Reclaimed SOL will be sent to your connected wallet',
+    RENT_TO_WALLET: 'Reclaimed TRZ will be sent to your connected wallet',
     CUSTOM_RENT_HELP: 'Send reclaimed rent to a different address',
     MINT_AUTHORITY_HELP: 'Only the mint authority can create new tokens',
     FREEZE_AUTHORITY_HELP: 'Only the freeze authority can freeze or thaw accounts',

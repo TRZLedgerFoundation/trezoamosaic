@@ -13,11 +13,11 @@ import {
 import { AlertDialog } from '@/components/ui/alert-dialog';
 import { DeleteTokenModalContent } from './delete-token-modal';
 import { TokenDisplay } from '@/types/token';
-import { useConnector } from '@solana/connector/react';
+import { useConnector } from '@trezoa/connector/react';
 import { getTokenSupply } from '@/lib/utils';
 import { getTokenPatternsLabel } from '@/lib/token/token-type-utils';
-import { buildAddressExplorerUrl } from '@/lib/solana/explorer';
-import { type Address, createSolanaRpc } from '@solana/kit';
+import { buildAddressExplorerUrl } from '@/lib/trezoa/explorer';
+import { type Address, createTrezoaRpc } from '@trezoa/kit';
 import { IconHexagonFill } from 'symbols-react';
 import { usePauseState, useTokenExtensionStore } from '@/stores/token-extension-store';
 
@@ -38,7 +38,7 @@ export function TokenCard({ token, onDelete }: TokenCardProps) {
     // Create RPC client from current cluster
     const rpc = useMemo(() => {
         if (!cluster?.url) return null;
-        return createSolanaRpc(cluster.url);
+        return createTrezoaRpc(cluster.url);
     }, [cluster?.url]);
     const [currentSupply, setCurrentSupply] = useState<string>(token.supply || '0');
     const [isLoadingSupply, setIsLoadingSupply] = useState(false);

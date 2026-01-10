@@ -6,12 +6,12 @@ import type {
     FullySignedTransaction,
     TransactionWithinSizeLimit,
     Commitment,
-} from '@solana/kit';
+} from '@trezoa/kit';
 import {
     signTransactionMessageWithSigners,
     getSignatureFromTransaction,
     assertIsTransactionWithBlockhashLifetime,
-} from '@solana/kit';
+} from '@trezoa/kit';
 import { maybeOutputRawTx } from './raw-tx.js';
 import type { FullTransaction } from './types.js';
 

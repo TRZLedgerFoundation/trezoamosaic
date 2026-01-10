@@ -1,4 +1,4 @@
-import type { Address, Instruction, Rpc, SolanaRpcApiMainnet, TransactionSigner } from '@solana/kit';
+import type { Address, Instruction, Rpc, TrezoaRpcApiMainnet, TransactionSigner } from '@trezoa/kit';
 import type { FullTransaction } from '../transaction-util';
 import {
     pipe,
@@ -7,8 +7,8 @@ import {
     setTransactionMessageLifetimeUsingBlockhash,
     appendTransactionMessageInstructions,
     some,
-} from '@solana/kit';
-import { getCreateAccountInstruction } from '@solana-program/system';
+} from '@trezoa/kit';
+import { getCreateAccountInstruction } from '@trezoa-program/system';
 import {
     AccountState,
     getMintSize,
@@ -20,7 +20,7 @@ import {
     TOKEN_2022_PROGRAM_ADDRESS,
     getInitializeTokenMetadataInstruction,
     getInitializeConfidentialTransferFeeInstruction,
-} from '@solana-program/token-2022';
+} from '@trezoa-program/token-2022';
 import { createUpdateFieldInstruction } from './create-update-field-instruction';
 
 export class Token {
@@ -135,7 +135,7 @@ export class Token {
             maximumFee: config.maximumFee,
             transferFeeBasisPoints: config.feeBasisPoints,
         };
-        // Manually create extension object as gill's extension() doesn't support TransferFeeConfig
+        // Manually create extension object as trezoagill's extension() doesn't support TransferFeeConfig
         const transferFeeExtension = {
             __kind: 'TransferFeeConfig' as const,
             transferFeeConfigAuthority: config.authority,
@@ -158,7 +158,7 @@ export class Token {
      * @param config.rate - Interest rate in basis points (e.g., 500 = 5% annual rate)
      */
     withInterestBearing(config: { authority: Address; rate: number }): Token {
-        // Manually create extension object as gill's extension() doesn't support InterestBearingConfig
+        // Manually create extension object as trezoagill's extension() doesn't support InterestBearingConfig
         const interestBearingExtension = {
             __kind: 'InterestBearingConfig' as const,
             rateAuthority: config.authority,
@@ -177,7 +177,7 @@ export class Token {
      * Cannot be transferred, but can be burned or the account can be closed.
      */
     withNonTransferable(): Token {
-        // Manually create extension object as gill's extension() doesn't support NonTransferable
+        // Manually create extension object as trezoagill's extension() doesn't support NonTransferable
         const nonTransferableExtension = {
             __kind: 'NonTransferable' as const,
         };
@@ -195,7 +195,7 @@ export class Token {
      * @param config.programId - Address of the transfer hook program
      */
     withTransferHook(config: { authority: Address; programId: Address }): Token {
-        // Manually create extension object as gill's extension() doesn't support TransferHook
+        // Manually create extension object as trezoagill's extension() doesn't support TransferHook
         const transferHookExtension = {
             __kind: 'TransferHook' as const,
             authority: config.authority,
@@ -238,7 +238,7 @@ export class Token {
         mint,
         feePayer,
     }: {
-        rpc: Rpc<SolanaRpcApiMainnet>;
+        rpc: Rpc<TrezoaRpcApiMainnet>;
         decimals: number;
         mintAuthority?: Address | TransactionSigner<string>; // defaults to feePayer
         freezeAuthority?: Address; // default to feePayer
@@ -255,7 +255,7 @@ export class Token {
             rpc: rpc,
             decimals,
             // For empty extension arrays, we need to pass undefined to ensure we get the proper space calculation
-            // Ref: https://github.com/solana-program/token-2022/blob/4adc1409eb4fd2c5fc3583a58e46c41f1d113176/clients/js/test/getMintSize.test.ts#L10
+            // Ref: https://github.com/trezoa-program/token-2022/blob/4adc1409eb4fd2c5fc3583a58e46c41f1d113176/clients/js/test/getMintSize.test.ts#L10
             extensions: this.extensions.length > 0 ? this.extensions : undefined,
             mintAuthority: mintAuthorityAddress,
             freezeAuthority: freezeAuthority ?? feePayer.address,
@@ -348,7 +348,7 @@ export class Token {
         mint,
         feePayer,
     }: {
-        rpc: Rpc<SolanaRpcApiMainnet>;
+        rpc: Rpc<TrezoaRpcApiMainnet>;
         decimals: number;
         mintAuthority?: Address | TransactionSigner<string>;
         freezeAuthority?: Address;
@@ -382,7 +382,7 @@ export class Token {
  * @returns Array of instructions for creating and initializing the mint
  */
 export const getCreateMintInstructions = async (input: {
-    rpc: Rpc<SolanaRpcApiMainnet>;
+    rpc: Rpc<TrezoaRpcApiMainnet>;
     decimals?: number;
     extensions?: ExtensionArgs[];
     freezeAuthority?: Address;

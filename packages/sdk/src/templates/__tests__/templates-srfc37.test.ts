@@ -1,4 +1,4 @@
-import type { Rpc, SolanaRpcApi, Instruction } from '@solana/kit';
+import type { Rpc, TrezoaRpcApi, Instruction } from '@trezoa/kit';
 import { createMockSigner, createMockRpc } from '../../__tests__/test-utils';
 import {
     TOKEN_2022_PROGRAM_ADDRESS,
@@ -6,11 +6,11 @@ import {
     extension,
     AccountState,
     getPreInitializeInstructionsForMintExtensions,
-} from '@solana-program/token-2022';
+} from '@trezoa-program/token-2022';
 import { TOKEN_ACL_PROGRAM_ID } from '../../token-acl/utils';
 
 describe('templates enableSrfc37 option', () => {
-    let rpc: Rpc<SolanaRpcApi>;
+    let rpc: Rpc<TrezoaRpcApi>;
     const feePayer = createMockSigner();
     const mint = createMockSigner();
 

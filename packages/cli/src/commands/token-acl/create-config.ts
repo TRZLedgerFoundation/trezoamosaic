@@ -2,7 +2,7 @@ import { Command } from 'commander';
 import chalk from 'chalk';
 import { getCreateConfigTransaction } from '@mosaic/sdk';
 import { createRpcClient, createRpcSubscriptions } from '../../utils/rpc.js';
-import { getAddressFromKeypair, loadKeypair } from '../../utils/solana.js';
+import { getAddressFromKeypair, loadKeypair } from '../../utils/trezoa.js';
 import {
     createNoopSigner,
     signTransactionMessageWithSigners,
@@ -11,7 +11,7 @@ import {
     sendAndConfirmTransactionFactory,
     assertIsTransactionWithBlockhashLifetime,
     getSignatureFromTransaction,
-} from '@solana/kit';
+} from '@trezoa/kit';
 import { maybeOutputRawTx } from '../../utils/raw-tx.js';
 import { createSpinner, getGlobalOpts } from '../../utils/cli.js';
 

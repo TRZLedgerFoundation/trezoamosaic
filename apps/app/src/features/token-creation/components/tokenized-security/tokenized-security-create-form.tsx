@@ -3,7 +3,7 @@ import { TokenizedSecurityBasicParams } from './tokenized-security-basic-params'
 import { TokenizedSecurityFeaturesStep } from './tokenized-security-features-step';
 import { TokenizedSecurityCreationResultDisplay } from './tokenized-security-creation-result';
 import { createTokenizedSecurity } from '@/features/token-creation/lib/tokenized-security';
-import type { TransactionModifyingSigner } from '@solana/kit';
+import type { TransactionModifyingSigner } from '@trezoa/kit';
 import { useTokenCreationForm } from '@/features/token-creation/hooks/use-token-creation-form';
 import { TokenCreateFormBase } from '../token-create-form-base';
 import { Step } from '../form-stepper';

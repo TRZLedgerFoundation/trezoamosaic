@@ -3,7 +3,7 @@ import chalk from 'chalk';
 import ora from 'ora';
 import { getList } from '@mosaic/sdk';
 import { createRpcClient } from '../../utils/rpc.js';
-import { type Address } from '@solana/kit';
+import { type Address } from '@trezoa/kit';
 
 interface CreateConfigOptions {
     list: string;

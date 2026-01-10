@@ -67,7 +67,7 @@ const berkeleyMono = localFont({
 
 export const metadata: Metadata = {
     title: 'Mosaic - Tokenization Engine',
-    description: 'Create, manage, and deploy stablecoins and tokenized assets on Solana',
+    description: 'Create, manage, and deploy stablecoins and tokenized assets on Trezoa',
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {

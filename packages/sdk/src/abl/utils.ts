@@ -1,5 +1,5 @@
 import { findListConfigPda } from '@token-acl/abl-sdk';
-import type { Address } from '@solana/kit';
+import type { Address } from '@trezoa/kit';
 
 /**
  * The program ID for the ABL (Allowlist/Blocklist) program.

@@ -1,22 +1,22 @@
 import {
     type Address,
     type Rpc,
-    type SolanaRpcApi,
+    type TrezoaRpcApi,
     signTransactionMessageWithSigners,
     sendAndConfirmTransactionFactory,
     getSignatureFromTransaction,
-    createSolanaRpcSubscriptions,
+    createTrezoaRpcSubscriptions,
     TransactionModifyingSigner,
     isAddress,
     assertIsTransactionWithBlockhashLifetime,
-} from '@solana/kit';
+} from '@trezoa/kit';
 import {
     createAddToBlocklistTransaction,
     createRemoveFromBlocklistTransaction,
     createAddToAllowlistTransaction,
     createRemoveFromAllowlistTransaction,
 } from '@mosaic/sdk';
-import { getCommitment } from '@/lib/solana/rpc';
+import { getCommitment } from '@/lib/trezoa/rpc';
 
 export interface BlocklistOptions {
     mintAddress: string;
@@ -33,14 +33,14 @@ export interface BlocklistResult {
  * Validates blocklist options by checking required addresses and their format
  * @param options - Blocklist configuration options containing mintAddress and walletAddress
  * @throws Error if mintAddress or walletAddress is missing
- * @throws Error if mintAddress or walletAddress has invalid Solana address format
+ * @throws Error if mintAddress or walletAddress has invalid Trezoa address format
  */
 function validateBlocklistOptions(options: BlocklistOptions): void {
     if (!options.mintAddress || !options.walletAddress) {
         throw new Error('Mint address and wallet address are required');
     }
 
-    // Validate Solana address format
+    // Validate Trezoa address format
     if (!isAddress(options.mintAddress)) {
         throw new Error('Invalid mint address format');
     }
@@ -53,14 +53,14 @@ function validateBlocklistOptions(options: BlocklistOptions): void {
 
 /**
  * Adds an address to the blocklist for a token mint
- * @param rpc - Solana RPC client instance
+ * @param rpc - Trezoa RPC client instance
  * @param options - Blocklist configuration options containing mint address and wallet address
  * @param signer - Transaction signing signer instance
  * @param rpcUrl - RPC endpoint URL for transaction confirmation
  * @returns Promise that resolves to blocklist result with success status, optional error, and transaction signature
  */
 export const addAddressToBlocklist = async (
-    rpc: Rpc<SolanaRpcApi>,
+    rpc: Rpc<TrezoaRpcApi>,
     options: BlocklistOptions,
     signer: TransactionModifyingSigner,
     rpcUrl: string,
@@ -70,7 +70,7 @@ export const addAddressToBlocklist = async (
         validateBlocklistOptions(options);
 
         // Create RPC subscriptions for confirmation
-        const rpcSubscriptions = createSolanaRpcSubscriptions(rpcUrl.replace('http', 'ws'));
+        const rpcSubscriptions = createTrezoaRpcSubscriptions(rpcUrl.replace('http', 'ws'));
 
         // Create blocklist transaction using SDK
         const transaction = await createAddToBlocklistTransaction(
@@ -99,7 +99,7 @@ export const addAddressToBlocklist = async (
 };
 
 export const removeAddressFromBlocklist = async (
-    rpc: Rpc<SolanaRpcApi>,
+    rpc: Rpc<TrezoaRpcApi>,
     options: BlocklistOptions,
     signer: TransactionModifyingSigner,
     rpcUrl: string,
@@ -109,7 +109,7 @@ export const removeAddressFromBlocklist = async (
         validateBlocklistOptions(options);
 
         // Create RPC subscriptions for confirmation
-        const rpcSubscriptions = createSolanaRpcSubscriptions(rpcUrl.replace('http', 'ws'));
+        const rpcSubscriptions = createTrezoaRpcSubscriptions(rpcUrl.replace('http', 'ws'));
 
         // Create blocklist transaction using SDK
         const transaction = await createRemoveFromBlocklistTransaction(
@@ -138,7 +138,7 @@ export const removeAddressFromBlocklist = async (
 };
 
 export const addAddressToAllowlist = async (
-    rpc: Rpc<SolanaRpcApi>,
+    rpc: Rpc<TrezoaRpcApi>,
     options: BlocklistOptions,
     signer: TransactionModifyingSigner,
     rpcUrl: string,
@@ -148,7 +148,7 @@ export const addAddressToAllowlist = async (
         validateBlocklistOptions(options);
 
         // Create RPC subscriptions for confirmation
-        const rpcSubscriptions = createSolanaRpcSubscriptions(rpcUrl.replace('http', 'ws'));
+        const rpcSubscriptions = createTrezoaRpcSubscriptions(rpcUrl.replace('http', 'ws'));
 
         // Create allowlist transaction using SDK
         const transaction = await createAddToAllowlistTransaction(
@@ -177,7 +177,7 @@ export const addAddressToAllowlist = async (
 };
 
 export const removeAddressFromAllowlist = async (
-    rpc: Rpc<SolanaRpcApi>,
+    rpc: Rpc<TrezoaRpcApi>,
     options: BlocklistOptions,
     signer: TransactionModifyingSigner,
     rpcUrl: string,
@@ -187,7 +187,7 @@ export const removeAddressFromAllowlist = async (
         validateBlocklistOptions(options);
 
         // Create RPC subscriptions for confirmation
-        const rpcSubscriptions = createSolanaRpcSubscriptions(rpcUrl.replace('http', 'ws'));
+        const rpcSubscriptions = createTrezoaRpcSubscriptions(rpcUrl.replace('http', 'ws'));
 
         // Create allowlist removal transaction using SDK
         const transaction = await createRemoveFromAllowlistTransaction(

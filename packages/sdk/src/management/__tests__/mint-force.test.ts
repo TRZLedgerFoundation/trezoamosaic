@@ -1,10 +1,10 @@
-import type { Address, Rpc, SolanaRpcApi, Instruction } from '@solana/kit';
-import { TOKEN_2022_PROGRAM_ADDRESS } from '@solana-program/token-2022';
+import type { Address, Rpc, TrezoaRpcApi, Instruction } from '@trezoa/kit';
+import { TOKEN_2022_PROGRAM_ADDRESS } from '@trezoa-program/token-2022';
 import { createMockSigner, createMockRpc } from '../../__tests__/test-utils';
 import { TOKEN_ACL_PROGRAM_ID } from '../../token-acl';
 
 describe('non-SRFC-37: mint/force-transfer should not include permissionless thaw', () => {
-    let rpc: Rpc<SolanaRpcApi>;
+    let rpc: Rpc<TrezoaRpcApi>;
     const mint = 'Mint777777777777777777777777777777777777777' as Address;
     const wallet = 'Wall777777777777777777777777777777777777777' as Address;
     const feePayer = createMockSigner('Fee777777777777777777777777777777777777');

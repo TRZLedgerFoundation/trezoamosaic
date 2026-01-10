@@ -8,9 +8,9 @@ import {
     appendTransactionMessageInstructions,
     type Instruction,
     type Rpc,
-    type SolanaRpcApi,
+    type TrezoaRpcApi,
     type TransactionSigner,
-} from '@solana/kit';
+} from '@trezoa/kit';
 import type { FullTransaction } from '../transaction-util';
 import { getMintDetails, isDefaultAccountStateSetFrozen, resolveTokenAccount } from '../transaction-util';
 import {
@@ -27,15 +27,15 @@ import {
     getFreezeAccountInstruction,
     getThawAccountInstruction,
     TOKEN_2022_PROGRAM_ADDRESS,
-} from '@solana-program/token-2022';
+} from '@trezoa-program/token-2022';
 
-export const isAblAllowlist = async (rpc: Rpc<SolanaRpcApi>, listConfig: Address) => {
+export const isAblAllowlist = async (rpc: Rpc<TrezoaRpcApi>, listConfig: Address) => {
     const list = await getList({ rpc, listConfig });
     return list.mode === Mode.Allow;
 };
 
 export const getAddToAllowlistInstructions = async (
-    rpc: Rpc<SolanaRpcApi>,
+    rpc: Rpc<TrezoaRpcApi>,
     mint: Address,
     account: Address,
     authority: Address | TransactionSigner<string>,
@@ -86,7 +86,7 @@ export const getAddToAllowlistInstructions = async (
 };
 
 export const createAddToAllowlistTransaction = async (
-    rpc: Rpc<SolanaRpcApi>,
+    rpc: Rpc<TrezoaRpcApi>,
     mint: Address,
     account: Address,
     authority: Address | TransactionSigner<string>,
@@ -103,7 +103,7 @@ export const createAddToAllowlistTransaction = async (
 };
 
 export const getRemoveFromAllowlistInstructions = async (
-    rpc: Rpc<SolanaRpcApi>,
+    rpc: Rpc<TrezoaRpcApi>,
     mint: Address,
     account: Address,
     authority: Address | TransactionSigner<string>,
@@ -161,7 +161,7 @@ export const getRemoveFromAllowlistInstructions = async (
 };
 
 export const createRemoveFromAllowlistTransaction = async (
-    rpc: Rpc<SolanaRpcApi>,
+    rpc: Rpc<TrezoaRpcApi>,
     mint: Address,
     account: Address,
     authority: Address | TransactionSigner<string>,

@@ -1,7 +1,7 @@
-import { type Address, fetchEncodedAccount, type Rpc, type SolanaRpcApi } from '@solana/kit';
-import { TOKEN_2022_PROGRAM_ADDRESS, decodeMint } from '@solana-program/token-2022';
+import { type Address, fetchEncodedAccount, type Rpc, type TrezoaRpcApi } from '@trezoa/kit';
+import { TOKEN_2022_PROGRAM_ADDRESS, decodeMint } from '@trezoa-program/token-2022';
 
-export const getTokenExtensions = async (rpc: Rpc<SolanaRpcApi>, mintAddress: Address): Promise<string[]> => {
+export const getTokenExtensions = async (rpc: Rpc<TrezoaRpcApi>, mintAddress: Address): Promise<string[]> => {
     const encodedAccount = await fetchEncodedAccount(rpc, mintAddress);
 
     if (!encodedAccount.exists) {
@@ -13,7 +13,7 @@ export const getTokenExtensions = async (rpc: Rpc<SolanaRpcApi>, mintAddress: Ad
         throw new Error(`Not a Token-2022 mint (owner: ${encodedAccount.programAddress})`);
     }
 
-    // Decode mint data using gill's decodeMint
+    // Decode mint data using trezoagill's decodeMint
     const decodedMint = decodeMint(encodedAccount);
 
     // Get extensions

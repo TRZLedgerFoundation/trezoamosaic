@@ -1,4 +1,4 @@
-import { type Address, type TransactionModifyingSigner, isAddress } from '@solana/kit';
+import { type Address, type TransactionModifyingSigner, isAddress } from '@trezoa/kit';
 import { createForceBurnTransaction, validatePermanentDelegateForBurn } from '@mosaic/sdk';
 import { executeTokenAction } from './token-action';
 
@@ -29,7 +29,7 @@ function validateForceBurnOptions(options: ForceBurnOptions): void {
         throw new Error('Mint address, from address, and amount are required');
     }
 
-    // Validate Solana address format
+    // Validate Trezoa address format
     if (!isAddress(options.mintAddress)) {
         throw new Error('Invalid mint address format');
     }

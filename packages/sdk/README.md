@@ -18,17 +18,17 @@ pnpm add @mosaic/sdk
 npm i @mosaic/sdk
 ```
 
-The SDK uses `@solana/kit` (RPC + SPL helpers) transitively; you can import helpers/types directly from `@solana/kit` in your app.
+The SDK uses `@trezoa/kit` (RPC + TPL helpers) transitively; you can import helpers/types directly from `@trezoa/kit` in your app.
 
-> **Note on Solana Kit v5:** This SDK uses the Solana Kit v5.0 ecosystem (`@solana/kit@^5.0.0`, `@solana/sysvars@^5.0.0`, `@solana-program/token-2022@^0.6.1`). These packages are published to npm under an experimental/next tag and may not appear as the "latest" version on npmjs.com. The monorepo uses pnpm overrides (in the root `pnpm-lock.yaml`) to ensure consistent version resolution across all `@solana/*` packages. See the [Anza Kit repository](https://github.com/anza-xyz/kit) for upstream details.
+> **Note on Trezoa Kit v5:** This SDK uses the Trezoa Kit v5.0 ecosystem (`@trezoa/kit@^5.0.0`, `@trezoa/sysvars@^5.0.0`, `@trezoa-program/token-2022@^0.6.1`). These packages are published to npm under an experimental/next tag and may not appear as the "latest" version on npmjs.com. The monorepo uses pnpm overrides (in the root `pnpm-lock.yaml`) to ensure consistent version resolution across all `@trezoa/*` packages. See the [Trezoa-team Kit repository](https://github.com/anza-xyz/kit) for upstream details.
 
 ## Quick start
 
 ```ts
 import { createStablecoinInitTransaction, transactionToB64 } from '@mosaic/sdk';
-import { createSolanaRpc, generateKeyPairSigner } from '@solana/kit';
+import { createTrezoaRpc, generateKeyPairSigner } from '@trezoa/kit';
 
-const rpc = createSolanaRpc('https://api.devnet.solana.com');
+const rpc = createTrezoaRpc('https://api.devnet.trezoa.com');
 const mint = await generateKeyPairSigner();
 const feePayer = YOUR_FEEPAYER_ADDRESS;
 
@@ -68,9 +68,9 @@ import {
     createArcadeTokenInitTransaction,
     createTokenizedSecurityInitTransaction,
 } from '@mosaic/sdk';
-import { createSolanaRpc, generateKeyPairSigner } from '@solana/kit';
+import { createTrezoaRpc, generateKeyPairSigner } from '@trezoa/kit';
 
-const rpc = createSolanaRpc('https://api.devnet.solana.com');
+const rpc = createTrezoaRpc('https://api.devnet.trezoa.com');
 const feePayer = YOUR_FEEPAYER_ADDRESS;
 const mint = await generateKeyPairSigner();
 
@@ -124,9 +124,9 @@ await createTokenizedSecurityInitTransaction(
 
 ```ts
 import { createMintToTransaction } from '@mosaic/sdk';
-import { createSolanaRpc, generateKeyPairSigner } from '@solana/kit';
+import { createTrezoaRpc, generateKeyPairSigner } from '@trezoa/kit';
 
-const rpc = createSolanaRpc('https://api.devnet.solana.com');
+const rpc = createTrezoaRpc('https://api.devnet.trezoa.com');
 const feePayer = await generateKeyPairSigner();
 const mintAuthority = feePayer; // or a different signer
 
@@ -163,7 +163,7 @@ Create and manage allowlists/blocklists that gate who can thaw/hold tokens.
 
 ```ts
 import { getCreateListTransaction, getAddWalletTransaction, getRemoveWalletTransaction, getList } from '@mosaic/sdk';
-import { generateKeyPairSigner } from 'gill';
+import { generateKeyPairSigner } from 'trezoagill';
 
 const authority = await generateKeyPairSigner();
 const payer = authority;
@@ -256,7 +256,7 @@ await getThawPermissionlessTransaction({
 
 ```ts
 import { getUpdateAuthorityTransaction } from '@mosaic/sdk';
-import { AuthorityType } from 'gill/programs/token';
+import { AuthorityType } from 'trezoagill/programs/token';
 
 // Transfer freeze authority to a new address
 await getUpdateAuthorityTransaction({

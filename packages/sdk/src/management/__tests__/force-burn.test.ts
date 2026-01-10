@@ -1,10 +1,10 @@
-import type { Address, Rpc, SolanaRpcApi } from '@solana/kit';
+import type { Address, Rpc, TrezoaRpcApi } from '@trezoa/kit';
 import { createMockSigner, createMockRpc, seedTokenAccount } from '../../__tests__/test-utils';
 import { TOKEN_ACL_PROGRAM_ID } from '../../token-acl';
-import { TOKEN_2022_PROGRAM_ADDRESS } from '@solana-program/token-2022';
+import { TOKEN_2022_PROGRAM_ADDRESS } from '@trezoa-program/token-2022';
 
 describe('force-burn', () => {
-    let rpc: Rpc<SolanaRpcApi>;
+    let rpc: Rpc<TrezoaRpcApi>;
     const mint = 'Mint777777777777777777777777777777777777777' as Address;
     const wallet = 'Wall777777777777777777777777777777777777777' as Address;
     const wallet2 = 'Wall2222222222222222222222222222222222222' as Address;

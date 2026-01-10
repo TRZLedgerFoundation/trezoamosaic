@@ -40,7 +40,7 @@ export function DecimalsSelector({ value, onChange, id }: DecimalsSelectorProps)
                 </button>
             </div>
             <p className="text-xs text-muted-foreground">
-                {value === '6' ? 'Standard for stablecoins (like USDC)' : 'Standard for native tokens (like SOL)'}
+                {value === '6' ? 'Standard for stablecoins (like USDC)' : 'Standard for native tokens (like TRZ)'}
             </p>
         </div>
     );

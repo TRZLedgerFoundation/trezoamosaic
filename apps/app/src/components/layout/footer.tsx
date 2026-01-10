@@ -7,7 +7,7 @@ export function Footer() {
             <div className="max-w-6xl mx-auto flex h-16 items-center justify-between">
                 <p className="text-sm text-muted-foreground">
                     <a
-                        href="https://github.com/solana-foundation/mosaic/blob/main/LICENSE"
+                        href="https://github.com/trezoa-foundation/mosaic/blob/main/LICENSE"
                         className="underline hover:text-primary"
                         target="_blank"
                         rel="noopener noreferrer"
@@ -17,7 +17,7 @@ export function Footer() {
                 </p>
                 <div className="flex gap-4 text-muted-foreground">
                     <a
-                        href="https://github.com/solana-foundation/mosaic"
+                        href="https://github.com/trezoa-foundation/mosaic"
                         target="_blank"
                         rel="noopener noreferrer"
                         aria-label="GitHub"
@@ -26,7 +26,7 @@ export function Footer() {
                         <GithubIcon className="w-5 h-5" />
                     </a>
                     <a
-                        href="https://x.com/solana_devs"
+                        href="https://x.com/trezoa_devs"
                         target="_blank"
                         rel="noopener noreferrer"
                         aria-label="Twitter"
@@ -35,13 +35,13 @@ export function Footer() {
                         <TwitterIcon className="w-5 h-5" />
                     </a>
                     <a
-                        href="https://solana.com"
+                        href="https://trezoa.com"
                         target="_blank"
                         rel="noopener noreferrer"
-                        aria-label="Solana"
+                        aria-label="Trezoa"
                         className="hover:text-primary"
                     >
-                        <Image src="/solanaLogoMark.svg" alt="Solana" width={20} height={20} />
+                        <Image src="/trezoaLogoMark.svg" alt="Trezoa" width={20} height={20} />
                     </a>
                 </div>
             </div>

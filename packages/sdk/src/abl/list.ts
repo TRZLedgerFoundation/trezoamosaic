@@ -8,9 +8,9 @@ import {
     type Base58EncodedBytes,
     type Instruction,
     type Rpc,
-    type SolanaRpcApi,
+    type TrezoaRpcApi,
     type TransactionSigner,
-} from '@solana/kit';
+} from '@trezoa/kit';
 import type { FullTransaction } from '../transaction-util';
 import { ABL_PROGRAM_ID } from './utils';
 import {
@@ -67,13 +67,13 @@ export const getCreateListInstructions = async (input: {
  * uses the latest blockhash for proper transaction construction.
  *
  * @param input - Configuration parameters for the transaction
- * @param input.rpc - The Solana RPC client instance
+ * @param input.rpc - The Trezoa RPC client instance
  * @param input.payer - The transaction fee payer signer
  * @param input.authority - The authority signer who will control the list configuration
  * @returns Promise containing the full transaction and the list configuration address
  */
 export const getCreateListTransaction = async (input: {
-    rpc: Rpc<SolanaRpcApi>;
+    rpc: Rpc<TrezoaRpcApi>;
     payer: TransactionSigner<string>;
     authority: TransactionSigner<string>;
     mint: Address;
@@ -135,11 +135,11 @@ export interface List extends ListConfig {
  * addresses that are part of the list.
  *
  * @param input - Parameters for fetching the list configuration
- * @param input.rpc - The Solana RPC client instance
+ * @param input.rpc - The Trezoa RPC client instance
  * @param input.listConfig - The address of the list configuration account
  * @returns Promise containing the list configuration data
  */
-export const getListConfig = async (input: { rpc: Rpc<SolanaRpcApi>; listConfig: Address }): Promise<ListConfig> => {
+export const getListConfig = async (input: { rpc: Rpc<TrezoaRpcApi>; listConfig: Address }): Promise<ListConfig> => {
     const listConfig = await fetchListConfig(input.rpc, input.listConfig);
     return {
         listConfig: listConfig.address,
@@ -157,11 +157,11 @@ export const getListConfig = async (input: { rpc: Rpc<SolanaRpcApi>; listConfig:
  * wallet accounts associated with the list configuration.
  *
  * @param input - Parameters for fetching the complete list data
- * @param input.rpc - The Solana RPC client instance
+ * @param input.rpc - The Trezoa RPC client instance
  * @param input.listConfig - The address of the list configuration account
  * @returns Promise containing the complete list data including wallet addresses
  */
-export const getList = async (input: { rpc: Rpc<SolanaRpcApi>; listConfig: Address }): Promise<List> => {
+export const getList = async (input: { rpc: Rpc<TrezoaRpcApi>; listConfig: Address }): Promise<List> => {
     const listConfig = await getListConfig(input);
 
     const accounts = await input.rpc
@@ -202,11 +202,11 @@ export const getList = async (input: { rpc: Rpc<SolanaRpcApi>; listConfig: Addre
  * addresses that are part of the list.
  *
  * @param input - Parameters for fetching the list configuration
- * @param input.rpc - The Solana RPC client instance
+ * @param input.rpc - The Trezoa RPC client instance
  * @param input.listConfig - The address of the list configuration account
  * @returns Promise containing the list configuration data
  */
-export const getAllListConfigs = async (input: { rpc: Rpc<SolanaRpcApi> }): Promise<ListConfig[]> => {
+export const getAllListConfigs = async (input: { rpc: Rpc<TrezoaRpcApi> }): Promise<ListConfig[]> => {
     const accounts = await input.rpc
         .getProgramAccounts(ABL_PROGRAM_ID, {
             encoding: 'base64',

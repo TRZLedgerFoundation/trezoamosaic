@@ -1,21 +1,21 @@
 import type {
     Address,
     Rpc,
-    SolanaRpcApi,
+    TrezoaRpcApi,
     TransactionMessageWithFeePayer,
     TransactionVersion,
     TransactionMessageWithBlockhashLifetime,
     Commitment,
     Signature,
-} from '@solana/kit';
+} from '@trezoa/kit';
 import type { FullTransaction } from '../../transaction-util';
 import {
     getSignatureFromTransaction,
     signTransactionMessageWithSigners,
     sendAndConfirmTransactionFactory,
-} from '@solana/kit';
+} from '@trezoa/kit';
 import type { Client } from './setup';
-import { findAssociatedTokenPda, TOKEN_2022_PROGRAM_ADDRESS } from '@solana-program/token-2022';
+import { findAssociatedTokenPda, TOKEN_2022_PROGRAM_ADDRESS } from '@trezoa-program/token-2022';
 import {
     inspectToken,
     type AclMode,
@@ -60,7 +60,7 @@ export async function sendAndConfirmTransaction(
  * Get token balance for a wallet
  */
 export async function getBalance(
-    rpc: Rpc<SolanaRpcApi>,
+    rpc: Rpc<TrezoaRpcApi>,
     wallet: Address,
     mint: Address,
     commitment: Commitment = DEFAULT_COMMITMENT,
@@ -81,7 +81,7 @@ export async function getBalance(
  * Check if an account is frozen
  */
 export async function isAccountFrozen(
-    rpc: Rpc<SolanaRpcApi>,
+    rpc: Rpc<TrezoaRpcApi>,
     wallet: Address,
     mint: Address,
     commitment: Commitment = DEFAULT_COMMITMENT,
@@ -108,7 +108,7 @@ export function assertTxSuccess(signature: string): void {
 }
 
 export async function assertMemo(
-    rpc: Rpc<SolanaRpcApi>,
+    rpc: Rpc<TrezoaRpcApi>,
     transactionId: Signature,
     memo: string,
     commitment: Commitment = 'confirmed', // method doesn't support processed commitment
@@ -133,7 +133,7 @@ export async function assertTxFailure(client: Client, transactionToThrow: FullTr
  * Assert single balance for a wallet
  */
 export async function assertBalance(
-    rpc: Rpc<SolanaRpcApi>,
+    rpc: Rpc<TrezoaRpcApi>,
     wallet: Address,
     mint: Address,
     expectedAmount: bigint,
@@ -152,7 +152,7 @@ export async function assertBalance(
  * Assert multiple balances at once
  */
 export async function assertBalances(
-    rpc: Rpc<SolanaRpcApi>,
+    rpc: Rpc<TrezoaRpcApi>,
     assertions: Array<{
         wallet: Address;
         mint: Address;
@@ -184,7 +184,7 @@ export interface AssertTokenOptions {
  * Assert token state matches expected values
  */
 export async function assertToken(
-    rpc: Rpc<SolanaRpcApi>,
+    rpc: Rpc<TrezoaRpcApi>,
     mintAddress: Address,
     expected: AssertTokenOptions,
     commitment: Commitment = DEFAULT_COMMITMENT,

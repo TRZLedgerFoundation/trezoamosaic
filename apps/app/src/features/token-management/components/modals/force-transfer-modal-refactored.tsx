@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { forceTransferTokens, type ForceTransferOptions } from '@/features/token-management/lib/force-transfer';
-import type { TransactionModifyingSigner } from '@solana/kit';
-import { useConnector } from '@solana/connector/react';
+import type { TransactionModifyingSigner } from '@trezoa/kit';
+import { useConnector } from '@trezoa/connector/react';
 
 import { ExtensionModal } from '@/components/shared/modals/extension-modal';
 import { ModalWarning } from '@/components/shared/modals/modal-warning';
@@ -9,7 +9,7 @@ import { ModalError } from '@/components/shared/modals/modal-error';
 import { ModalFooter } from '@/components/shared/modals/modal-footer';
 import { TransactionSuccessView } from '@/components/shared/modals/transaction-success-view';
 import { UnauthorizedView } from '@/components/shared/modals/unauthorized-view';
-import { SolanaAddressInput } from '@/components/shared/form/solana-address-input';
+import { TrezoaAddressInput } from '@/components/shared/form/trezoa-address-input';
 import { AmountInput } from '@/components/shared/form/amount-input';
 import { useTransactionModal } from '@/features/token-management/hooks/use-transaction-modal';
 import { useAuthority } from '@/features/token-management/hooks/use-authority';
@@ -38,7 +38,7 @@ export function ForceTransferModalContent({
     transactionSendingSigner,
 }: ForceTransferModalContentProps) {
     const { cluster } = useConnector();
-    const { validateSolanaAddress, validateAmount } = useInputValidation();
+    const { validateTrezoaAddress, validateAmount } = useInputValidation();
     const { hasPermanentDelegate, walletAddress } = useAuthority({ permanentDelegate });
     const {
         isLoading,
@@ -62,12 +62,12 @@ export function ForceTransferModalContent({
             return;
         }
 
-        if (!validateSolanaAddress(fromAddress)) {
+        if (!validateTrezoaAddress(fromAddress)) {
             setError(MODAL_ERRORS.INVALID_SOURCE_ADDRESS);
             return;
         }
 
-        if (!validateSolanaAddress(toAddress)) {
+        if (!validateTrezoaAddress(toAddress)) {
             setError(MODAL_ERRORS.INVALID_DESTINATION_ADDRESS);
             return;
         }
@@ -137,9 +137,9 @@ export function ForceTransferModalContent({
     const getDisabledLabel = (): string | undefined => {
         if (!walletAddress) return MODAL_BUTTONS.CONNECT_WALLET;
         if (!fromAddress.trim()) return MODAL_BUTTONS.ENTER_SOURCE;
-        if (fromAddress.trim() && !validateSolanaAddress(fromAddress)) return MODAL_BUTTONS.INVALID_ADDRESS;
+        if (fromAddress.trim() && !validateTrezoaAddress(fromAddress)) return MODAL_BUTTONS.INVALID_ADDRESS;
         if (!toAddress.trim()) return MODAL_BUTTONS.ENTER_DESTINATION;
-        if (toAddress.trim() && !validateSolanaAddress(toAddress)) return MODAL_BUTTONS.INVALID_ADDRESS;
+        if (toAddress.trim() && !validateTrezoaAddress(toAddress)) return MODAL_BUTTONS.INVALID_ADDRESS;
         if (!amount.trim()) return MODAL_BUTTONS.ENTER_AMOUNT;
         if (amount.trim() && !validateAmount(amount)) return MODAL_BUTTONS.INVALID_AMOUNT;
         return undefined;
@@ -178,7 +178,7 @@ export function ForceTransferModalContent({
                 />
             }
         >
-            <SolanaAddressInput
+            <TrezoaAddressInput
                 label={MODAL_LABELS.SOURCE_ADDRESS}
                 value={fromAddress}
                 onChange={setFromAddress}
@@ -188,7 +188,7 @@ export function ForceTransferModalContent({
                 disabled={isLoading}
             />
 
-            <SolanaAddressInput
+            <TrezoaAddressInput
                 label={MODAL_LABELS.DESTINATION_ADDRESS}
                 value={toAddress}
                 onChange={setToAddress}
@@ -235,8 +235,8 @@ export function ForceTransferModalContent({
                     !fromAddress.trim() ||
                     !toAddress.trim() ||
                     !amount.trim() ||
-                    !validateSolanaAddress(fromAddress) ||
-                    !validateSolanaAddress(toAddress) ||
+                    !validateTrezoaAddress(fromAddress) ||
+                    !validateTrezoaAddress(toAddress) ||
                     !validateAmount(amount)
                 }
                 disabledLabel={getDisabledLabel()}

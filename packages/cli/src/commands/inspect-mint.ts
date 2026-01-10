@@ -2,9 +2,9 @@ import { Command } from 'commander';
 import chalk from 'chalk';
 import ora from 'ora';
 import { createRpcClient } from '../utils/rpc.js';
-import { type Address } from '@solana/kit';
-import { TOKEN_2022_PROGRAM_ADDRESS, decodeMint } from '@solana-program/token-2022';
-import { fetchEncodedAccount } from '@solana/accounts';
+import { type Address } from '@trezoa/kit';
+import { TOKEN_2022_PROGRAM_ADDRESS, decodeMint } from '@trezoa-program/token-2022';
+import { fetchEncodedAccount } from '@trezoa/accounts';
 
 interface InspectMintOptions {
     mintAddress: string;
@@ -37,7 +37,7 @@ export const inspectMintCommand = new Command('inspect-mint')
 
             spinner.text = 'Loading mint account...';
 
-            // Fetch account using @solana/kit
+            // Fetch account using @trezoa/kit
             const mintAddress = options.mintAddress as Address;
             const encodedAccount = await fetchEncodedAccount(rpc, mintAddress);
 
@@ -52,7 +52,7 @@ export const inspectMintCommand = new Command('inspect-mint')
 
             spinner.text = 'Parsing mint data...';
 
-            // Decode mint data using gill's decodeMint
+            // Decode mint data using trezoagill's decodeMint
             const decodedMint = decodeMint(encodedAccount);
 
             // Get extensions

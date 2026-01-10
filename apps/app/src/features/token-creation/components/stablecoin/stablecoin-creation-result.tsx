@@ -6,8 +6,8 @@ import { DollarSign, CheckCircle, Settings } from 'lucide-react';
 import { StablecoinCreationResult } from '@/types/token';
 import Link from 'next/link';
 import { CopyableExplorerField } from '@/components/copyable-explorer-field';
-import { useCluster } from '@solana/connector/react';
-import { getEffectiveClusterName } from '@/lib/solana/explorer';
+import { useCluster } from '@trezoa/connector/react';
+import { getEffectiveClusterName } from '@/lib/trezoa/explorer';
 
 interface StablecoinCreationResultProps {
     result: StablecoinCreationResult;

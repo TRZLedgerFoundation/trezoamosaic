@@ -1,18 +1,18 @@
 import {
-    createSolanaRpc,
+    createTrezoaRpc,
     type Address,
     type Rpc,
-    type SolanaRpcApi,
+    type TrezoaRpcApi,
     type TransactionModifyingSigner,
     isAddress,
-} from '@solana/kit';
+} from '@trezoa/kit';
 import {
     getTokenPauseState,
     type PauseTokenResult,
     createPauseTransaction,
     createResumeTransaction,
 } from '@mosaic/sdk';
-import { getRpcUrl } from '@/lib/solana/rpc';
+import { getRpcUrl } from '@/lib/trezoa/rpc';
 import { executeTokenAction } from './token-action';
 
 export interface PauseOptions {
@@ -32,7 +32,7 @@ function validatePauseOptions(options: PauseOptions): void {
         throw new Error('Mint address is required');
     }
 
-    // Validate Solana address format
+    // Validate Trezoa address format
     if (!isAddress(options.mintAddress)) {
         throw new Error('Invalid mint address format');
     }
@@ -124,7 +124,7 @@ export const checkTokenPauseState = async (mintAddress: string, rpcUrl?: string)
         }
 
         const url = getRpcUrl(rpcUrl);
-        const rpc: Rpc<SolanaRpcApi> = createSolanaRpc(url);
+        const rpc: Rpc<TrezoaRpcApi> = createTrezoaRpc(url);
 
         return await getTokenPauseState(rpc, mintAddress as Address);
     } catch (error) {

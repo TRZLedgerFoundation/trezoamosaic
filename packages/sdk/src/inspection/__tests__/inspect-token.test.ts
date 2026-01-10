@@ -1,6 +1,6 @@
-import { address, type Address } from '@solana/kit';
-import { TOKEN_2022_PROGRAM_ADDRESS } from '@solana-program/token-2022';
-// TOKEN_PROGRAM_ADDRESS is for the original SPL Token program, defined locally for tests
+import { address, type Address } from '@trezoa/kit';
+import { TOKEN_2022_PROGRAM_ADDRESS } from '@trezoa-program/token-2022';
+// TOKEN_PROGRAM_ADDRESS is for the original TPL Token program, defined locally for tests
 const TOKEN_PROGRAM_ADDRESS = 'TokenkegQfeZyiNwAJbNbGKPFXCWuBvf9Ss623VQ5DA' as Address;
 import {
     inspectToken,
@@ -12,22 +12,22 @@ import {
 } from '../inspect-token';
 import type { TokenInspectionResult } from '../types';
 
-// Mock @solana/kit modules
-jest.mock('@solana/kit', () => ({
-    ...jest.requireActual('@solana/kit'),
+// Mock @trezoa/kit modules
+jest.mock('@trezoa/kit', () => ({
+    ...jest.requireActual('@trezoa/kit'),
     fetchEncodedAccount: jest.fn(),
     getAddressEncoder: jest.fn(() => ({
         encode: (addr: Address) => Buffer.from(addr as string),
     })),
 }));
 
-jest.mock('@solana-program/token-2022', () => ({
-    ...jest.requireActual('@solana-program/token-2022'),
+jest.mock('@trezoa-program/token-2022', () => ({
+    ...jest.requireActual('@trezoa-program/token-2022'),
     decodeMint: jest.fn(),
 }));
 
-import { fetchEncodedAccount } from '@solana/kit';
-import { decodeMint } from '@solana-program/token-2022';
+import { fetchEncodedAccount } from '@trezoa/kit';
+import { decodeMint } from '@trezoa-program/token-2022';
 const mockMintAddress = address('AqQw6rR2Qw2LRp5MNDoAuCEiBzKBdZx2drF6DCJx4w5H');
 const mockAuthority = address('FA4EafWTpd3WEpB5hzsMjPwWnFBzjN25nKHsStgxBpiT');
 

@@ -1,9 +1,9 @@
 import { TokenDisplay } from '@/types/token';
 import { useEffect, useState, useCallback, useMemo, useImperativeHandle, forwardRef, type ReactNode } from 'react';
-import { useConnector } from '@solana/connector/react';
+import { useConnector } from '@trezoa/connector/react';
 import { getTokenSupply } from '@/lib/utils';
 import { getTokenPatternsLabel } from '@/lib/token/token-type-utils';
-import { type Address, createSolanaRpc } from '@solana/kit';
+import { type Address, createTrezoaRpc } from '@trezoa/kit';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
@@ -49,7 +49,7 @@ export const TokenOverview = forwardRef<TokenOverviewRef, TokenOverviewProps>(fu
 
     const rpc = useMemo(() => {
         if (!cluster?.url) return null;
-        return createSolanaRpc(cluster.url);
+        return createTrezoaRpc(cluster.url);
     }, [cluster?.url]);
     const [currentSupply, setCurrentSupply] = useState<string>(token.supply || '0');
     const [isLoadingSupply, setIsLoadingSupply] = useState(false);

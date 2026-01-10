@@ -62,8 +62,8 @@ logs
 .temp/
 .pnpm-store/
 
-# Solana specific
-.anchor/
+# Trezoa specific
+.trezoa/
 target/
 test-ledger/
 

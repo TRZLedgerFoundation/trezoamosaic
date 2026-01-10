@@ -1,9 +1,9 @@
 import { useState, useEffect } from 'react';
 import { freezeTokenAccount } from '@/features/token-management/lib/freeze';
 import { thawTokenAccount } from '@/features/token-management/lib/thaw';
-import type { TransactionModifyingSigner } from '@solana/kit';
+import type { TransactionModifyingSigner } from '@trezoa/kit';
 import { Snowflake, Sun, LucideIcon } from 'lucide-react';
-import { useConnector } from '@solana/connector/react';
+import { useConnector } from '@trezoa/connector/react';
 
 import { ExtensionModal } from '@/components/shared/modals/extension-modal';
 import { ModalWarning } from '@/components/shared/modals/modal-warning';
@@ -11,7 +11,7 @@ import { ModalError } from '@/components/shared/modals/modal-error';
 import { ModalFooter } from '@/components/shared/modals/modal-footer';
 import { TransactionSuccessView } from '@/components/shared/modals/transaction-success-view';
 import { UnauthorizedView } from '@/components/shared/modals/unauthorized-view';
-import { SolanaAddressInput } from '@/components/shared/form/solana-address-input';
+import { TrezoaAddressInput } from '@/components/shared/form/trezoa-address-input';
 import { useTransactionModal } from '@/features/token-management/hooks/use-transaction-modal';
 import { useAuthority } from '@/features/token-management/hooks/use-authority';
 import { useInputValidation } from '@/hooks/use-input-validation';
@@ -98,7 +98,7 @@ export function FreezeThawModalContent({
     mode,
 }: FreezeThawModalContentProps) {
     const { cluster } = useConnector();
-    const { validateSolanaAddress } = useInputValidation();
+    const { validateTrezoaAddress } = useInputValidation();
     const { hasFreezeAuthority, walletAddress } = useAuthority({ freezeAuthority });
     const {
         isLoading,
@@ -137,7 +137,7 @@ export function FreezeThawModalContent({
             return;
         }
 
-        if (!validateSolanaAddress(targetWallet)) {
+        if (!validateTrezoaAddress(targetWallet)) {
             setError('Invalid wallet address');
             return;
         }
@@ -146,7 +146,7 @@ export function FreezeThawModalContent({
         setError('');
 
         try {
-            const rpcUrl = cluster?.url || process.env.NEXT_PUBLIC_SOLANA_RPC_URL || 'https://api.devnet.solana.com';
+            const rpcUrl = cluster?.url || process.env.NEXT_PUBLIC_SOLANA_RPC_URL || 'https://api.devnet.trezoa.com';
 
             const options = {
                 walletAddress: targetWallet,
@@ -183,7 +183,7 @@ export function FreezeThawModalContent({
     const getDisabledLabel = (): string | undefined => {
         if (!walletAddress) return MODAL_BUTTONS.CONNECT_WALLET;
         if (!targetWallet.trim()) return MODAL_BUTTONS.ENTER_ADDRESS;
-        if (targetWallet.trim() && !validateSolanaAddress(targetWallet)) return MODAL_BUTTONS.INVALID_ADDRESS;
+        if (targetWallet.trim() && !validateTrezoaAddress(targetWallet)) return MODAL_BUTTONS.INVALID_ADDRESS;
         return undefined;
     };
 
@@ -224,7 +224,7 @@ export function FreezeThawModalContent({
                 />
             }
         >
-            <SolanaAddressInput
+            <TrezoaAddressInput
                 label="Wallet Address"
                 value={targetWallet}
                 onChange={setTargetWallet}
@@ -258,7 +258,7 @@ export function FreezeThawModalContent({
                 actionLabel={actionLabel}
                 loadingLabel={loadingLabel}
                 actionIcon={Icon}
-                actionDisabled={!walletAddress || !targetWallet.trim() || !validateSolanaAddress(targetWallet)}
+                actionDisabled={!walletAddress || !targetWallet.trim() || !validateTrezoaAddress(targetWallet)}
                 disabledLabel={getDisabledLabel()}
                 actionClassName={actionClassName}
             />

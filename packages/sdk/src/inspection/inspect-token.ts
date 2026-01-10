@@ -1,5 +1,5 @@
-import { type Address, type Commitment, fetchEncodedAccount, type Rpc, type SolanaRpcApi } from '@solana/kit';
-import { TOKEN_2022_PROGRAM_ADDRESS, decodeMint } from '@solana-program/token-2022';
+import { type Address, type Commitment, fetchEncodedAccount, type Rpc, type TrezoaRpcApi } from '@trezoa/kit';
+import { TOKEN_2022_PROGRAM_ADDRESS, decodeMint } from '@trezoa-program/token-2022';
 import type {
     AclMode,
     ScaledUiAmountInfo,
@@ -70,7 +70,7 @@ export function detectTokenPatterns(extensions: TokenExtension[]): TokenType[] {
 }
 
 export async function inspectToken(
-    rpc: Rpc<SolanaRpcApi>,
+    rpc: Rpc<TrezoaRpcApi>,
     mintAddress: Address,
     commitment: Commitment = 'confirmed',
 ): Promise<TokenInspectionResult> {
@@ -273,7 +273,7 @@ export async function inspectToken(
 }
 
 export async function getTokenMetadata(
-    rpc: Rpc<SolanaRpcApi>,
+    rpc: Rpc<TrezoaRpcApi>,
     mintAddress: Address,
     commitment?: Commitment,
 ): Promise<TokenMetadata | null> {
@@ -282,7 +282,7 @@ export async function getTokenMetadata(
 }
 
 export async function getTokenExtensionsDetailed(
-    rpc: Rpc<SolanaRpcApi>,
+    rpc: Rpc<TrezoaRpcApi>,
     mintAddress: Address,
     commitment?: Commitment,
 ): Promise<TokenExtension[]> {
@@ -337,7 +337,7 @@ export function inspectionResultToDashboardData(inspection: TokenInspectionResul
 
 // Convenience function to get complete token info for dashboard
 export async function getTokenDashboardData(
-    rpc: Rpc<SolanaRpcApi>,
+    rpc: Rpc<TrezoaRpcApi>,
     mintAddress: Address,
     commitment?: Commitment,
 ): Promise<TokenDashboardData> {

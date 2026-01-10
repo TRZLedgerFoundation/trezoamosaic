@@ -2,7 +2,7 @@ import { Command } from 'commander';
 import chalk from 'chalk';
 import { ABL_PROGRAM_ID, createArcadeTokenInitTransaction, TOKEN_ACL_PROGRAM_ID } from '@mosaic/sdk';
 import { createRpcClient, createRpcSubscriptions } from '../../utils/rpc.js';
-import { loadKeypair } from '../../utils/solana.js';
+import { loadKeypair } from '../../utils/trezoa.js';
 import {
     generateKeyPairSigner,
     signTransactionMessageWithSigners,
@@ -11,7 +11,7 @@ import {
     sendAndConfirmTransactionFactory,
     assertIsTransactionWithBlockhashLifetime,
     getSignatureFromTransaction,
-} from '@solana/kit';
+} from '@trezoa/kit';
 import { findListConfigPda } from '@token-acl/abl-sdk';
 import { findMintConfigPda } from '@token-acl/sdk';
 import { createSpinner, getGlobalOpts } from '../../utils/cli.js';
@@ -56,7 +56,7 @@ export const createArcadeTokenCommand = new Command('arcade-token')
         const spinner = createSpinner('Creating arcade token...', rawTx);
 
         try {
-            // Create Solana client
+            // Create Trezoa client
             const rpc = createRpcClient(rpcUrl);
             const rpcSubscriptions = createRpcSubscriptions(rpcUrl);
             const sendAndConfirmTransaction = sendAndConfirmTransactionFactory({ rpc, rpcSubscriptions });

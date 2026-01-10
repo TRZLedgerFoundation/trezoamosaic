@@ -1,4 +1,4 @@
-import type { Address } from '@solana/kit';
+import type { Address } from '@trezoa/kit';
 
 export interface TokenMetadata {
     name?: string;

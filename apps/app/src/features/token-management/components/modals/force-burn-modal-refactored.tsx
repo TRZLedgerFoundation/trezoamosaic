@@ -1,8 +1,8 @@
 import { useState, useEffect } from 'react';
 import { forceBurnTokens, type ForceBurnOptions } from '@/features/token-management/lib/force-burn';
-import type { TransactionModifyingSigner } from '@solana/kit';
+import type { TransactionModifyingSigner } from '@trezoa/kit';
 import { Flame } from 'lucide-react';
-import { useConnector } from '@solana/connector/react';
+import { useConnector } from '@trezoa/connector/react';
 
 import { ExtensionModal } from '@/components/shared/modals/extension-modal';
 import { ModalWarning } from '@/components/shared/modals/modal-warning';
@@ -10,7 +10,7 @@ import { ModalError } from '@/components/shared/modals/modal-error';
 import { ModalFooter } from '@/components/shared/modals/modal-footer';
 import { TransactionSuccessView } from '@/components/shared/modals/transaction-success-view';
 import { UnauthorizedView } from '@/components/shared/modals/unauthorized-view';
-import { SolanaAddressInput } from '@/components/shared/form/solana-address-input';
+import { TrezoaAddressInput } from '@/components/shared/form/trezoa-address-input';
 import { AmountInput } from '@/components/shared/form/amount-input';
 import { useTransactionModal } from '@/features/token-management/hooks/use-transaction-modal';
 import { useAuthority } from '@/features/token-management/hooks/use-authority';
@@ -41,7 +41,7 @@ export function ForceBurnModalContent({
     onSuccess,
 }: ForceBurnModalContentProps) {
     const { cluster } = useConnector();
-    const { validateSolanaAddress, validateAmount } = useInputValidation();
+    const { validateTrezoaAddress, validateAmount } = useInputValidation();
     const { hasPermanentDelegate, walletAddress } = useAuthority({ permanentDelegate });
     const {
         isLoading,
@@ -64,7 +64,7 @@ export function ForceBurnModalContent({
             return;
         }
 
-        if (!validateSolanaAddress(fromAddress)) {
+        if (!validateTrezoaAddress(fromAddress)) {
             setError(MODAL_ERRORS.INVALID_SOURCE_ADDRESS);
             return;
         }
@@ -78,7 +78,7 @@ export function ForceBurnModalContent({
         setError('');
 
         try {
-            const rpcUrl = cluster?.url || process.env.NEXT_PUBLIC_SOLANA_RPC_URL || 'https://api.devnet.solana.com';
+            const rpcUrl = cluster?.url || process.env.NEXT_PUBLIC_SOLANA_RPC_URL || 'https://api.devnet.trezoa.com';
 
             const options: ForceBurnOptions = {
                 mintAddress,
@@ -123,7 +123,7 @@ export function ForceBurnModalContent({
     const getDisabledLabel = (): string | undefined => {
         if (!walletAddress) return MODAL_BUTTONS.CONNECT_WALLET;
         if (!fromAddress.trim()) return MODAL_BUTTONS.ENTER_ADDRESS;
-        if (fromAddress.trim() && !validateSolanaAddress(fromAddress)) return MODAL_BUTTONS.INVALID_ADDRESS;
+        if (fromAddress.trim() && !validateTrezoaAddress(fromAddress)) return MODAL_BUTTONS.INVALID_ADDRESS;
         if (!amount.trim()) return MODAL_BUTTONS.ENTER_AMOUNT;
         if (amount.trim() && !validateAmount(amount)) return MODAL_BUTTONS.INVALID_AMOUNT;
         return undefined;
@@ -158,7 +158,7 @@ export function ForceBurnModalContent({
                 />
             }
         >
-            <SolanaAddressInput
+            <TrezoaAddressInput
                 label={MODAL_LABELS.BURN_FROM_ADDRESS}
                 value={fromAddress}
                 onChange={setFromAddress}
@@ -206,7 +206,7 @@ export function ForceBurnModalContent({
                     !walletAddress ||
                     !fromAddress.trim() ||
                     !amount.trim() ||
-                    !validateSolanaAddress(fromAddress) ||
+                    !validateTrezoaAddress(fromAddress) ||
                     !validateAmount(amount)
                 }
                 disabledLabel={getDisabledLabel()}

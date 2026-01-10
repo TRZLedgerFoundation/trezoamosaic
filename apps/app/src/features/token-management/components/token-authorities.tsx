@@ -5,10 +5,10 @@ import { Spinner } from '@/components/ui/spinner';
 import { WarningText } from '@/components/ui/warning-text';
 import { TokenDisplay } from '@/types/token';
 import { updateTokenAuthority, removeTokenAuthority } from '@/features/token-management/lib/authority';
-import { getTokenAuthorities, type TokenAuthorities as BlockchainAuthorities } from '@/lib/solana/rpc';
-import { AuthorityType } from '@solana-program/token-2022';
-import { isAddress } from '@solana/kit';
-import { useConnector } from '@solana/connector/react';
+import { getTokenAuthorities, type TokenAuthorities as BlockchainAuthorities } from '@/lib/trezoa/rpc';
+import { AuthorityType } from '@trezoa-program/token-2022';
+import { isAddress } from '@trezoa/kit';
+import { useConnector } from '@trezoa/connector/react';
 import { useConnectorSigner } from '@/features/wallet/hooks/use-connector-signer';
 import { handleError } from '@/lib/errors';
 import { toast } from '@/components/ui/sonner';
@@ -153,9 +153,9 @@ export function TokenAuthorities({ setError, token }: TokenAuthoritiesProps) {
     const { selectedAccount, cluster } = useConnector();
 
     // Get RPC URL from the current cluster
-    const rpcUrl = cluster?.url || process.env.NEXT_PUBLIC_SOLANA_RPC_URL || 'https://api.devnet.solana.com';
+    const rpcUrl = cluster?.url || process.env.NEXT_PUBLIC_SOLANA_RPC_URL || 'https://api.devnet.trezoa.com';
 
-    // Use the connector signer hook which provides a gill-compatible transaction signer
+    // Use the connector signer hook which provides a trezoagill-compatible transaction signer
     const transactionSendingSigner = useConnectorSigner();
 
     // Fetch current authorities from blockchain
@@ -292,7 +292,7 @@ export function TokenAuthorities({ setError, token }: TokenAuthoritiesProps) {
         }
     };
 
-    const validateSolanaAddress = (address: string) => {
+    const validateTrezoaAddress = (address: string) => {
         return isAddress(address);
     };
 
@@ -342,7 +342,7 @@ export function TokenAuthorities({ setError, token }: TokenAuthoritiesProps) {
                                             className="h-10 px-4 rounded-xl"
                                             onClick={() => updateAuthority(index)}
                                             disabled={
-                                                authority.isLoading || !validateSolanaAddress(authority.newAuthority)
+                                                authority.isLoading || !validateTrezoaAddress(authority.newAuthority)
                                             }
                                         >
                                             {authority.isLoading ? (
@@ -363,10 +363,10 @@ export function TokenAuthorities({ setError, token }: TokenAuthoritiesProps) {
                                     </div>
                                     <WarningText
                                         show={
-                                            !!authority.newAuthority && !validateSolanaAddress(authority.newAuthority)
+                                            !!authority.newAuthority && !validateTrezoaAddress(authority.newAuthority)
                                         }
                                     >
-                                        Please enter a valid Solana address
+                                        Please enter a valid Trezoa address
                                     </WarningText>
                                 </div>
                             ) : isLocked ? (

@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from 'react';
 import { Button } from '@/components/ui/button';
-import { useConnector } from '@solana/connector/react';
+import { useConnector } from '@trezoa/connector/react';
 import { useConnectorSigner } from '@/features/wallet/hooks/use-connector-signer';
 import { TokenDisplay } from '@/types/token';
 import { Switch } from '@/components/ui/switch';

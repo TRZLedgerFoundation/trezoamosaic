@@ -1,7 +1,7 @@
 import { useInputValidation } from '@/hooks/use-input-validation';
 import { Input } from '@/components/ui/input';
 
-interface SolanaAddressInputProps {
+interface TrezoaAddressInputProps {
     label: string;
     value: string;
     onChange: (value: string) => void;
@@ -12,18 +12,18 @@ interface SolanaAddressInputProps {
     showValidation?: boolean;
 }
 
-export function SolanaAddressInput({
+export function TrezoaAddressInput({
     label,
     value,
     onChange,
-    placeholder = 'Enter Solana address...',
+    placeholder = 'Enter Trezoa address...',
     helpText,
     disabled = false,
     required = false,
     showValidation = true,
-}: SolanaAddressInputProps) {
-    const { validateSolanaAddress } = useInputValidation();
-    const isValid = !value || validateSolanaAddress(value);
+}: TrezoaAddressInputProps) {
+    const { validateTrezoaAddress } = useInputValidation();
+    const isValid = !value || validateTrezoaAddress(value);
 
     return (
         <div>
@@ -41,7 +41,7 @@ export function SolanaAddressInput({
             />
             {helpText && <p className="text-xs text-muted-foreground mt-1">{helpText}</p>}
             {showValidation && value && !isValid && (
-                <p className="text-sm text-red-600 mt-1">Please enter a valid Solana address</p>
+                <p className="text-sm text-red-600 mt-1">Please enter a valid Trezoa address</p>
             )}
         </div>
     );

@@ -1,4 +1,4 @@
-import type { Address, Rpc, SolanaRpcApi, TransactionSigner } from '@solana/kit';
+import type { Address, Rpc, TrezoaRpcApi, TransactionSigner } from '@trezoa/kit';
 import type { FullTransaction } from '../transaction-util';
 import {
     createNoopSigner,
@@ -7,15 +7,15 @@ import {
     setTransactionMessageFeePayer,
     setTransactionMessageLifetimeUsingBlockhash,
     appendTransactionMessageInstructions,
-} from '@solana/kit';
-import { getBurnCheckedInstruction, TOKEN_2022_PROGRAM_ADDRESS } from '@solana-program/token-2022';
+} from '@trezoa/kit';
+import { getBurnCheckedInstruction, TOKEN_2022_PROGRAM_ADDRESS } from '@trezoa-program/token-2022';
 import { resolveTokenAccount, decimalAmountToRaw, getMintDetails } from '../transaction-util';
 
 /**
  * Creates a transaction to burn tokens from the owner's token account.
  * This is a self-burn operation where the token owner burns their own tokens.
  *
- * @param rpc - The Solana RPC client instance
+ * @param rpc - The Trezoa RPC client instance
  * @param mint - The mint address
  * @param owner - The token owner's wallet address
  * @param decimalAmount - The decimal amount to burn (e.g., 1.5)
@@ -23,7 +23,7 @@ import { resolveTokenAccount, decimalAmountToRaw, getMintDetails } from '../tran
  * @returns A promise that resolves to a FullTransaction object for burning tokens
  */
 export const createBurnTransaction = async (
-    rpc: Rpc<SolanaRpcApi>,
+    rpc: Rpc<TrezoaRpcApi>,
     mint: Address,
     owner: Address | TransactionSigner<string>,
     decimalAmount: number,

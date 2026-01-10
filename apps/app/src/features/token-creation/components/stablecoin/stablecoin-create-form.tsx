@@ -3,7 +3,7 @@ import { StablecoinBasicParams } from './stablecoin-basic-params';
 import { StablecoinFeaturesStep } from './stablecoin-features-step';
 import { StablecoinCreationResultDisplay } from './stablecoin-creation-result';
 import { createStablecoin } from '@/features/token-creation/lib/stablecoin';
-import type { TransactionModifyingSigner } from '@solana/kit';
+import type { TransactionModifyingSigner } from '@trezoa/kit';
 import { useTokenCreationForm } from '@/features/token-creation/hooks/use-token-creation-form';
 import { TokenCreateFormBase } from '../token-create-form-base';
 import { Step } from '../form-stepper';

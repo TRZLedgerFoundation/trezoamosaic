@@ -47,9 +47,9 @@ jobs:
       - name: Test
         run: pnpm run test:unit
 
-      - name: Setup Solana CLI
+      - name: Setup Trezoa CLI
         if: matrix.node-version == '20.x'
-        uses: ./.github/actions/setup-solana
+        uses: ./.github/actions/setup-trezoa
 
       - name: Test Integration
         if: matrix.node-version == '20.x'

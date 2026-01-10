@@ -1,5 +1,5 @@
 import { useState, useCallback } from 'react';
-import type { TransactionModifyingSigner } from '@solana/kit';
+import type { TransactionModifyingSigner } from '@trezoa/kit';
 import { createTokenDisplayFromResult } from '@/features/token-creation/lib/token-storage';
 import { useTokenStore } from '@/stores/token-store';
 import { useMultiStepForm } from './use-multi-step-form';
