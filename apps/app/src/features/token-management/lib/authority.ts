@@ -1,6 +1,6 @@
 import { type Address, type TransactionModifyingSigner, isAddress } from '@trezoa/kit';
 import { AuthorityType } from '@trezoa-program/token-2022';
-import { getUpdateAuthorityTransaction, getRemoveAuthorityTransaction } from '@mosaic/sdk';
+import { getUpdateAuthorityTransaction, getRemoveAuthorityTransaction } from '@trezoamosaic/sdk';
 import { executeTokenAction } from './token-action';
 
 export type AuthorityRole = AuthorityType | 'Metadata';

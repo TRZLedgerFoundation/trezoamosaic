@@ -1,6 +1,6 @@
 import { type Address, type TransactionModifyingSigner, isAddress } from '@trezoa/kit';
 import { findAssociatedTokenPda, TOKEN_2022_PROGRAM_ADDRESS } from '@trezoa-program/token-2022';
-import { getThawTransaction } from '@mosaic/sdk';
+import { getThawTransaction } from '@trezoamosaic/sdk';
 import { executeTokenAction } from './token-action';
 
 export interface ThawAccountOptions {

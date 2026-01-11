@@ -8,7 +8,7 @@ import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle } f
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { Upload, CheckCircle2 } from 'lucide-react';
 import { useConnector } from '@trezoa/connector/react';
-import { TokenType } from '@mosaic/sdk';
+import { TokenType } from '@trezoamosaic/sdk';
 import { useTokenStore } from '@/stores/token-store';
 import { Spinner } from '@/components/ui/spinner';
 import { address, createTrezoaRpc, type Rpc, type TrezoaRpcApi } from '@trezoa/kit';
@@ -177,7 +177,7 @@ export function ImportTokenModal({ isOpen, onOpenChange, onTokenImported }: Impo
                     <DialogHeader className="p-6 pb-4 border-b border-primary/5 bg-primary/5">
                         <DialogTitle className="text-xl font-semibold">Import Existing Token</DialogTitle>
                         <DialogDescription>
-                            Enter the address of an existing token to import it into the Mosaic platform
+                            Enter the address of an existing token to import it into the TrezoaMosaic platform
                         </DialogDescription>
                     </DialogHeader>
 

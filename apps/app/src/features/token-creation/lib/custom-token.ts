@@ -13,7 +13,7 @@ import {
     assertIsTransactionWithBlockhashLifetime,
 } from '@trezoa/kit';
 import { CustomTokenCreationResult, CustomTokenOptions } from '@/types/token';
-import { createCustomTokenInitTransaction } from '@mosaic/sdk';
+import { createCustomTokenInitTransaction } from '@trezoamosaic/sdk';
 import { getRpcUrl, getWsUrl, getCommitment } from '@/lib/trezoa/rpc';
 
 /**

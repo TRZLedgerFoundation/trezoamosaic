@@ -1,6 +1,6 @@
 import { Command } from 'commander';
 import chalk from 'chalk';
-import { getSetGatingProgramTransaction } from '@mosaic/sdk';
+import { getSetGatingProgramTransaction } from '@trezoamosaic/sdk';
 import { createRpcClient, createRpcSubscriptions } from '../../utils/rpc.js';
 import { getAddressFromKeypair, loadKeypair } from '../../utils/trezoa.js';
 import {

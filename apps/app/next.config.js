@@ -1,6 +1,6 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-    transpilePackages: ['@mosaic/sdk'],
+    transpilePackages: ['@trezoamosaic/sdk'],
 };
 
 export default nextConfig;

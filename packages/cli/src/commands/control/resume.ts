@@ -1,6 +1,6 @@
 import { Command } from 'commander';
 import chalk from 'chalk';
-import { getTokenPauseState, createResumeTransaction, MINT_NOT_PAUSED_ERROR } from '@mosaic/sdk';
+import { getTokenPauseState, createResumeTransaction, MINT_NOT_PAUSED_ERROR } from '@trezoamosaic/sdk';
 import { createRpcClient, createRpcSubscriptions } from '../../utils/rpc.js';
 import { resolveSigner } from '../../utils/trezoa.js';
 import { type Address, sendAndConfirmTransactionFactory } from '@trezoa/kit';
@@ -90,7 +90,7 @@ export const resumeCommand = new Command('resume')
                 spinner.warn('Token is not currently paused');
                 console.log(
                     chalk.yellow(
-                        '⚠️  Token is not currently paused. Use "mosaic control pause" command to pause the token.',
+                        '⚠️  Token is not currently paused. Use "trezoamosaic control pause" command to pause the token.',
                     ),
                 );
                 process.exit(0);

@@ -2,7 +2,7 @@ import { create } from 'zustand';
 import { persist } from 'zustand/middleware';
 import { useShallow } from 'zustand/shallow';
 import { TokenDisplay } from '@/types/token';
-import { getTokenDashboardData, type TokenType } from '@mosaic/sdk';
+import { getTokenDashboardData, type TokenType } from '@trezoamosaic/sdk';
 import { address as toAddress, type Address, type Rpc, type TrezoaRpcApi } from '@trezoa/kit';
 
 interface MetadataFetchState {
@@ -198,7 +198,7 @@ export const useTokenStore = create<TokenStore>()(
             },
         }),
         {
-            name: 'mosaic_tokens',
+            name: 'trezoamosaic_tokens',
             // Only persist tokens, not the fetch state
             partialize: state => ({ tokens: state.tokens }),
         },

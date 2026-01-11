@@ -43,7 +43,7 @@ export const useRpcStore = create<RpcStore>()(
             setSelectedCluster: id => set({ selectedClusterId: id }),
         }),
         {
-            name: 'mosaic_rpc_settings',
+            name: 'trezoamosaic_rpc_settings',
         },
     ),
 );

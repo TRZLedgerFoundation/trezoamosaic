@@ -1,5 +1,5 @@
 import { type Address, type TransactionModifyingSigner, isAddress } from '@trezoa/kit';
-import { createBurnTransaction } from '@mosaic/sdk';
+import { createBurnTransaction } from '@trezoamosaic/sdk';
 import { executeTokenAction } from './token-action';
 
 export interface BurnOptions {

@@ -1,6 +1,6 @@
 import { Command } from 'commander';
 import chalk from 'chalk';
-import { ABL_PROGRAM_ID, TOKEN_ACL_PROGRAM_ID, createTokenizedSecurityInitTransaction } from '@mosaic/sdk';
+import { ABL_PROGRAM_ID, TOKEN_ACL_PROGRAM_ID, createTokenizedSecurityInitTransaction } from '@trezoamosaic/sdk';
 import { createRpcClient, createRpcSubscriptions } from '../../utils/rpc.js';
 import { loadKeypair } from '../../utils/trezoa.js';
 import {

@@ -66,7 +66,7 @@ const berkeleyMono = localFont({
 });
 
 export const metadata: Metadata = {
-    title: 'Mosaic - Tokenization Engine',
+    title: 'TrezoaMosaic - Tokenization Engine',
     description: 'Create, manage, and deploy stablecoins and tokenized assets on Trezoa',
 };
 

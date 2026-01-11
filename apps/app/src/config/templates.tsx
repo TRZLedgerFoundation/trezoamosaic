@@ -83,7 +83,7 @@ export const importTemplate: Template = {
     id: 'import',
     icon: Upload,
     title: 'Import existing token',
-    description: 'Import an existing token to manage it through the Mosaic platform.',
+    description: 'Import an existing token to manage it through the TrezoaMosaic platform.',
     colorClass: 'bg-gray-100',
     iconColorClass: 'text-gray-600',
     coreCapabilityKeys: [],

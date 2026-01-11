@@ -1,5 +1,5 @@
 import { type Address, type TransactionModifyingSigner, isAddress } from '@trezoa/kit';
-import { createCloseAccountTransaction } from '@mosaic/sdk';
+import { createCloseAccountTransaction } from '@trezoamosaic/sdk';
 import { executeTokenAction } from './token-action';
 
 export interface CloseAccountOptions {

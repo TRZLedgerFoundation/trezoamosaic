@@ -1,6 +1,6 @@
 import { Command } from 'commander';
 import chalk from 'chalk';
-import { getFreezeTransaction } from '@mosaic/sdk';
+import { getFreezeTransaction } from '@trezoamosaic/sdk';
 import { createRpcClient, createRpcSubscriptions } from '../../utils/rpc.js';
 import { getAddressFromKeypair, loadKeypair } from '../../utils/trezoa.js';
 import {

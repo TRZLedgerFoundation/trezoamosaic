@@ -16,7 +16,7 @@ import {
     isAddress,
     assertIsTransactionWithBlockhashLifetime,
 } from '@trezoa/kit';
-import { createUpdateFieldInstruction, createReallocateInstruction, getMintDetails } from '@mosaic/sdk';
+import { createUpdateFieldInstruction, createReallocateInstruction, getMintDetails } from '@trezoamosaic/sdk';
 import { SYSTEM_PROGRAM_ADDRESS } from '@trezoa-program/system';
 import { getRpcUrl, getWsUrl, getCommitment } from '@/lib/trezoa/rpc';
 

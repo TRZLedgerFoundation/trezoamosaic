@@ -1,5 +1,5 @@
 import { type Address, type TransactionModifyingSigner, isAddress } from '@trezoa/kit';
-import { createForceBurnTransaction, validatePermanentDelegateForBurn } from '@mosaic/sdk';
+import { createForceBurnTransaction, validatePermanentDelegateForBurn } from '@trezoamosaic/sdk';
 import { executeTokenAction } from './token-action';
 
 export interface ForceBurnOptions {

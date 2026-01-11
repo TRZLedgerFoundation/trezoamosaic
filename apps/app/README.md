@@ -1,6 +1,6 @@
-# @mosaic/app
+# @trezoamosaic/app
 
-UI for creating and managing Token-2022 mints with Mosaic. It’s a Next.js app that connects to Trezoa wallets, guides you through mint creation (Stablecoin, Arcade Token, Tokenized Security), and provides a dashboard to manage authorities, access lists, and account state.
+UI for creating and managing Token-2022 mints with TrezoaMosaic. It’s a Next.js app that connects to Trezoa wallets, guides you through mint creation (Stablecoin, Arcade Token, Tokenized Security), and provides a dashboard to manage authorities, access lists, and account state.
 
 ## What you can do
 
@@ -66,7 +66,7 @@ src/
 │  ├─ RpcContextProvider.tsx      # @trezoa/kit RPC + subscriptions
 │  └─ SelectedWalletAccount*      # Selected wallet state
 ├─ lib/
-│  ├─ issuance/*                  # High-level create flows using @mosaic/sdk
+│  ├─ issuance/*                  # High-level create flows using @trezoamosaic/sdk
 │  ├─ management/*                # Mint/transfer/freeze/thaw helpers
 │  ├─ management/accessList.ts    # Allowlist/blocklist helpers
 │  ├─ token/*                     # Local storage + token data
@@ -78,7 +78,7 @@ src/
 
 - Wallets: configured in `components/trezoa-provider.tsx` (uses Devnet endpoint by default)
 - RPC/cluster: provided by `ChainContextProvider` and `RpcContextProvider` (Devnet/Testnet/Mainnet)
-- SDK: all blockchain operations use `@mosaic/sdk`
+- SDK: all blockchain operations use `@trezoamosaic/sdk`
 
 ### Environment Variables
 
@@ -103,4 +103,4 @@ pnpm start
 
 - Next.js 15, React 18, TailwindCSS
 - Wallet adapters (`@trezoa/wallet-adapter-*`)
-- Mosaic SDK (`@mosaic/sdk`) and `@trezoa/kit`
+- TrezoaMosaic SDK (`@trezoamosaic/sdk`) and `@trezoa/kit`

@@ -1,10 +1,10 @@
-# Mosaic
+# TrezoaMosaic
 
 A comprehensive TypeScript monorepo for managing Token-2022 tokens with extensions on Trezoa, specifically designed for different token templates for Stablecoins, RWAs, and Arcade Token. It includes built in advanced access control features such as integration with sRFC-37.
 
 Note: sRFC-37 is still under development and not ready for mainnet use. If you use this repo please be sure to not use sRFC-37 yet.
 
-## Why Mosaic?
+## Why TrezoaMosaic?
 
 Most implementations of standard token types follow similar patterns and usages of Token Extensions. This repo provides issuers and tokenization engines best practices for integrating and using Token Extensions. Additionally apps can use the SDK to easily abstract away complexities related to working with Token Extensions.
 
@@ -67,7 +67,7 @@ pnpm start create arcade-token \
 See the [sdk readme](packages/sdk/README.md) for detailed docs
 
 ```typescript
-import { createStablecoinInitTransaction, createArcadeTokenInitTransaction } from '@mosaic/sdk';
+import { createStablecoinInitTransaction, createArcadeTokenInitTransaction } from '@trezoamosaic/sdk';
 import { createTrezoaRpc, generateKeyPairSigner } from 'trezoagill';
 
 const rpc = createTrezoaRpc('https://api.devnet.trezoa.com');
@@ -87,16 +87,16 @@ const tx = await createStablecoinInitTransaction(
 );
 ```
 
-## Mosaic Packages
+## TrezoaMosaic Packages
 
 This monorepo contains the following packages:
 
-- **[@mosaic/sdk](packages/sdk/)** - Core SDK with token templates, allowlist / blocklist integrations, management utilities, and Token-2022 integration
-- **[@mosaic/cli](packages/cli/)** - Command-line interface for token creation and management
-- **[@mosaic/app](apps/app/)** - Dashboard application for a full featured tokenization engine for token management with wallet integration and sRFC-37 administration
-- **[@mosaic/abl](packages/abl/)** - Allowlist/Blocklist implementation for sRFC-37 compliance
-- **[@mosaic/token-acl](packages/token-acl/)** - Token ACL (sRFC-37). This standard provides management of access control lists for Trezoa Tokens.
-- **[@mosaic/tlv-account-resolution](packages/tlv-account-resolution/)** - TLV account resolution utilities
+- **[@trezoamosaic/sdk](packages/sdk/)** - Core SDK with token templates, allowlist / blocklist integrations, management utilities, and Token-2022 integration
+- **[@trezoamosaic/cli](packages/cli/)** - Command-line interface for token creation and management
+- **[@trezoamosaic/app](apps/app/)** - Dashboard application for a full featured tokenization engine for token management with wallet integration and sRFC-37 administration
+- **[@trezoamosaic/abl](packages/abl/)** - Allowlist/Blocklist implementation for sRFC-37 compliance
+- **[@trezoamosaic/token-acl](packages/token-acl/)** - Token ACL (sRFC-37). This standard provides management of access control lists for Trezoa Tokens.
+- **[@trezoamosaic/tlv-account-resolution](packages/tlv-account-resolution/)** - TLV account resolution utilities
 
 ## Token Templates
 
@@ -190,9 +190,9 @@ pnpm lint       # Lint code
 
 The trezoa implements a layered architecture:
 
-1. **Low-level Packages**: `@mosaic/abl`, `@mosaic/token-acl`, `@mosaic/tlv-account-resolution`
-2. **Core SDK**: `@mosaic/sdk` integrates all low-level packages
-3. **User Interfaces**: `@mosaic/cli` and `@mosaic/app` provide different ways to interact with the SDK
+1. **Low-level Packages**: `@trezoamosaic/abl`, `@trezoamosaic/token-acl`, `@trezoamosaic/tlv-account-resolution`
+2. **Core SDK**: `@trezoamosaic/sdk` integrates all low-level packages
+3. **User Interfaces**: `@trezoamosaic/cli` and `@trezoamosaic/app` provide different ways to interact with the SDK
 
 The monorepo uses Turbo for build orchestration and is organized with:
 

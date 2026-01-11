@@ -17,7 +17,7 @@ import {
 } from '@trezoa/kit';
 import { getUpdateMultiplierScaledUiMintInstruction } from '@trezoa-program/token-2022';
 import { getRpcUrl, getWsUrl, getCommitment } from '@/lib/trezoa/rpc';
-import { getMintDetails } from '@mosaic/sdk';
+import { getMintDetails } from '@trezoamosaic/sdk';
 
 export interface UpdateScaledUiMultiplierOptions {
     mint: string;

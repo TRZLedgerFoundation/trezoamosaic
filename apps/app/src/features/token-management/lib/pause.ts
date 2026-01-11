@@ -11,7 +11,7 @@ import {
     type PauseTokenResult,
     createPauseTransaction,
     createResumeTransaction,
-} from '@mosaic/sdk';
+} from '@trezoamosaic/sdk';
 import { getRpcUrl } from '@/lib/trezoa/rpc';
 import { executeTokenAction } from './token-action';
 

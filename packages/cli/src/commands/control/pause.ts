@@ -1,7 +1,7 @@
 import { Command } from 'commander';
 import chalk from 'chalk';
 import { type Address, sendAndConfirmTransactionFactory } from '@trezoa/kit';
-import { createPauseTransaction, MINT_ALREADY_PAUSED_ERROR } from '@mosaic/sdk';
+import { createPauseTransaction, MINT_ALREADY_PAUSED_ERROR } from '@trezoamosaic/sdk';
 import { createRpcClient, createRpcSubscriptions } from '../../utils/rpc';
 import { resolveSigner } from '../../utils/trezoa';
 import { getGlobalOpts, createSpinner, sendOrOutputTransaction } from '../../utils/cli';
@@ -95,7 +95,7 @@ export const pauseCommand = new Command('pause')
             console.log(`   ${chalk.bold('Status:')} Token transfers are now blocked`);
 
             console.log(chalk.cyan('\\n🎯 Next Steps:'));
-            console.log(`   • Use ${chalk.bold('mosaic control resume')} command to resume transfers`);
+            console.log(`   • Use ${chalk.bold('trezoamosaic control resume')} command to resume transfers`);
             console.log(`   • Monitor token holder communications`);
             console.log(`   • Ensure pause authority is secure`);
         } catch (error) {
@@ -103,7 +103,7 @@ export const pauseCommand = new Command('pause')
                 spinner.warn('Token is already paused');
                 console.log(
                     chalk.yellow(
-                        '⚠️  Token is already paused. Use "mosaic control resume" command to resume token functionality.',
+                        '⚠️  Token is already paused. Use "trezoamosaic control resume" command to resume token functionality.',
                     ),
                 );
                 process.exit(0);

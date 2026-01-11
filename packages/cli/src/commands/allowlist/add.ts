@@ -1,6 +1,6 @@
 import { Command } from 'commander';
 import chalk from 'chalk';
-import { createAddToAllowlistTransaction } from '@mosaic/sdk';
+import { createAddToAllowlistTransaction } from '@trezoamosaic/sdk';
 import { createRpcClient, createRpcSubscriptions } from '../../utils/rpc.js';
 import { resolveSigner } from '../../utils/trezoa.js';
 import { type Address, sendAndConfirmTransactionFactory } from '@trezoa/kit';

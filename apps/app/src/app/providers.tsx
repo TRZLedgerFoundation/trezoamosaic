@@ -46,7 +46,7 @@ export function Providers({ children }: { children: ReactNode }) {
         const clusters = [...baseClusters, ...userClusters];
 
         return getDefaultConfig({
-            appName: 'Mosaic - Tokenization Engine',
+            appName: 'TrezoaMosaic - Tokenization Engine',
             appUrl: process.env.NEXT_PUBLIC_APP_URL || 'http://localhost:3000',
             autoConnect: true,
             enableMobile: true,
@@ -57,7 +57,7 @@ export function Providers({ children }: { children: ReactNode }) {
     const mobile = useMemo(
         () =>
             getDefaultMobileConfig({
-                appName: 'Mosaic - Tokenization Engine',
+                appName: 'TrezoaMosaic - Tokenization Engine',
                 appUrl:
                     process.env.NEXT_PUBLIC_MOBILE_APP_URL ||
                     process.env.NEXT_PUBLIC_APP_URL ||

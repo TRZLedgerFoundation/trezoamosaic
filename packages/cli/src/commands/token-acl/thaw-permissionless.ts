@@ -1,6 +1,6 @@
 import { Command } from 'commander';
 import chalk from 'chalk';
-import { getThawPermissionlessTransaction } from '@mosaic/sdk';
+import { getThawPermissionlessTransaction } from '@trezoamosaic/sdk';
 import { createRpcClient, createRpcSubscriptions } from '../../utils/rpc.js';
 import { getAddressFromKeypair, loadKeypair } from '../../utils/trezoa.js';
 import { maybeOutputRawTx } from '../../utils/raw-tx.js';

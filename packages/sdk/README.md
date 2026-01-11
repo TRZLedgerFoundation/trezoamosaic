@@ -1,4 +1,4 @@
-# @mosaic/sdk
+# @trezoamosaic/sdk
 
 TypeScript SDK for building and operating Token-2022 mints with modern extensions. Batteries-included templates (Stablecoin, Arcade Token, Tokenized Security), and access-control management via Token ACL (SRFC-37). It is unopinionated about what kind of signer you use, whether that's a connected wallet, filesystem wallet, or 3rd party key management system.
 
@@ -13,19 +13,19 @@ TypeScript SDK for building and operating Token-2022 mints with modern extension
 ## Installation
 
 ```bash
-pnpm add @mosaic/sdk
+pnpm add @trezoamosaic/sdk
 # or
-npm i @mosaic/sdk
+npm i @trezoamosaic/sdk
 ```
 
 The SDK uses `@trezoa/kit` (RPC + TPL helpers) transitively; you can import helpers/types directly from `@trezoa/kit` in your app.
 
-> **Note on Trezoa Kit v5:** This SDK uses the Trezoa Kit v5.0 ecosystem (`@trezoa/kit@^5.0.0`, `@trezoa/sysvars@^5.0.0`, `@trezoa-program/token-2022@^0.6.1`). These packages are published to npm under an experimental/next tag and may not appear as the "latest" version on npmjs.com. The monorepo uses pnpm overrides (in the root `pnpm-lock.yaml`) to ensure consistent version resolution across all `@trezoa/*` packages. See the [Trezoa-team Kit repository](https://github.com/anza-xyz/kit) for upstream details.
+> **Note on Trezoa Kit v5:** This SDK uses the Trezoa Kit v5.0 ecosystem (`@trezoa/kit@^5.0.0`, `@trezoa/sysvars@^5.0.0`, `@trezoa-program/token-2022@^0.6.1`). These packages are published to npm under an experimental/next tag and may not appear as the "latest" version on npmjs.com. The monorepo uses pnpm overrides (in the root `pnpm-lock.yaml`) to ensure consistent version resolution across all `@trezoa/*` packages. See the [Trezoa-team Kit repository](https://github.com/trezoa-xyz/kit) for upstream details.
 
 ## Quick start
 
 ```ts
-import { createStablecoinInitTransaction, transactionToB64 } from '@mosaic/sdk';
+import { createStablecoinInitTransaction, transactionToB64 } from '@trezoamosaic/sdk';
 import { createTrezoaRpc, generateKeyPairSigner } from '@trezoa/kit';
 
 const rpc = createTrezoaRpc('https://api.devnet.trezoa.com');
@@ -67,7 +67,7 @@ import {
     createStablecoinInitTransaction,
     createArcadeTokenInitTransaction,
     createTokenizedSecurityInitTransaction,
-} from '@mosaic/sdk';
+} from '@trezoamosaic/sdk';
 import { createTrezoaRpc, generateKeyPairSigner } from '@trezoa/kit';
 
 const rpc = createTrezoaRpc('https://api.devnet.trezoa.com');
@@ -123,7 +123,7 @@ await createTokenizedSecurityInitTransaction(
 ## Token management
 
 ```ts
-import { createMintToTransaction } from '@mosaic/sdk';
+import { createMintToTransaction } from '@trezoamosaic/sdk';
 import { createTrezoaRpc, generateKeyPairSigner } from '@trezoa/kit';
 
 const rpc = createTrezoaRpc('https://api.devnet.trezoa.com');
@@ -144,7 +144,7 @@ const tx = await createMintToTransaction(
 ### Force transfer (Permanent Delegate)
 
 ```ts
-import { createForceTransferTransaction } from '@mosaic/sdk';
+import { createForceTransferTransaction } from '@trezoamosaic/sdk';
 
 const tx = await createForceTransferTransaction(
     rpc,
@@ -162,7 +162,7 @@ const tx = await createForceTransferTransaction(
 Create and manage allowlists/blocklists that gate who can thaw/hold tokens.
 
 ```ts
-import { getCreateListTransaction, getAddWalletTransaction, getRemoveWalletTransaction, getList } from '@mosaic/sdk';
+import { getCreateListTransaction, getAddWalletTransaction, getRemoveWalletTransaction, getList } from '@trezoamosaic/sdk';
 import { generateKeyPairSigner } from 'trezoagill';
 
 const authority = await generateKeyPairSigner();
@@ -207,8 +207,8 @@ import {
     getFreezeTransaction,
     getThawTransaction,
     getThawPermissionlessTransaction,
-} from '@mosaic/sdk';
-import { ABL_PROGRAM_ID } from '@mosaic/sdk';
+} from '@trezoamosaic/sdk';
+import { ABL_PROGRAM_ID } from '@trezoamosaic/sdk';
 
 // One-time: create Token ACL mint config and set ABL as gating program (templates do this for single-signer flow)
 await getCreateConfigTransaction({
@@ -255,7 +255,7 @@ await getThawPermissionlessTransaction({
 ## Administration (authorities)
 
 ```ts
-import { getUpdateAuthorityTransaction } from '@mosaic/sdk';
+import { getUpdateAuthorityTransaction } from '@trezoamosaic/sdk';
 import { AuthorityType } from 'trezoagill/programs/token';
 
 // Transfer freeze authority to a new address
@@ -288,7 +288,7 @@ import {
     decimalAmountToRaw,
     transactionToB64,
     transactionToB58,
-} from '@mosaic/sdk';
+} from '@trezoamosaic/sdk';
 
 const { tokenAccount, isInitialized, isFrozen, balance, uiBalance } = await resolveTokenAccount(
     rpc,

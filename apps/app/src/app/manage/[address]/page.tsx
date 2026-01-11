@@ -47,7 +47,7 @@ import {
     removeAddressFromAllowlist,
 } from '@/features/token-management/lib/access-list';
 import { Address, createTrezoaRpc, Rpc, TrezoaRpcApi } from '@trezoa/kit';
-import { getList, getListConfigPda, getTokenExtensions } from '@mosaic/sdk';
+import { getList, getListConfigPda, getTokenExtensions } from '@trezoamosaic/sdk';
 import { Mode } from '@token-acl/abl-sdk';
 import { buildAddressExplorerUrl } from '@/lib/trezoa/explorer';
 import { getTokenAuthorities } from '@/lib/trezoa/rpc';

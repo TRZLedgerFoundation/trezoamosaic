@@ -1,5 +1,5 @@
 import { type Address, type TransactionModifyingSigner, isAddress } from '@trezoa/kit';
-import { createTransferTransaction } from '@mosaic/sdk';
+import { createTransferTransaction } from '@trezoamosaic/sdk';
 import { executeTokenAction } from './token-action';
 
 export interface TransferTokensOptions {

@@ -12,7 +12,7 @@ import {
     assertIsTransactionWithBlockhashLifetime,
 } from '@trezoa/kit';
 import { StablecoinCreationResult, StablecoinOptions } from '@/types/token';
-import { createStablecoinInitTransaction } from '@mosaic/sdk';
+import { createStablecoinInitTransaction } from '@trezoamosaic/sdk';
 import { getRpcUrl, getWsUrl, getCommitment } from '@/lib/trezoa/rpc';
 
 /**

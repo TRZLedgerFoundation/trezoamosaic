@@ -7,7 +7,7 @@ export function Footer() {
             <div className="max-w-6xl mx-auto flex h-16 items-center justify-between">
                 <p className="text-sm text-muted-foreground">
                     <a
-                        href="https://github.com/trezoa-foundation/mosaic/blob/main/LICENSE"
+                        href="https://github.com/trezoa-foundation/trezoamosaic/blob/main/LICENSE"
                         className="underline hover:text-primary"
                         target="_blank"
                         rel="noopener noreferrer"
@@ -17,7 +17,7 @@ export function Footer() {
                 </p>
                 <div className="flex gap-4 text-muted-foreground">
                     <a
-                        href="https://github.com/trezoa-foundation/mosaic"
+                        href="https://github.com/trezoa-foundation/trezoamosaic"
                         target="_blank"
                         rel="noopener noreferrer"
                         aria-label="GitHub"

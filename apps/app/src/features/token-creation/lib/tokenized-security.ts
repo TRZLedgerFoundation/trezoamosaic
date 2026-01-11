@@ -12,7 +12,7 @@ import {
     assertIsTransactionWithBlockhashLifetime,
 } from '@trezoa/kit';
 import { TokenizedSecurityOptions, TokenizedSecurityCreationResult } from '@/types/token';
-import { createTokenizedSecurityInitTransaction } from '@mosaic/sdk';
+import { createTokenizedSecurityInitTransaction } from '@trezoamosaic/sdk';
 import { getRpcUrl, getWsUrl, getCommitment } from '@/lib/trezoa/rpc';
 
 function validateOptions(options: TokenizedSecurityOptions): number {

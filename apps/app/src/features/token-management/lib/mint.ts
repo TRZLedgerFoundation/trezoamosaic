@@ -1,5 +1,5 @@
 import { type Address, type TransactionModifyingSigner, isAddress } from '@trezoa/kit';
-import { createMintToTransaction } from '@mosaic/sdk';
+import { createMintToTransaction } from '@trezoamosaic/sdk';
 import { executeTokenAction } from './token-action';
 
 export interface MintOptions {

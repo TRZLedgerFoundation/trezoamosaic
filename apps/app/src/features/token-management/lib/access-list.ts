@@ -15,7 +15,7 @@ import {
     createRemoveFromBlocklistTransaction,
     createAddToAllowlistTransaction,
     createRemoveFromAllowlistTransaction,
-} from '@mosaic/sdk';
+} from '@trezoamosaic/sdk';
 import { getCommitment } from '@/lib/trezoa/rpc';
 
 export interface BlocklistOptions {

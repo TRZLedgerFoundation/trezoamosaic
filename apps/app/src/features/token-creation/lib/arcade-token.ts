@@ -12,7 +12,7 @@ import {
     assertIsTransactionWithBlockhashLifetime,
 } from '@trezoa/kit';
 import { ArcadeTokenCreationResult, ArcadeTokenOptions } from '@/types/token';
-import { createArcadeTokenInitTransaction } from '@mosaic/sdk';
+import { createArcadeTokenInitTransaction } from '@trezoamosaic/sdk';
 import { getRpcUrl, getWsUrl, getCommitment } from '@/lib/trezoa/rpc';
 
 /**

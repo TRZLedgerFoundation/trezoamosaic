@@ -14,7 +14,7 @@ import {
     getSignatureFromTransaction,
     assertIsTransactionWithBlockhashLifetime,
 } from '@trezoa/kit';
-import { createTransferInstructions } from '@mosaic/sdk';
+import { createTransferInstructions } from '@trezoamosaic/sdk';
 import { createSpinner, getGlobalOpts } from '../utils/cli.js';
 import { maybeOutputRawTx } from '../utils/raw-tx.js';
 import { createRpcClient, createRpcSubscriptions } from '../utils/rpc.js';

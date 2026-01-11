@@ -3,9 +3,9 @@
     "compilerOptions": {
         "baseUrl": ".",
         "paths": {
-            "@mosaic/sdk": ["./packages/sdk/src"],
-            "@mosaic/cli": ["./packages/cli/src"],
-            "@mosaic/app": ["./apps/app/src"]
+            "@trezoamosaic/sdk": ["./packages/sdk/src"],
+            "@trezoamosaic/cli": ["./packages/cli/src"],
+            "@trezoamosaic/app": ["./apps/app/src"]
         }
     },
     "references": [{ "path": "./packages/sdk" }, { "path": "./packages/cli" }]

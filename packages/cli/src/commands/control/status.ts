@@ -1,6 +1,6 @@
 import { Command } from 'commander';
 import chalk from 'chalk';
-import { getTokenPauseState } from '@mosaic/sdk';
+import { getTokenPauseState } from '@trezoamosaic/sdk';
 import { createRpcClient } from '../../utils/rpc.js';
 import { type Address } from '@trezoa/kit';
 import { getGlobalOpts, createSpinner } from '../../utils/cli.js';
@@ -51,13 +51,13 @@ export const statusCommand = new Command('status')
                 console.log(chalk.yellow('ℹ️  Token is currently paused:'));
                 console.log('   • No transfers can be executed');
                 console.log('   • Token holders cannot send or receive');
-                console.log('   • Use "mosaic control resume" command to resume transfers');
+                console.log('   • Use "trezoamosaic control resume" command to resume transfers');
             } else {
                 console.log();
                 console.log(chalk.green('ℹ️  Token is active:'));
                 console.log('   • All transfers are enabled');
                 console.log('   • Token operates normally');
-                console.log('   • Use "mosaic control pause" command to pause if needed');
+                console.log('   • Use "trezoamosaic control pause" command to pause if needed');
             }
         } catch (error) {
             spinner.fail('Failed to check pause status');

@@ -1,5 +1,5 @@
 import { type Address, type TransactionModifyingSigner, isAddress } from '@trezoa/kit';
-import { createForceTransferTransaction, validatePermanentDelegate } from '@mosaic/sdk';
+import { createForceTransferTransaction, validatePermanentDelegate } from '@trezoamosaic/sdk';
 import { executeTokenAction } from './token-action';
 
 export interface ForceTransferOptions {

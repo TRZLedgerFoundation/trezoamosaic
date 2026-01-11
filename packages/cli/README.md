@@ -1,6 +1,6 @@
-# @mosaic/cli
+# @trezoamosaic/cli
 
-CLI for building and operating Token-2022 mints with modern extensions on Trezoa. Pairs with `@mosaic/sdk` and uses your filesystem keypair or the Trezoa CLI config by default.
+CLI for building and operating Token-2022 mints with modern extensions on Trezoa. Pairs with `@trezoamosaic/sdk` and uses your filesystem keypair or the Trezoa CLI config by default.
 
 ## Features
 
@@ -29,14 +29,14 @@ Note that all commands expect the fee payer to be the authority for the action e
 
 ```bash
 # Create a stablecoin (blocklist by default)
-mosaic create stablecoin \
+trezoamosaic create stablecoin \
   --name "USD Token" \
   --symbol "USDtoken" \
   --decimals 6 \
   --uri https://example.com/usdtoken.json
 
 # Mint to a recipient (ATA auto-creation; permissionless thaw if needed)
-mosaic mint \
+trezoamosaic mint \
   --mint-address <MINT> \
   --recipient <RECIPIENT_WALLET> \
   --amount 10.5
@@ -57,7 +57,7 @@ If your signer (fee payer) is also the mint authority, the create commands will 
 
 ```bash
 # Stablecoin (metadata, pausable, confidential balances, permanent delegate)
-mosaic create stablecoin \
+trezoamosaic create stablecoin \
   --name <name> \
   --symbol <symbol> \
   [--decimals <number=6>] \
@@ -70,7 +70,7 @@ mosaic create stablecoin \
   [--mint-keypair <path>]
 
 # Arcade Token (metadata, pausable, permanent delegate, allowlist)
-mosaic create arcade-token \
+trezoamosaic create arcade-token \
   --name <name> \
   --symbol <symbol> \
   [--decimals <number=0>] \
@@ -82,7 +82,7 @@ mosaic create arcade-token \
   [--mint-keypair <path>]
 
 # Tokenized Security (stablecoin set + Scaled UI Amount)
-mosaic create tokenized-security \
+trezoamosaic create tokenized-security \
   --name <name> \
   --symbol <symbol> \
   [--decimals <number=6>] \
@@ -102,70 +102,70 @@ mosaic create tokenized-security \
 
 ```bash
 # Mint tokens to a recipient wallet (ATA auto-create)
-mosaic mint \
+trezoamosaic mint \
   --mint-address <mint> \
   --recipient <wallet> \
   --amount <decimal>
 
 # Transfer tokens (optional memo)
-mosaic transfer \
+trezoamosaic transfer \
   --mint-address <mint> \
   --recipient <wallet> \
   --amount <decimal> \
   [--memo <text>]
 
 # Force transfer using permanent delegate authority
-mosaic force-transfer \
+trezoamosaic force-transfer \
   --mint-address <mint> \
   --from-account <wallet_or_ata> \
   --recipient <wallet_or_ata> \
   --amount <decimal>
 
 # Inspect a mint and list extensions
-mosaic inspect-mint --mint-address <mint>
+trezoamosaic inspect-mint --mint-address <mint>
 ```
 
 ### ABL (Address-Based Lists)
 
 ```bash
 # Create a list for a mint (authority = signer)
-mosaic abl create-list --mint <mint>
+trezoamosaic abl create-list --mint <mint>
 
 # Set ABL extra metas on a mint (associate list with mint)
-mosaic abl set-extra-metas --mint <mint> --list <list_address>
+trezoamosaic abl set-extra-metas --mint <mint> --list <list_address>
 
 # Fetch a specific list
-mosaic abl fetch-list --list <list_address>
+trezoamosaic abl fetch-list --list <list_address>
 
 # Fetch all lists
-mosaic abl fetch-lists
+trezoamosaic abl fetch-lists
 
 # Allowlist: add/remove wallet addresses
-mosaic allowlist add --mint-address <mint> --account <wallet>
-mosaic allowlist remove --mint-address <mint> --account <wallet>
+trezoamosaic allowlist add --mint-address <mint> --account <wallet>
+trezoamosaic allowlist remove --mint-address <mint> --account <wallet>
 
 # Blocklist: add/remove wallet addresses
-mosaic blocklist add --mint-address <mint> --account <wallet>
-mosaic blocklist remove --mint-address <mint> --account <wallet>
+trezoamosaic blocklist add --mint-address <mint> --account <wallet>
+trezoamosaic blocklist remove --mint-address <mint> --account <wallet>
 ```
 
 ### Token ACL (Access Control Lists for Trezoa Tokens)
 
 ```bash
 # Create Token ACL config for a mint (supply gating program; use ABL program for ABL gating)
-mosaic token-acl create --mint <mint> [--gating-program <address>]
+trezoamosaic token-acl create --mint <mint> [--gating-program <address>]
 
 # Set/Update the gating program
-mosaic token-acl set-gating-program --mint <mint> --gating-program <address>
+trezoamosaic token-acl set-gating-program --mint <mint> --gating-program <address>
 
 # Enable permissionless thaw on a mint
-mosaic token-acl enable-permissionless-thaw --mint <mint>
+trezoamosaic token-acl enable-permissionless-thaw --mint <mint>
 
 # Thaw a frozen token account (authority required)
-mosaic token-acl thaw --token-account <ata>
+trezoamosaic token-acl thaw --token-account <ata>
 
 # Permissionless thaw for your own ATA (if enabled)
-mosaic token-acl thaw-permissionless --mint <mint>
+trezoamosaic token-acl thaw-permissionless --mint <mint>
 ```
 
 ## Configuration and keys
@@ -178,7 +178,7 @@ mosaic token-acl thaw-permissionless --mint <mint>
 
 ```bash
 # Arcade token with allowlist and custom authorities
-mosaic create arcade-token \
+trezoamosaic create arcade-token \
   --name "Points" \
   --symbol PTS \
   --decimals 0 \
@@ -188,10 +188,10 @@ mosaic create arcade-token \
   --permanent-delegate-authority <AUTH>
 
 # Add a wallet to an allowlist
-mosaic allowlist add --mint-address <MINT> --account <WALLET>
+trezoamosaic allowlist add --mint-address <MINT> --account <WALLET>
 
 # Enable permissionless thaw for a mint
-mosaic token-acl enable-permissionless-thaw --mint <MINT>
+trezoamosaic token-acl enable-permissionless-thaw --mint <MINT>
 ```
 
 ## Development

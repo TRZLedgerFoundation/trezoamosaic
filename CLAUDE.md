@@ -4,18 +4,18 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Architecture Overview
 
-Mosaic is a TypeScript monorepo for managing Token-2022 extensions on Trezoa, specifically designed for Stablecoin and Arcade Token use cases. The trezoa uses pnpm workspaces and Turbo for build orchestration with the following structure:
+TrezoaMosaic is a TypeScript monorepo for managing Token-2022 extensions on Trezoa, specifically designed for Stablecoin and Arcade Token use cases. The trezoa uses pnpm workspaces and Turbo for build orchestration with the following structure:
 
-- **@mosaic/sdk** (`packages/sdk/`) - Core SDK with token templates and management utilities
+- **@trezoamosaic/sdk** (`packages/sdk/`) - Core SDK with token templates and management utilities
     - Uses `trezoagill` library for Trezoa interactions
     - Provides `Token` class for building token transactions with extensions
     - Contains predefined templates for stablecoin and arcade tokens
     - Token extensions include: Metadata, Pausable, Default Account State, Confidential Balances, Permanent Delegate
     - Key modules: issuance, management, administration, templates
-- **@mosaic/cli** (`packages/cli/`) - Command-line interface built with Commander.js
+- **@trezoamosaic/cli** (`packages/cli/`) - Command-line interface built with Commander.js
     - Commands: `create stablecoin`, `create arcade-token`, `mint`
     - Global options: `--rpc-url`, `--keypair`
-- **@mosaic/app** (`apps/app/`) - Dashboard application (Next.js) with Tailwind CSS and Radix UI components
+- **@trezoamosaic/app** (`apps/app/`) - Dashboard application (Next.js) with Tailwind CSS and Radix UI components
 
 ## Token Types
 
@@ -79,7 +79,7 @@ pnpm test:coverage  # Generate test coverage report
 
 - Uses Commander.js for CLI framework
 - Uses tsx for development execution
-- Exports mosaic binary when built
+- Exports trezoamosaic binary when built
 
 ```bash
 cd packages/cli

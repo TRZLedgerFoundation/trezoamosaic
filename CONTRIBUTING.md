@@ -1,4 +1,4 @@
-# Contributing to Mosaic
+# Contributing to TrezoaMosaic
 
 Thank you for your interest in contributing! This document provides guidelines for contributing to the project.
 
@@ -8,8 +8,8 @@ Thank you for your interest in contributing! This document provides guidelines f
 2. **Clone your fork**
 
     ```bash
-    git clone https://github.com/your-username/mosaic.git
-    cd mosaic
+    git clone https://github.com/your-username/trezoamosaic.git
+    cd trezoamosaic
     ```
 
 3. **Install dependencies**
