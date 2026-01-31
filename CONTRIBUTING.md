@@ -1,6 +1,6 @@
 # Contributing to TrezoaMosaic
 
-Thank you for your interest in contributing! This document provides guidelines for contributing to the project.
+Thank you for your interest in contributing! This document provides guidelines for contributing to the trezoa.
 
 ## 🚀 Getting Started
 
@@ -23,7 +23,7 @@ Thank you for your interest in contributing! This document provides guidelines f
     git checkout -b feature/your-feature-name
     ```
 
-## 📦 Project Structure
+## 📦 Trezoa Structure
 
 - `packages/sdk/` - Token templates and SDK functionality
 - `packages/cli/` - Command-line interface

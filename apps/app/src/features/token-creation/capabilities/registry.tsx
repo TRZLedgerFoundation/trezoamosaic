@@ -27,7 +27,7 @@ export const capabilityNodes: Record<CapabilityKey, ReactNode> = {
             <strong>Metadata</strong>: Onchain metadata with name, symbol, and URI. URI should point to a JSON file that
             follows the{' '}
             <a
-                href="https://developers.metaplex.com/token-metadata/token-standard"
+                href="https://developers.trezoaplex.com/token-metadata/token-standard"
                 target="_blank"
                 rel="noopener noreferrer"
             >
